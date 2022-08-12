@@ -1,0 +1,110 @@
+package edu.multicampus.restfullapi.model;
+
+import java.sql.Date;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Foods")
+public class Food {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int foodId;
+	
+	@Column(name = "food_name")
+	private String foodName;
+	
+	@Column(name = "food_price")
+	private int foodPrice;
+	
+	@Column(name = "food_source")
+	private String foodSource;
+	
+	@Column(name = "food_Image")
+	private String foodImageURL;
+	
+	@Column(name = "food_date")
+	private Date foodDate;
+	
+	@ManyToMany
+	@JoinTable(
+	name = "exportBills", 
+	joinColumns = @JoinColumn(name = "foodId"), 
+	inverseJoinColumns = @JoinColumn(name = "billId"))
+    Set<Bill> foodb;
+	
+	
+
+	public Food() {
+		super();
+	}
+
+	public Food(String foodName, int foodPrice, String foodSource, String foodImageURL, Date foodDate) {
+		super();
+		this.foodName = foodName;
+		this.foodPrice = foodPrice;
+		this.foodSource = foodSource;
+		this.foodImageURL = foodImageURL;
+		this.foodDate = foodDate;
+	}
+
+	public int getFoodId() {
+		return foodId;
+	}
+
+	public void setFoodId(int foodId) {
+		this.foodId = foodId;
+	}
+
+	public String getFoodName() {
+		return foodName;
+	}
+
+	public void setFoodName(String foodName) {
+		this.foodName = foodName;
+	}
+
+	public int getFoodPrice() {
+		return foodPrice;
+	}
+
+	public void setFoodPrice(int foodPrice) {
+		this.foodPrice = foodPrice;
+	}
+
+	public String getFoodSource() {
+		return foodSource;
+	}
+
+	public void setFoodSource(String foodSource) {
+		this.foodSource = foodSource;
+	}
+
+	public String getFoodImageURL() {
+		return foodImageURL;
+	}
+
+	public void setFoodImageURL(String foodImageURL) {
+		this.foodImageURL = foodImageURL;
+	}
+
+	public Date getFoodDate() {
+		return foodDate;
+	}
+
+	public void setFoodDate(Date foodDate) {
+		this.foodDate = foodDate;
+	}
+	
+	
+}
