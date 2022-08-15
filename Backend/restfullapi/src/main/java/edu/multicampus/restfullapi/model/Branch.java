@@ -12,58 +12,61 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="Branches")
+@Table(name = "Branches")
 public class Branch {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int branchId;
-	
-	@Column(name="branch_name")
+
+	@Column(name = "branch_name")
 	private String branchName;
-	
-	@Column(name="branch_address", length=255)
+
+	@Column(name = "branch_address", length = 255)
 	private String branchAddress;
-	
-	@Column(name="branch_email")
-	private String brandEmail;
-	
-	@Column(name="branch_phone")
-	private String brandPhone;
-	
-	@Column(name="branch_ManagerName")
-	private String brandManagerName;
-	
-	@Column(name="branch_CardNumber")
-	private String brandCardNumber;
 
-	@Column(name="branch_image")
-	private String brandImageURL;
+	@Column(name = "branch_email")
+	private String branchEmail;
 
-    @OneToMany(mappedBy = "branch", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    private Set<Employee> employee;
-    
-    @OneToMany(mappedBy = "branch", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    private Set<ResTable> restable;
-    
+	@Column(name = "branch_phone")
+	private String branchPhone;
+
+	@Column(name = "branch_ManagerName")
+	private String branchManagerName;
+
+	@Column(name = "branch_CardNumber")
+	private String branchCardNumber;
+
+	@Column(name = "branch_image")
+	private String branchImageURL;
+
+	@OneToMany(mappedBy = "branch", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Employee> employee;
+
+	@OneToMany(mappedBy = "branch", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<ResTable> restable;
+
 	public Branch() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Branch(String branchName, String branchAddress, String brandEmail, String brandPhone,
-			String brandManagerName, String brandCardNumber, String brandImageURL) {
+	public Branch(String branchAddress, String branchName, String branchCardNumber, String branchEmail,
+			String branchImageURL, String branchManagerName, String branchPhone) {
 		super();
 		this.branchName = branchName;
 		this.branchAddress = branchAddress;
-		this.brandEmail = brandEmail;
-		this.brandPhone = brandPhone;
-		this.brandManagerName = brandManagerName;
-		this.brandCardNumber = brandCardNumber;
-		this.brandImageURL = brandImageURL;
+		this.branchEmail = branchEmail;
+		this.branchManagerName = branchManagerName;
+		this.branchCardNumber = branchCardNumber;
+		this.branchImageURL = branchImageURL;
+		this.branchPhone = branchPhone;
+	}
+
+	public Branch(String branchName, String branchAddress) {
+		super();
+		this.branchName = branchName;
+		this.branchAddress = branchAddress;
 	}
 
 	public int getBranchId() {
@@ -90,46 +93,44 @@ public class Branch {
 		this.branchAddress = branchAddress;
 	}
 
-	public String getBrandEmail() {
-		return brandEmail;
+	public String getBranchEmail() {
+		return branchEmail;
 	}
 
-	public void setBrandEmail(String brandEmail) {
-		this.brandEmail = brandEmail;
+	public void setBranchEmail(String branchEmail) {
+		this.branchEmail = branchEmail;
 	}
 
-	public String getBrandPhone() {
-		return brandPhone;
+	public String getBranchPhone() {
+		return branchPhone;
 	}
 
-	public void setBrandPhone(String brandPhone) {
-		this.brandPhone = brandPhone;
+	public void setBranchPhone(String branchPhone) {
+		this.branchPhone = branchPhone;
 	}
 
-	public String getBrandManagerName() {
-		return brandManagerName;
+	public String getBranchManagerName() {
+		return branchManagerName;
 	}
 
-	public void setBrandManagerName(String brandManagerName) {
-		this.brandManagerName = brandManagerName;
+	public void setBranchManagerName(String branchManagerName) {
+		this.branchManagerName = branchManagerName;
 	}
 
-	public String getBrandCardNumber() {
-		return brandCardNumber;
+	public String getBranchCardNumber() {
+		return branchCardNumber;
 	}
 
-	public void setBrandCardNumber(String brandCardNumber) {
-		this.brandCardNumber = brandCardNumber;
+	public void setBranchCardNumber(String branchCardNumber) {
+		this.branchCardNumber = branchCardNumber;
 	}
 
-	public String getBrandImageURL() {
-		return brandImageURL;
+	public String getBranchImageURL() {
+		return branchImageURL;
 	}
 
-	public void setBrandImageURL(String brandImageURL) {
-		this.brandImageURL = brandImageURL;
+	public void setBranchImageURL(String branchImageURL) {
+		this.branchImageURL = branchImageURL;
 	}
-	
 
-	
 }

@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import edu.multicampus.restfullapi.model.Branch;
 
-public interface EmployeeRepository extends JpaRepository<Branch, Long> {
-
+public interface RestaurantRepository extends JpaRepository<Branch, Integer> {
+//	List<Branch> findByNameContaining(String branchName);
 }
