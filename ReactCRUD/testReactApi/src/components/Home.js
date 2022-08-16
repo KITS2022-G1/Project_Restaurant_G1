@@ -42,7 +42,7 @@ function Home() {
         <div className="container">
 
             <div>
-                <Link to={`/add`}><i class="bi bi-pencil"></i></Link>
+                <Link to={`/add`}><button className='btn btn-success'> Add </button></Link>
             </div>
 
             <table class="table">
