@@ -53,7 +53,7 @@ export default class Home extends Component {
                                 </td>
 
                                 <td>
-                                    <a href={`/edit?id=${employee.branchId}`}><i class="bi bi-pencil"></i></a>
+                                    <Link to={`/edit/${employee.branchId}`}><i class="bi bi-pencil"></i></Link>
                                 </td>
                                 <td>
                                     <button

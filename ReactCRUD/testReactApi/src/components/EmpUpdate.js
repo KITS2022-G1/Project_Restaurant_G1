@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
 import EmpServices from './EmpServices';
+import { useParams } from "react-router-dom";
 
-export default class EmpUpdate extends Component {
+export const withParams = Component => props => {
+  let params = useParams();
+  return <Component  {...props} params={params} />;
+}
+
+class EmpUpdate extends Component {
   constructor(props) {
     super(props);
+    let {branchId} = props.params;
     this.state = {
-      branchId: this.props.match.params.branchId,
+      branchId: branchId,
       branchAddress: '',
       branchName: '',
       branchCardNumber: '',
@@ -23,10 +30,12 @@ export default class EmpUpdate extends Component {
     this.changeBranchManagerNameHandler = this.changeBranchManagerNameHandler.bind(this);
     this.changeBranchPhoneHandler = this.changeBranchPhoneHandler.bind(this);
     this.saveBranch = this.saveBranch.bind(this);
+
+    console.log(branchId);
   }
 
   componentDidMount() {
-    EmpServices.getBranchById(this.state.branchId).then(res => {
+    EmpServices.getBranchById(this.branchId).then( (res) => {
       let branch = res.data;
       this.setState({
         branchName: branch.branchName,
@@ -140,3 +149,9 @@ export default class EmpUpdate extends Component {
     )
   }
 }
+
+export default withParams(EmpUpdate);
+
+
+
+
