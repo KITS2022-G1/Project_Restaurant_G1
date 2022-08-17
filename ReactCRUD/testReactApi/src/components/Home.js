@@ -12,30 +12,44 @@ function Home() {
         });
     }, []);
 
+    const deleteBranch = (id) => {
+        if (window.confirm('Are you sure?') == true) {
+        EmpServices.deleteBranch(id).then((response) => {
+            setBranches(response.data);
+        })
+        }
+        else{
+
+        };
+    }
+
     var listBranches = [];
-    if (branches != null) {
+    if (branches.length != 0) {
         listBranches = branches.map((branch) => (
-            <tr>
-                <th scope="row" key={branch.branchId}>{branch.branchId}</th>
+            <tr key={branch.branchId}>
+                <th scope="row">{branch.branchId}</th>
                 <td>{branch.branchName}</td>
                 <td>{branch.branchAddress}</td>
                 <td>{branch.branchEmail}</td>
                 <td>
-                    <Link to={`/detail/`+branch.branchId}><i class="bi bi-pencil"></i></Link>
+                    <Link to={`/detail/` + branch.branchId}><i className="bi bi-pencil"></i></Link>
                 </td>
 
                 <td>
-                    <Link to={`/edit/`+branch.branchId}><i class="bi bi-pencil"></i></Link>
+                    <Link to={`/edit/` + branch.branchId}><button className='btn btn-info'>Edit</button></Link>
                 </td>
                 <td>
                     <button
-                        className="badge badge-danger mr-2"
+                        className="btn btn-danger" onClick={() => deleteBranch(branch.branchId)}
                     >
                         Delete
                     </button>
                 </td>
             </tr>
         ));
+    }
+    else{
+        listBranches =<tr><th>NO BRANCH</th><td></td></tr>;
     }
 
     return (
@@ -45,7 +59,7 @@ function Home() {
                 <Link to={`/add`}><button className='btn btn-success'> Add </button></Link>
             </div>
 
-            <table class="table">
+            <table className="table">
                 <thead>
                     <tr>
                         <th scope="col">#ID</th>
@@ -57,7 +71,7 @@ function Home() {
                         <th scope="col">Delete</th>
                     </tr>
                 </thead>
-                <tbody class="table-group-divider">
+                <tbody className="table-group-divider">
                     {listBranches}
                 </tbody>
             </table>

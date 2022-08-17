@@ -90,10 +90,12 @@ public class RestaurantController {
 	}
 
 	@DeleteMapping("/branches/{id}")
-	public ResponseEntity<HttpStatus> deleteBranch(@PathVariable("id") Integer id) {
+	public ResponseEntity<List<Branch>> deleteBranch(@PathVariable("id") Integer id) {
 		try {
 			restaurantRepository.deleteById(id);
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			List<Branch> list = new ArrayList<Branch>();
+			list = restaurantRepository.findAll();
+			return new ResponseEntity<>(list,HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
 		}

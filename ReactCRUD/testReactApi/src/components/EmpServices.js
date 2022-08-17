@@ -18,6 +18,10 @@ class EmpServices{
     updateBranch(branchId, branch){
         return axios.put(EMP_API_BASE_URL+ '/' + branchId, branch);
     }
+
+    deleteBranch(branch){
+        return axios.delete(EMP_API_BASE_URL + '/' + branch);
+    }
 }
 
 export default new EmpServices();
