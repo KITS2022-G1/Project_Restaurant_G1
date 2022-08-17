@@ -8,6 +8,7 @@ class EmpServices{
         if(stringSearch!=""){
             text="?branchName="+stringSearch;
         }
+
         return axios.get(EMP_API_BASE_URL+text);
     }
 
@@ -25,6 +26,14 @@ class EmpServices{
 
     deleteBranch(branch){
         return axios.delete(EMP_API_BASE_URL + '/' + branch);
+    }
+
+    getBranchIdBiggerAvg(){
+        return axios.get(EMP_API_BASE_URL+"/getIdBigger");
+    }
+
+    getIdBiggerAvg(){
+        return axios.get(EMP_API_BASE_URL+"/getIdBiggerAvg");
     }
 }
 

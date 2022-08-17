@@ -32,12 +32,12 @@ public class RestaurantController {
 	RestaurantRepository restaurantRepository;
 
 	@RequestMapping("/branches")
-	public ResponseEntity<List<Branch>> getAllBranches(@RequestParam("search") String search) {
+	public ResponseEntity<List<Branch>> getAllBranches(@Param("branchName") String branchName) {
 		try {
 			List<Branch> branches = new ArrayList<Branch>();
 			
-			if (search != null) {
-	            branches = restaurantRepository.search(search);
+			if (branchName != null) {
+	            branches = restaurantRepository.search(branchName);
 	        }else {
 	        	branches = restaurantRepository.findAll();
 			}
@@ -50,6 +50,18 @@ public class RestaurantController {
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+	}
+	
+	@GetMapping("/branches/getIdBigger")
+	public ResponseEntity<List<Branch>> getListIdBigger(){
+		List<Branch> list = new ArrayList<>();
+		list = restaurantRepository.getBranchIdBiggerAvg();
+		return new ResponseEntity<List<Branch>>(list,HttpStatus.OK);
+	}
+	
+	@GetMapping("/branches/getIdBiggerAvg")
+	public ResponseEntity<Float> getIdBiggerAvg(){
+		return new ResponseEntity<Float>(restaurantRepository.getBranchIdAVG(),HttpStatus.OK);
 	}
 
 	@GetMapping("/branches/{id}")

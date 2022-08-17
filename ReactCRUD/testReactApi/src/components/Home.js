@@ -32,7 +32,7 @@ function Home() {
         }
         else {
 
-        };
+        }
     }
 
     var listBranches = [];
@@ -64,6 +64,12 @@ function Home() {
         listBranches = <tr><th>NO BRANCH</th><td></td></tr>;
     }
 
+    const onClickEnter=(event)=>{
+        if(event.key=='Enter'){
+            setSearchTerm(document.querySelectorAll('input[name=inputSearch]')[0].value);
+        }
+    }
+
     return (
         <div className="container">
             <div className="input-group">
@@ -71,12 +77,14 @@ function Home() {
                     type="text"
                     className="form-control"
                     name="inputSearch"
+                    onKeyDown={onClickEnter}
                 ></input>
                 <div className="input-group-append">
                     <button
                         className="btn btn-secondary"
                         type="button"
                         onClick={()=>setSearchTerm(document.querySelectorAll('input[name=inputSearch]')[0].value)}
+                        
                     >
                         SEARCH
                     </button>
@@ -84,6 +92,9 @@ function Home() {
             </div>
             <div>
                 <Link to={`/add`}><button className='btn btn-success'> Add </button></Link>
+            </div>
+            <div>
+                <Link to={`/delete`}><button className='btn btn-success'> Id Bigger </button></Link>
             </div>
 
             <table className="table">
