@@ -18,7 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/add" element={<EmpAddNew />} />
           <Route path="/edit/:branchId" element={<EmpUpdate />} />
-          <Route path="/detail" element={<EmpDetail />} />
+          <Route path="/detail/:branchId" element={<EmpDetail />} />
           <Route path="/delete" element={<EmpDel />} />
       </Routes>
       <Footer />

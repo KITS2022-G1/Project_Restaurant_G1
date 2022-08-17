@@ -36,3 +36,30 @@
     transform: rotate(360deg);
   }
 }
+
+.paginationBttns{
+  width: 80%;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.paginationBttns a{
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid rgb(34, 99, 221);
+  color: rgb(34, 99, 221)
+}
+
+.paginationBttns a:hover{
+  color: white;
+  background-color: rgb(157, 200, 250);
+}
+
+.paginationActive{
+  color: white;
+  background-color: rgb(157, 200, 250);
+}

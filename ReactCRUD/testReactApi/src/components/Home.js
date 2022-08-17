@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import EmpServices from './EmpServices';
 import { Link } from "react-router-dom";
+import ReactPaginate from 'react-paginate';
+
 
 function Home() {
 
     const [branches, setBranches] = useState([]);
+    const [pageNumber, setPageNumber] = useState(0);
 
     useEffect(() => {
         EmpServices.getAllBranches().then((response) => {
             setBranches(response.data);
         });
     }, []);
+
+    const branchPerPage = 5;
+    const pagesVisited = pageNumber * branchPerPage;
+
+    const pageCount = Math.ceil(branches.length / branchPerPage)
+    const changePage = ({selected}) => {
+        setPageNumber(selected);
+    }
 
     const deleteBranch = (id) => {
         if (window.confirm('Are you sure?') == true) {
@@ -25,14 +36,14 @@ function Home() {
 
     var listBranches = [];
     if (branches.length != 0) {
-        listBranches = branches.map((branch) => (
+        listBranches = branches.slice(pagesVisited, pagesVisited + branchPerPage).map((branch) => (
             <tr key={branch.branchId}>
                 <th scope="row">{branch.branchId}</th>
                 <td>{branch.branchName}</td>
                 <td>{branch.branchAddress}</td>
                 <td>{branch.branchEmail}</td>
                 <td>
-                    <Link to={`/detail/` + branch.branchId}><i className="bi bi-pencil"></i></Link>
+                    <Link to={`/detail/` + branch.branchId}><button className='btn btn-warning'>Detail</button></Link>
                 </td>
 
                 <td>
@@ -75,6 +86,20 @@ function Home() {
                     {listBranches}
                 </tbody>
             </table>
+
+            <div>
+                <ReactPaginate
+                        previousLabel={"Previous"}
+                        nextLabel={"Next"}
+                        pageCount={pageCount}
+                        onPageChange={changePage}
+                        containerClassName={"paginationBttns"}
+                        previousLinkClassName={"previousBttn"}
+                        nextLinkClassName={"nextBttn"}
+                        disabledClassName={"paginationDisabled"}
+                        activeClassName={"paginationActive"}
+                    />
+                </div>
         </div>
     );
 
