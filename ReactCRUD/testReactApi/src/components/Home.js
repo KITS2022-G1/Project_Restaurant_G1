@@ -5,20 +5,21 @@ import { Link } from "react-router-dom";
 function Home() {
 
     const [branches, setBranches] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        EmpServices.getAllBranches().then((response) => {
+        EmpServices.getAllBranches(searchTerm).then((response) => {
             setBranches(response.data);
         });
-    }, []);
+    }, [searchTerm]);
 
     const deleteBranch = (id) => {
         if (window.confirm('Are you sure?') == true) {
-        EmpServices.deleteBranch(id).then((response) => {
-            setBranches(response.data);
-        })
+            EmpServices.deleteBranch(id).then((response) => {
+                setBranches(response.data);
+            })
         }
-        else{
+        else {
 
         };
     }
@@ -48,13 +49,28 @@ function Home() {
             </tr>
         ));
     }
-    else{
-        listBranches =<tr><th>NO BRANCH</th><td></td></tr>;
+    else {
+        listBranches = <tr><th>NO BRANCH</th><td></td></tr>;
     }
 
     return (
         <div className="container">
-
+            <div className="input-group">
+                <input
+                    type="text"
+                    className="form-control"
+                    name="inputSearch"
+                ></input>
+                <div className="input-group-append">
+                    <button
+                        className="btn btn-secondary"
+                        type="button"
+                        onClick={()=>setSearchTerm(document.querySelectorAll('input[name=inputSearch]')[0].value)}
+                    >
+                        SEARCH
+                    </button>
+                </div>
+            </div>
             <div>
                 <Link to={`/add`}><button className='btn btn-success'> Add </button></Link>
             </div>

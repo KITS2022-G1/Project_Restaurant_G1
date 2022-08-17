@@ -3,8 +3,12 @@ import axios from "axios";
 const EMP_API_BASE_URL = "http://localhost:8080/api/branches";
 
 class EmpServices{
-    getAllBranches(){
-        return axios.get(EMP_API_BASE_URL);
+    getAllBranches(stringSearch){
+        var text = "";
+        if(stringSearch!=""){
+            text="?branchName="+stringSearch;
+        }
+        return axios.get(EMP_API_BASE_URL+text);
     }
 
     addNewBranch(branch){

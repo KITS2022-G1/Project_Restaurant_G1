@@ -15,4 +15,10 @@ public interface RestaurantRepository extends JpaRepository<Branch, Integer> {
 			+ " OR b.branch_address LIKE %?1%"
 			+ " OR b.branch_email LIKE %?1%",nativeQuery = true)
     public List<Branch> search(String branchName);
+	
+	@Query(value ="SELECT * FROM branches WHERE branch_id >= (SELECT AVG(branch_id) FROM branches)",nativeQuery = true)
+	public List<Branch> getBranchIdBiggerAvg();
+	
+	@Query(value ="SELECT AVG(branch_id) FROM branches",nativeQuery = true)
+	public float getBranchIdAVG();
 }

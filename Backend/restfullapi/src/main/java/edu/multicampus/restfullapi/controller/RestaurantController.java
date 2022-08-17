@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,12 +32,12 @@ public class RestaurantController {
 	RestaurantRepository restaurantRepository;
 
 	@RequestMapping("/branches")
-	public ResponseEntity<List<Branch>> getAllBranches(@Param("branchName") String branchName) {
+	public ResponseEntity<List<Branch>> getAllBranches(@RequestParam("search") String search) {
 		try {
 			List<Branch> branches = new ArrayList<Branch>();
 			
-			if (branchName != null) {
-	            branches = restaurantRepository.search(branchName);
+			if (search != null) {
+	            branches = restaurantRepository.search(search);
 	        }else {
 	        	branches = restaurantRepository.findAll();
 			}
