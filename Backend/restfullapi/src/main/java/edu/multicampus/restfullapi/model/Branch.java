@@ -1,5 +1,6 @@
 package edu.multicampus.restfullapi.model;
 
+import java.beans.JavaBean;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,6 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Branches")
+@JavaBean
 public class Branch {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

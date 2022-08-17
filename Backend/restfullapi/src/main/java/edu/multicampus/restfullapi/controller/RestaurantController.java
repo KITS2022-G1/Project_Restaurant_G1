@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+//import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.multicampus.restfullapi.model.Branch;
@@ -28,16 +30,17 @@ public class RestaurantController {
 	@Autowired
 	RestaurantRepository restaurantRepository;
 
-	@GetMapping("/branches")
-	public ResponseEntity<List<Branch>> getAllBranches(@RequestParam(required = false) String branchName) {
+	@RequestMapping("/branches")
+	public ResponseEntity<List<Branch>> getAllBranches(@Param("branchName") String branchName) {
 		try {
 			List<Branch> branches = new ArrayList<Branch>();
-
-			if (branchName == null)
-				restaurantRepository.findAll().forEach(branches::add);
-//			else
-//				restaurantRepository.findByNameContaining(branchName).forEach(branches::add);
-
+			
+			if (branchName != null) {
+	            branches = restaurantRepository.search(branchName);
+	        }else {
+	        	branches = restaurantRepository.findAll();
+			}
+	        
 			if (branches.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
