@@ -119,7 +119,7 @@ function EmpAddNew() {
 
           {/* --------------------------------------------------------- */}
           <div className='col-12'>
-            <MDBBtn type='submit' className='btn btn-info me-2' onClick={() => saveBranch()}>Save</MDBBtn>
+            <MDBBtn type='submit' className='btn btn-info me-2' onClick={(e) => saveBranch(e)}>Save</MDBBtn>
             <MDBBtn type='reset' className='btn btn-danger me-2'>Reset form</MDBBtn>
             <Link to={"/"}><button className='btn btn-secondary me-2'> Cancel </button></Link>
           </div>
