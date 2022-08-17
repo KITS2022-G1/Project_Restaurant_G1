@@ -1,0 +1,5 @@
+React NPM:
+
+npm i react-paginate
+
+npm i mdb-react-ui-kit
