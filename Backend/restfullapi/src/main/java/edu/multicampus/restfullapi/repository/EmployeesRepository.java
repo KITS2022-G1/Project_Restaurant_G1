@@ -10,8 +10,8 @@ import edu.multicampus.restfullapi.model.Employee;
 
 @Repository
 public interface EmployeesRepository extends JpaRepository<Employee, Integer> {
-	@Query(value ="SELECT * FROM employees b WHERE b.employee_name LIKE %?1%"
-			+ " OR b.employee_address LIKE %?1%"
-			+ " OR b.employee_email LIKE %?1%",nativeQuery = true)
+	@Query(value ="SELECT * FROM employees e WHERE e.employee_name LIKE %?1%"
+			+ " OR e.employee_address LIKE %?1%"
+			+ " OR e.employee_email LIKE %?1%",nativeQuery = true)
     public List<Employee> search(String search);
 }
