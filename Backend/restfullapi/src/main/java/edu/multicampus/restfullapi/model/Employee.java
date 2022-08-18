@@ -14,7 +14,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
+//@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Table(name="Employees")
 public class Employee {
 	@Id
@@ -49,13 +52,20 @@ public class Employee {
     
     @Column(name="employee_image")
 	private String employeeImageURL;
+    
+    @Column(name="employee_username")
+   	private String username;
+    
+    @Column(name="employee_password")
+   	private String password;
 
 	public Employee() {
 		super();
 	}
 
 	public Employee(Branch branch, String employeeName, String employeePhone, String employeeEmail,
-			Boolean employeeGender, String employeeAddress, String employeeRole, String employeeImageURL) {
+			Boolean employeeGender, String employeeAddress, String employeeRole, String employeeImageURL,
+			String username, String password){
 		super();
 		this.branch = branch;
 		this.employeeName = employeeName;
@@ -65,6 +75,32 @@ public class Employee {
 		this.employeeAddress = employeeAddress;
 		this.employeeRole = employeeRole;
 		this.employeeImageURL = employeeImageURL;
+		this.username = username;
+		this.password = password;
+	}
+
+	public Set<Bill> getBill() {
+		return bill;
+	}
+
+	public void setBill(Set<Bill> bill) {
+		this.bill = bill;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public int getEmployeeId() {

@@ -42,10 +42,10 @@ public class Branch {
 	@Column(name = "branch_image")
 	private String branchImageURL;
 
-	@OneToMany(mappedBy = "branch", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "branch", fetch = FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval=true)
 	private Set<Employee> employee;
 
-	@OneToMany(mappedBy = "branch", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "branch", fetch = FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval=true)
 	private Set<ResTable> restable;
 
 	public Branch() {

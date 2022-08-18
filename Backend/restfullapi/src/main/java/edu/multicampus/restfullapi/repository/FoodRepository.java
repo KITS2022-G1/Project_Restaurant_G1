@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import edu.multicampus.restfullapi.model.Food;
 
 @Repository
-public interface FoodRepository extends JpaRepository<Food, Long> {
-
+public interface FoodRepository extends JpaRepository<Food, Integer> {
+	
 }
