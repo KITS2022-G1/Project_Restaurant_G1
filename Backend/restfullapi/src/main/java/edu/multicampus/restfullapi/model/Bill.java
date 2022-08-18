@@ -10,8 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +26,18 @@ public class Bill {
 
 	@Column(name = "bill_date")
 	private Date billDate;
+	
+	@Column(name = "bill_totalMoney")
+	private int billTotalMoney;
+	
+
+	public int getBillTotalMoney() {
+		return billTotalMoney;
+	}
+
+	public void setBillTotalMoney(int billTotalMoney) {
+		this.billTotalMoney = billTotalMoney;
+	}
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "employeeId", nullable = false)
@@ -35,17 +47,18 @@ public class Bill {
 	@JoinColumn(name = "customerId", nullable = false)
 	private Customer customer;
 	
-	@ManyToMany(mappedBy = "foodb")
-    Set<Food> bill;
+	@OneToMany(mappedBy = "bill")
+	Set<ExportBill> amount;
 
 	public Bill() {
 		super();
 	}
 
-	public Bill(String billTitle, Date billDate) {
+	public Bill(String billTitle, Date billDate, int billTotalMoney) {
 		super();
 		this.billTitle = billTitle;
 		this.billDate = billDate;
+		this.billTotalMoney = billTotalMoney;
 	}
 
 	public int getBillId() {

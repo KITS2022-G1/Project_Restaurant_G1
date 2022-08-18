@@ -64,7 +64,7 @@ public class BillController {
 	@PostMapping("/bills")
 	public ResponseEntity<Bill> createBill(@RequestBody Bill Bill) {
 		try {
-			Bill bill = billRepository.save(new Bill(Bill.getBillTitle(), Bill.getBillDate()));
+			Bill bill = billRepository.save(new Bill(Bill.getBillTitle(), Bill.getBillDate(), Bill.getBillTotalMoney()));
 			return new ResponseEntity<>(bill, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
