@@ -38,6 +38,23 @@ public class ResTable {
 		super();
 		this.restableName = restableName;
 	}
+	
+
+	public ResTable(String restableName, Branch branch) {
+		super();
+		this.restableName = restableName;
+		this.branch = branch;
+	}
+	
+	
+
+	public Branch getBranch() {
+		return branch;
+	}
+
+	public void setBranch(Branch branch) {
+		this.branch = branch;
+	}
 
 	public int getTableId() {
 		return restableId;
