@@ -28,8 +28,8 @@ public class ResTableController {
 	@Autowired
 	ResTableRepository resTableRepository;
 	
-	@RequestMapping("/branches")
-	public ResponseEntity<List<ResTable>> getAllBranches(@Param("restableName") String restableName) {
+	@RequestMapping("/resTables")
+	public ResponseEntity<List<ResTable>> getAllResTable(@Param("restableName") String restableName) {
 		try {
 			List<ResTable> resTables = new ArrayList<ResTable>();
 			
@@ -49,8 +49,8 @@ public class ResTableController {
 		}
 	}
 
-	@GetMapping("/branches/{id}")
-	public ResponseEntity<ResTable> getBranchById(@PathVariable("id") Integer id) {
+	@GetMapping("/resTables/{id}")
+	public ResponseEntity<ResTable> getResTableById(@PathVariable("id") Integer id) {
 		Optional<ResTable> ResTableData = resTableRepository.findById(id);
 
 		if (ResTableData.isPresent()) {
@@ -60,8 +60,8 @@ public class ResTableController {
 		}
 	}
 
-	@PostMapping("/branches")
-	public ResponseEntity<ResTable> createBranch(@RequestBody ResTable resTable) {
+	@PostMapping("/resTables")
+	public ResponseEntity<ResTable> createResTable(@RequestBody ResTable resTable) {
 		try {
 			ResTable newResTable = resTableRepository.save(new ResTable(resTable.getTableName(),resTable.getBranch()));
 			return new ResponseEntity<>(newResTable, HttpStatus.CREATED);
@@ -70,8 +70,8 @@ public class ResTableController {
 		}
 	}
 
-	@PutMapping("/branches/{id}")
-	public ResponseEntity<ResTable> updateBranch(@PathVariable("id") Integer id, @RequestBody ResTable ResTable) {
+	@PutMapping("/resTables/{id}")
+	public ResponseEntity<ResTable> updateResTable(@PathVariable("id") Integer id, @RequestBody ResTable ResTable) {
 		Optional<ResTable> ResTableData = resTableRepository.findById(id);
 
 		if (ResTableData.isPresent()) {
@@ -84,8 +84,8 @@ public class ResTableController {
 		}
 	}
 
-	@DeleteMapping("/branches/{id}")
-	public ResponseEntity<List<ResTable>> deleteBranch(@PathVariable("id") Integer id) {
+	@DeleteMapping("/resTables/{id}")
+	public ResponseEntity<List<ResTable>> deleteResTable(@PathVariable("id") Integer id) {
 		try {
 			resTableRepository.deleteById(id);
 			List<ResTable> list = new ArrayList<ResTable>();
