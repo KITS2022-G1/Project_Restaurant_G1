@@ -1,11 +1,11 @@
 import React from "react";
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import CheckButton from "react-validation/build/button";
+// import Form from "react-validation/build/form";
+// import Input from "react-validation/build/input";
+// import CheckButton from "react-validation/build/button";
 import AuthService from "../services/auth.service";
 import { Navigate } from 'react-router-dom';
 
-import { useEffect, useState } from "react";
+import {useState } from "react";
 
 const required = value => {
   if (!value) {
@@ -17,125 +17,123 @@ const required = value => {
   }
 };
 
-export default function Login(){
-  // constructor(props) {
-  //   super(props);
-  //   this.handleLogin = this.handleLogin.bind(this);
-  //   this.onChangeUsername = this.onChangeUsername.bind(this);
-  //   this.onChangePassword = this.onChangePassword.bind(this);
-
-  //   this.state = {
-  //     username: "",
-  //     password: "",
-  //     loading: false,
-  //     message: ""
-  //   };
-  // }
-
+function Login() {
   const [stateLogin, setStateLogin] = useState({
-      username: "",
-      password: "",
-      loading: false,
-      message: ""
+    username: "",
+    password: "",
+    loading: false,
+    message: ""
   });
 
-  const onChangeUsername = (e) => {
-      setStateLogin({
-        ...stateLogin,
-        username:e.target.value,
-      });
-  }
+  // const onChangeUsername = (e) => {
+  //   setStateLogin({
+  //     ...stateLogin,
+  //     username: e.target.value,
+  //   });
+  // }
 
-  const onChangePassword = (e) => {
-    setStateLogin({
-      ...stateLogin,
-      password:e.target.value,
-    });
-  }
+  // console.log(stateLogin.username);
+
+  // const onChangePassword = (e) => {
+  //   setStateLogin({
+  //     ...stateLogin,
+  //     password: e.target.value,
+  //   });
+  // }
 
   const handleLogin = (e) => {
     e.preventDefault();
 
     setStateLogin({
       ...stateLogin,
-      message:"",
+      message: "",
       loading: true
     });
 
     // this.form.validateAll();
 
-    if (this.checkBtn.context._errors.length === 0) {
-      AuthService.login(stateLogin.username, stateLogin.password).then(
-        () => {
-          <Navigate to="/profile" />
-          window.location.reload();
-        },
-        // error => {
-        //   const resMessage =
-        //     (error.response &&
-        //       error.response.data &&
-        //       error.response.data.message) ||
-        //     error.message ||
-        //     error.toString();
+    // if (this.checkBtn.context._errors.length === 0) {
+    AuthService.login(stateLogin.username, stateLogin.password).then(
+      () => {
+        <Navigate to="/profile" />
+        console.log("success");
+        window.location.reload();
+      },
+      error => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
 
-        //     setStateLogin({
-        //       ...stateLogin,
-        //       message:resMessage,
-        //       loading: false
-        //     });
-        // }
-      );
-    } else {
-      setStateLogin({
-        ...stateLogin,
-        loading: false
-      });
-    }
+        setStateLogin({
+          ...stateLogin,
+          message: resMessage,
+          loading: false
+        });
+      }
+    );
+    // } else {
+    //   setStateLogin({
+    //     ...stateLogin,
+    //     loading: false
+    //   });
+    // }
   }
 
-    return (
-      <div className="col-md-12">
-        <div className="card card-container">
-          <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-            alt="profile-img"
-            className="profile-img-card"
-          />
+  return (
+    <div className="container" style={{height: '810px'}}>
+      <div className="row pt-5">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <div class="mb-3 text-center">
+            <img class="img-fluid"
+              src="https://images.squarespace-cdn.com/content/v1/5c5382928dfc8cdc537fe0e5/d7179f08-6197-43eb-b920-bdfe7c23676e/Logo+5.png?format=1500w"
+              style={{ maxWidth: '80% !important', height: 'auto !important' }}/>
+          </div>
 
-          <Form
+          <form
             onSubmit={(e) => handleLogin(e)}
-            // ref={c => {
-            //   this.form = c;
-            // }}
+          // ref={c => {
+          //   this.form = c;
+          // }}
           >
             <div className="form-group">
               <label htmlFor="username">Username</label>
-              <Input
+              <input
                 type="text"
                 className="form-control"
                 name="username"
                 value={stateLogin.username}
-                onChange={() => onChangeUsername(stateLogin.username)}
+                onChange={(e) => setStateLogin({
+                  ...stateLogin,
+                  username: e.target.value,
+                })}
                 validations={[required]}
               />
             </div>
 
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <Input
+              <input
                 type="password"
                 className="form-control"
                 name="password"
                 value={stateLogin.password}
-                onChange={() => onChangePassword(stateLogin.password)}
+                onChange={(e) => setStateLogin({
+                  ...stateLogin,
+                  password: e.target.value,
+                })}
                 validations={[required]}
               />
             </div>
 
-            <div className="form-group">
+            <div className="form-group pt-3" style={{textAlign: 'center'}}>
               <button
                 className="btn btn-primary btn-block"
                 disabled={stateLogin.loading}
+                style = {{padding: "5px 30px"}}
               >
                 {stateLogin.loading && (
                   <span className="spinner-border spinner-border-sm"></span>
@@ -151,14 +149,18 @@ export default function Login(){
                 </div>
               </div>
             )}
-            <CheckButton
-              style={{ display: "none" }}
-              // ref={c => {
-              //   this.checkBtn = c;
-              // }}
-            />
-          </Form>
+            {/* <CheckButton
+            style={{ display: "none" }}
+          ref={c => {
+            this.checkBtn = c;
+          }}
+          /> */}
+          </form>
         </div>
+        <div class="col-4"></div>
       </div>
-    );
+    </div>
+  );
 }
+
+export default Login;
