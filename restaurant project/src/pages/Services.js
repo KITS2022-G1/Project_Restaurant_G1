@@ -4,7 +4,7 @@ import nhahang from '../image/nhahang.jpg'
 import Banqueting from '../image/Banqueting.jpg'
 import sanhchinh from '../image/sanhchinh.png'
 import trungbay from '../image/trungbay.png'
-import banhkem from '../image/banhkem.png'
+import banhkem from '../image/banhkem.jpg'
 import '../css/Services.css'
 
 const Services = () => {
@@ -62,7 +62,7 @@ const Services = () => {
 
             <div className="container-fluid row text-sercices" style={{ padding: "0", margin: "0" }}>
                 <div className="col-md-6 col-ms-6" style={{ padding: "0" }}>
-                    <img src={banhkem} style={{ width: "100%", height: "100%", objectFit: "cover" }}></img>
+                    <img src={banhkem} style={{ width: "100%", height: "100%", objectFit: "contain " }}></img>
                 </div>
                 <div className="col-ms-6 col-md-6 " style={{ padding: "0", backgroundColor: "#2E8B57" }}>
                     <p style={{ fontWeight: "bold", color: "white" }} className="text-center mt-4 mb-3 fs-1 "> BƯU KIỆN </p>

@@ -22,7 +22,7 @@ const SideDishMenu = () => {
                 textDecoration: "underline #2A606D wavy",
               }}
             >
-              Các món phụ
+              Các món ăn phụ
             </p>
             <ul class="leaders">
               <li className="fs-6 pt-2">

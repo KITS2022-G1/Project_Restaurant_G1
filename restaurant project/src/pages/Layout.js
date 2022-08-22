@@ -49,7 +49,7 @@ const Layout = () => {
                 </Link>
               </li>
               <li class="nav-item dropdown">
-                <Link className="nav-link" to="/Menu">
+                <Link className="nav-link" to="/Menu" onClick={clickView}>
                   MENU{" "}
                 </Link>
                 <ul
@@ -58,17 +58,17 @@ const Layout = () => {
                   style={{ backgroundColor: "#D19527" }}
                 >
                   <li>
-                    <Link class="dropdown-item" to="/MainCourseMenu">
+                    <Link class="dropdown-item" to="/MainCourseMenu" onClick={clickView}>
                       Main course menu
                     </Link>
                   </li>
                   <li>
-                    <Link class="dropdown-item" to="/SideDishMenu">
+                    <Link class="dropdown-item" to="/SideDishMenu" onClick={clickView}>
                       Side dish menu
                     </Link>
                   </li>
                   <li>
-                    <Link class="dropdown-item" to="/DessertMenu">
+                    <Link class="dropdown-item" to="/DessertMenu" onClick={clickView}>
                       Dessert menu
                     </Link>
                   </li>
@@ -76,7 +76,7 @@ const Layout = () => {
                     <hr class="dropdown-divider"></hr>
                   </li>
                   <li>
-                    <Link class="dropdown-item" to="/DrinkMenu">
+                    <Link class="dropdown-item" to="/DrinkMenu" onClick={clickView}>
                       Drink menu
                     </Link>
                   </li>
@@ -86,6 +86,7 @@ const Layout = () => {
                 <Link
                   class="nav-link"
                   to="/Services"
+                  onClick={clickView}
                 >
                   SERVICES
                 </Link>
