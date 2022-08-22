@@ -1,8 +1,16 @@
 import React from "react";
-
+import bannerSideDishMenu from '../image/bannerSideDishMenu.jpg'
 const SideDishMenu = () => {
   return (
     <>
+      <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000}">
+            <img src={bannerSideDishMenu} class="d-block w-100" alt="..." style={{ width: "100%" }} />
+          </div>
+        </div>
+      </div>
+
       <section style={{ padding: "3rem" }}>
         <div className="row text-menu">
           <div className="col-2"></div>
@@ -14,7 +22,7 @@ const SideDishMenu = () => {
                 textDecoration: "underline #2A606D wavy",
               }}
             >
-              Các món về bò
+              Các món phụ
             </p>
             <ul class="leaders">
               <li className="fs-6 pt-2">

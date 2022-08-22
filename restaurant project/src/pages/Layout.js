@@ -85,9 +85,7 @@ const Layout = () => {
               <li class="nav-item">
                 <Link
                   class="nav-link"
-                  href="#"
-                  to="/aboutMe"
-                  onClick={clickView}
+                  to="/Services"
                 >
                   SERVICES
                 </Link>

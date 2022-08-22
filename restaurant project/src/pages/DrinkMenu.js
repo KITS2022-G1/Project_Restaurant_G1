@@ -1,8 +1,16 @@
 import React from "react";
-
+import bannerDrinkMenu from '../image/bannerDrinkMenu.jpg'
 const DrinhMenu = () => {
   return (
     <>
+      <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000}">
+            <img src={bannerDrinkMenu} class="d-block w-100" alt="..." style={{ width: "100%" }} />
+          </div>
+        </div>
+      </div>
+
       <section style={{ padding: "3rem" }}>
         <div className="row text-menu">
           <div className="col-2"></div>
@@ -311,7 +319,7 @@ const DrinhMenu = () => {
           </div>
           <div className="col-2"></div>
         </div>
-      </section>F
+      </section>
 
       <section style={{ padding: "3rem" }}>
         <div className="row text-menu">
@@ -326,8 +334,8 @@ const DrinhMenu = () => {
             >
               MINERAL WATER
             </p>
-            <div className="container-fluid row" style={{margin: "0", padding: "0"}}>
-              <div className="col-6 text-center">
+            <div className="container-fluid row" style={{ margin: "0", padding: "0" }}>
+              <div className="col-6 text-center col-ms-6">
                 <ul class="leaders">
                   <li className="fs-6 pt-2 mt-3">
                     <span>Alba Natural Mineral Water (45cl)</span>
@@ -346,7 +354,7 @@ const DrinhMenu = () => {
                   </li>
                 </ul>
               </div>
-              <div className="col-6 text-center">
+              <div className="col-6 text-center col-ms-6">
                 <ul class="leaders">
                   <li className="fs-6 pt-2 mt-3">
                     <span>Alba Natural Mineral Sparkling Water (45cl)</span>
@@ -367,7 +375,7 @@ const DrinhMenu = () => {
               </div>
             </div>
           </div>
-          <div className="col-2"></div>
+          
         </div>
       </section>
     </>

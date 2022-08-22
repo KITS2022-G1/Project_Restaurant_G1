@@ -58,7 +58,7 @@ const Menu = () => {
                                  làm việc tại các khách sạn như Sofitel Metropole Hanoi và Sofitel Plaza Saigon.
                                  Anh ấy đã có cơ hội hợp tác với nhiều đầu bếp sao Michelin, những người mà anh ấy có được kiến ​​thức sâu sắc và chuyên môn tinh tế.</p>
                                 <div className="text-center">
-                                <button type="button" class="btn btn-lg btn-outline-success mb-3" style={{borderRadius: "50%", fontWeight: "bold"}}>Menu món phụ</button>
+                                <Link to="/SideDishMenu"><button type="button" class="btn btn-lg btn-outline-success mb-3" style={{borderRadius: "50%", fontWeight: "bold"}}>Menu món phụ</button></Link>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,7 @@ const Menu = () => {
                                  Và bạn sẽ không tìm thấy bất kỳ loại bánh mì kẹp thịt nào giống như cái này, chỉ cần thử bánh mì kẹp thịt ốc của chúng tôi nếu bạn không tin chúng tôi.
                                  Đầu bếp của chúng tôi đã lấy cảm hứng từ khắp nơi trên thế giới và từ quê hương Việt Nam, để tạo ra những món ăn tuyệt vời đầy màu sắc và độc đáo này, cho tất cả các bạn trải nghiệm.</p>
                                 <div className="text-center">
-                                <button type="button" class="btn btn-lg btn-outline-success mb-3" style={{borderRadius: "50%", fontWeight: "bold"}}>menu tráng miệng</button>
+                                <Link to = "/DesertMenu"><button type="button" class="btn btn-lg btn-outline-success mb-3" style={{borderRadius: "50%", fontWeight: "bold"}}>menu tráng miệng</button></Link>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +105,7 @@ const Menu = () => {
                                 Từ các loại cocktail độc đáo và thanh lịch đến các loại cà phê và sinh tố bổ sung năng lượng. 
                                 Được thiết kế để nâng tầm, mọi thứ ở đây đều được tạo ra với những nguyên liệu tươi ngon nhất và với sự chăm sóc tỉ mỉ nhất.</p>
                                 <div className="text-center">
-                                <button type="button" class="btn btn-lg btn-outline-success mb-3" style={{borderRadius: "50%", fontWeight: "bold"}}>menu đồ uống</button>
+                                <Link to="/DrinkMenu"><button type="button" class="btn btn-lg btn-outline-success mb-3" style={{borderRadius: "50%", fontWeight: "bold"}}>menu đồ uống</button></Link>
                                 </div>
                             </div>
                         </div>
