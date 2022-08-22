@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import EmpServices from './EmpServices';
+import EmpServices from '../services/EmpServices';
 import { useParams, useNavigate, Link  } from "react-router-dom";
 
 function EmpUpdate() {
