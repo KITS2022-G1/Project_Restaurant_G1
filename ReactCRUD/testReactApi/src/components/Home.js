@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import EmpServices from './EmpServices';
+import EmpServices from '../service/EmpServices';
 import { Link } from "react-router-dom";
 import ReactPaginate from 'react-paginate';
 
@@ -25,7 +25,7 @@ function Home() {
     }
 
     const deleteBranch = (id) => {
-        if (window.confirm('Are you sure?') == true) {
+        if (window.confirm('Are you sure?') === true) {
             EmpServices.deleteBranch(id).then((response) => {
                 setBranches(response.data);
             })
@@ -36,7 +36,7 @@ function Home() {
     }
 
     var listBranches = [];
-    if (branches.length != 0) {
+    if (branches.length !== 0) {
         listBranches = branches.slice(pagesVisited, pagesVisited + branchPerPage).map((branch) => (
             <tr key={branch.branchId}>
                 <th scope="row">{branch.branchId}</th>
@@ -65,7 +65,7 @@ function Home() {
     }
 
     const onClickEnter=(event)=>{
-        if(event.key=='Enter'){
+        if(event.key==='Enter'){
             setSearchTerm(document.querySelectorAll('input[name=inputSearch]')[0].value);
         }
     }
@@ -84,7 +84,7 @@ function Home() {
                         className="btn btn-secondary"
                         type="button"
                         onClick={()=>setSearchTerm(document.querySelectorAll('input[name=inputSearch]')[0].value)}
-                        
+
                     >
                         SEARCH
                     </button>

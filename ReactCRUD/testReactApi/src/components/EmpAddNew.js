@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react'
-import EmpServices from './EmpServices';
+import EmpServices from '../services/EmpServices';
 import { Link } from 'react-router-dom';
 import {
   MDBValidation,

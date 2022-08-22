@@ -5,7 +5,7 @@ const EMP_API_BASE_URL = "http://localhost:8080/api/branches";
 class EmpServices{
     getAllBranches(stringSearch){
         var text = "";
-        if(stringSearch!=""){
+        if(stringSearch!==""){
             text="?branchName="+stringSearch;
         }
 

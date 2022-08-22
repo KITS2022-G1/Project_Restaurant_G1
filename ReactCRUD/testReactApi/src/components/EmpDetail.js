@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import EmpServices from './EmpServices';
+import EmpServices from '../services/EmpServices';
 import { useParams, useNavigate, Link  } from "react-router-dom";
 
 function EmpDetail() {
@@ -14,19 +14,6 @@ function EmpDetail() {
   });
   console.log("fxdfxfxfxdfd"+params.branchId);
   },[]);
-
-  const handleChange = (event) => {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
-    console.log(name);
-    let data = { ...branch };
-    data[name] = value;
-
-    setBranch(data);
-    console.log(branch.branchAddress);
-  }
 
   var layout;
   if(branch!=null){

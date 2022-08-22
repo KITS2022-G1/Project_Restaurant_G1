@@ -7,7 +7,7 @@ import anhnhat from '../image/anhnhat.jpg'
 import anhnhat2 from '../image/anhnhat2.jpg'
 import home from '../css/Home.css'
 
-const Home = () => {
+const HomeMain = () => {
     return (
         <>
             <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -84,4 +84,4 @@ const Home = () => {
         </>
     );
 };
-export default Home;
+export default HomeMain;
