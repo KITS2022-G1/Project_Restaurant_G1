@@ -13,7 +13,7 @@ const Footer = () => {
 
                     <div className='row' >
                         <div className='rounded float-start col-md-3 col-sm-2'>
-                            <img src={logo} alt=".." className='rounded-circle  mt-4 ms-5'style={{width: "80%"}}></img>
+                            <Link to="/#start"><img src={logo} alt=".." className='rounded-circle  mt-4 ms-5' style={{width: '60%', height: undefined, aspectRatio: 1 / 1,}}></img></Link>
                         </div>
                        <div className='col-md-9 col-sm-2 row'>
                        <div className="col-md-3 col-sm-2">

@@ -8,17 +8,25 @@ import monphu from '../image/monphu.png'
 import bachtuoc from '../image/bachtuoc.png'
 import convit from '../image/convit.png'
 import {Link} from 'react-router-dom'
+import bannerMenu from '../image/bannerMenu.jpg'
 import '../css/Menu.css'
 const Menu = () => {
+    const clickView = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      };
     return (
         <>
             <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="10000}">
-                        <img src={anhdoan} class="d-block w-100" alt="..." style={{ width: "100%" }} />
+                        <img src={bannerMenu} class="d-block w-100" alt="..." style={{ width: "100%", objectFit: "contain"}} />
                     </div>
                 </div>
             </div>
+
 
             <div className="container-fluid" >
                 <div className="row image-0">
@@ -32,7 +40,7 @@ const Menu = () => {
                                 Đây là sự kết hợp của các món ăn kết hợp hoàn hảo với nhau và sẽ không làm bạn thất vọng. 
                                 Đối với những người thích phiêu lưu ngoài kia, đây là lựa chọn dành cho bạn.</p>
                                 <div className="text-center">
-                               <Link to="/MainCourseMenu"><button type="button" class="btn btn-lg btn-outline-success mb-3" style={{borderRadius: "50%", fontWeight: "bold"}}>Menu món chính</button></Link> 
+                               <Link to="/MainCourseMenu" onClick={clickView}><button type="button" class="btn btn-lg btn-outline-success mb-3" style={{borderRadius: "50%", fontWeight: "bold"}}>Menu món chính</button></Link> 
                                 </div>
                             </div>
                         </div>
@@ -58,7 +66,7 @@ const Menu = () => {
                                  làm việc tại các khách sạn như Sofitel Metropole Hanoi và Sofitel Plaza Saigon.
                                  Anh ấy đã có cơ hội hợp tác với nhiều đầu bếp sao Michelin, những người mà anh ấy có được kiến ​​thức sâu sắc và chuyên môn tinh tế.</p>
                                 <div className="text-center">
-                                <button type="button" class="btn btn-lg btn-outline-success mb-3" style={{borderRadius: "50%", fontWeight: "bold"}}>Menu món phụ</button>
+                                <Link to="/SideDishMenu" onClick={clickView}><button type="button" class="btn btn-lg btn-outline-success mb-3" style={{borderRadius: "50%", fontWeight: "bold"}}>Menu món phụ</button></Link>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +87,7 @@ const Menu = () => {
                                  Và bạn sẽ không tìm thấy bất kỳ loại bánh mì kẹp thịt nào giống như cái này, chỉ cần thử bánh mì kẹp thịt ốc của chúng tôi nếu bạn không tin chúng tôi.
                                  Đầu bếp của chúng tôi đã lấy cảm hứng từ khắp nơi trên thế giới và từ quê hương Việt Nam, để tạo ra những món ăn tuyệt vời đầy màu sắc và độc đáo này, cho tất cả các bạn trải nghiệm.</p>
                                 <div className="text-center">
-                                <button type="button" class="btn btn-lg btn-outline-success mb-3" style={{borderRadius: "50%", fontWeight: "bold"}}>menu tráng miệng</button>
+                                <Link to="/DessertMenu" onClick={clickView}><button type="button" class="btn btn-lg btn-outline-success mb-3" style={{borderRadius: "50%", fontWeight: "bold"}}>menu tráng miệng</button></Link>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +113,7 @@ const Menu = () => {
                                 Từ các loại cocktail độc đáo và thanh lịch đến các loại cà phê và sinh tố bổ sung năng lượng. 
                                 Được thiết kế để nâng tầm, mọi thứ ở đây đều được tạo ra với những nguyên liệu tươi ngon nhất và với sự chăm sóc tỉ mỉ nhất.</p>
                                 <div className="text-center">
-                                <button type="button" class="btn btn-lg btn-outline-success mb-3" style={{borderRadius: "50%", fontWeight: "bold"}}>menu đồ uống</button>
+                                <Link to="/DrinkMenu" onClick={clickView}><button type="button" class="btn btn-lg btn-outline-success mb-3" style={{borderRadius: "50%", fontWeight: "bold"}}>menu đồ uống</button></Link>
                                 </div>
                             </div>
                         </div>

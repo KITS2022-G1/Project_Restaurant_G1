@@ -7,6 +7,7 @@ import MainCourseMenu from "./pages/MainCourseMenu";
 import SideDishMenu from "./pages/SideDishMenu";
 import DessertMenu from "./pages/DessertMenu";
 import DrinkMenu from "./pages/DrinkMenu";
+import Services from "./pages/Services";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/SideDishMenu" element={<SideDishMenu />} />
           <Route path="/DessertMenu" element={<DessertMenu />} />
           <Route path="/DrinkMenu" element={<DrinkMenu />} />
+          <Route path="/Services" element={<Services/>} />
         </Route>
       </Routes>
     </BrowserRouter>

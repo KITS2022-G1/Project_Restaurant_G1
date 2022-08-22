@@ -1,6 +1,5 @@
 import React from "react";
 import chicken from '../image/chicken.png'
-import anhdoan from '../image/anhdoan.jpg'
 import conca from '../image/conca.jpg'
 import nhahang from '../image/nhahang.jpg'
 import about from '../css/about.css';
