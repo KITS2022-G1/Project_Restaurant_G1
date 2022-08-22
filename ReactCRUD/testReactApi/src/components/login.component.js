@@ -1,9 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-
 import AuthService from "../services/auth.service";
+import { Navigate } from 'react-router-dom';
+
+import { useEffect, useState } from "react";
 
 const required = value => {
   if (!value) {
@@ -15,71 +17,82 @@ const required = value => {
   }
 };
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.handleLogin = this.handleLogin.bind(this);
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
+export default function Login(){
+  // constructor(props) {
+  //   super(props);
+  //   this.handleLogin = this.handleLogin.bind(this);
+  //   this.onChangeUsername = this.onChangeUsername.bind(this);
+  //   this.onChangePassword = this.onChangePassword.bind(this);
 
-    this.state = {
+  //   this.state = {
+  //     username: "",
+  //     password: "",
+  //     loading: false,
+  //     message: ""
+  //   };
+  // }
+
+  const [stateLogin, setStateLogin] = useState({
       username: "",
       password: "",
       loading: false,
       message: ""
-    };
+  });
+
+  const onChangeUsername = (e) => {
+      setStateLogin({
+        ...stateLogin,
+        username:e.target.value,
+      });
   }
 
-  onChangeUsername(e) {
-    this.setState({
-      username: e.target.value
+  const onChangePassword = (e) => {
+    setStateLogin({
+      ...stateLogin,
+      password:e.target.value,
     });
   }
 
-  onChangePassword(e) {
-    this.setState({
-      password: e.target.value
-    });
-  }
-
-  handleLogin(e) {
+  const handleLogin = (e) => {
     e.preventDefault();
 
-    this.setState({
-      message: "",
+    setStateLogin({
+      ...stateLogin,
+      message:"",
       loading: true
     });
 
-    this.form.validateAll();
+    // this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
-      AuthService.login(this.state.username, this.state.password).then(
+      AuthService.login(stateLogin.username, stateLogin.password).then(
         () => {
-          this.props.history.push("/profile");
+          <Navigate to="/profile" />
           window.location.reload();
         },
-        error => {
-          const resMessage =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
+        // error => {
+        //   const resMessage =
+        //     (error.response &&
+        //       error.response.data &&
+        //       error.response.data.message) ||
+        //     error.message ||
+        //     error.toString();
 
-          this.setState({
-            loading: false,
-            message: resMessage
-          });
-        }
+        //     setStateLogin({
+        //       ...stateLogin,
+        //       message:resMessage,
+        //       loading: false
+        //     });
+        // }
       );
     } else {
-      this.setState({
+      setStateLogin({
+        ...stateLogin,
         loading: false
       });
     }
   }
 
-  render() {
     return (
       <div className="col-md-12">
         <div className="card card-container">
@@ -90,10 +103,10 @@ export default class Login extends Component {
           />
 
           <Form
-            onSubmit={this.handleLogin}
-            ref={c => {
-              this.form = c;
-            }}
+            onSubmit={(e) => handleLogin(e)}
+            // ref={c => {
+            //   this.form = c;
+            // }}
           >
             <div className="form-group">
               <label htmlFor="username">Username</label>
@@ -101,8 +114,8 @@ export default class Login extends Component {
                 type="text"
                 className="form-control"
                 name="username"
-                value={this.state.username}
-                onChange={this.onChangeUsername}
+                value={stateLogin.username}
+                onChange={() => onChangeUsername(stateLogin.username)}
                 validations={[required]}
               />
             </div>
@@ -113,8 +126,8 @@ export default class Login extends Component {
                 type="password"
                 className="form-control"
                 name="password"
-                value={this.state.password}
-                onChange={this.onChangePassword}
+                value={stateLogin.password}
+                onChange={() => onChangePassword(stateLogin.password)}
                 validations={[required]}
               />
             </div>
@@ -122,31 +135,30 @@ export default class Login extends Component {
             <div className="form-group">
               <button
                 className="btn btn-primary btn-block"
-                disabled={this.state.loading}
+                disabled={stateLogin.loading}
               >
-                {this.state.loading && (
+                {stateLogin.loading && (
                   <span className="spinner-border spinner-border-sm"></span>
                 )}
                 <span>Login</span>
               </button>
             </div>
 
-            {this.state.message && (
+            {stateLogin.message && (
               <div className="form-group">
                 <div className="alert alert-danger" role="alert">
-                  {this.state.message}
+                  {stateLogin.message}
                 </div>
               </div>
             )}
             <CheckButton
               style={{ display: "none" }}
-              ref={c => {
-                this.checkBtn = c;
-              }}
+              // ref={c => {
+              //   this.checkBtn = c;
+              // }}
             />
           </Form>
         </div>
       </div>
     );
-  }
 }
