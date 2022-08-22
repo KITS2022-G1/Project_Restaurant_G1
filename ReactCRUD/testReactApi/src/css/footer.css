@@ -1,0 +1,42 @@
+.footter-header {
+    background-color: rgb(252, 244, 235);
+    
+}
+
+
+.footer-body {
+    background-color: #D19527;
+    list-style: none;
+}
+
+.menu-item a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu-item a:hover {
+    color: #e2aa11;
+}
+
+.menu-item-title {
+    color: #61522a;
+}
+
+.footer-contact-icon a {
+    color: white;
+}
+
+.footer-contact-icon a:hover {
+    color: #fb3f3f;
+}
+
+.footer-contact-link a {
+    color: white;
+    text-decoration: none;
+
+}
+
+.footer-contact-link a:hover {
+    color: #e2aa11;
+    text-decoration: underline;
+}

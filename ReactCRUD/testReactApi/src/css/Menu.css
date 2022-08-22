@@ -1,0 +1,68 @@
+@media screen and (max-width: 1325px) and (min-width: 580px) {
+    .image-0 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: stretch;
+        align-content: center;
+    }
+
+    .image-1 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        align-content: flex-start;
+    }
+
+    .title {
+        display: block;
+        display: -webkit-box;
+        height: 16px*1.3*3;
+        font-size: 16px;
+        line-height: 1.3;
+        -webkit-line-clamp: 4;
+        /* số dòng hiển thị */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-top: 10px;
+    }
+
+}
+
+@media screen and (max-width: 579px) {
+    .image-0 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: baseline;
+        align-content: space-around;
+    }
+
+    .image-1 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+    }
+
+    .title {
+        display: block;
+        display: -webkit-box;
+        height: 16px*1.3*3;
+        font-size: 16px;
+        line-height: 1.3;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-top: 10px;
+    }
+
+}
