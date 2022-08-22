@@ -3,7 +3,7 @@ import React from "react";
 const DrinhMenu = () => {
   return (
     <>
-    <section style={{ padding: "3rem" }}>
+      <section style={{ padding: "3rem" }}>
         <div className="row text-menu">
           <div className="col-2"></div>
           <div className="text-center col-8">
@@ -207,7 +207,7 @@ const DrinhMenu = () => {
           <div className="col-2"></div>
         </div>
       </section>
-      
+
       <section style={{ padding: "3rem" }}>
         <div className="row text-menu">
           <div className="col-2"></div>
@@ -258,6 +258,104 @@ const DrinhMenu = () => {
                 <span>250,000 VND</span>
               </li>
             </ul>
+          </div>
+          <div className="col-2"></div>
+        </div>
+      </section>
+
+      <section style={{ padding: "3rem" }}>
+        <div className="row text-menu">
+          <div className="col-2"></div>
+          <div className="text-center col-8">
+            <p
+              class="fs-2"
+              style={{
+                fontWeight: "bold",
+                textDecoration: "underline #2A606D wavy",
+              }}
+            >
+              SIGNATURE COCKTAIL
+            </p>
+            <ul class="leaders">
+              <li className="fs-6 pt-2 mt-3">
+                <span>"Pho" Cocktail</span>
+                <span class="dots"></span>
+                <span>250,000 VND</span>
+              </li>
+              <li className="fs-6 pt-2 mt-3">
+                <span>L'Essentiel</span>
+                <span class="dots"></span>
+                <span>250,000 VND </span>
+              </li>
+              <li className="fs-6 pt-2 mt-3">
+                <span>A Wisp Of Smoke</span>
+                <span class="dots"></span>
+                <span>250,000 VND</span>
+              </li>
+              <li className="fs-6 pt-2 mt-3">
+                <span>The Secret Garden</span>
+                <span class="dots"></span>
+                <span>250,000 VND</span>
+              </li>
+              <li className="fs-6 pt-2 mt-3">
+                <span>Innocence</span>
+                <span class="dots"></span>
+                <span>250,000 VND</span>
+              </li>
+              <li className="fs-6 pt-2 mt-3">
+                <span>The Sun</span>
+                <span class="dots"></span>
+                <span>250,000 VND</span>
+              </li>
+            </ul>
+          </div>
+          <div className="col-2"></div>
+        </div>
+      </section>F
+
+      <section style={{ padding: "3rem" }}>
+        <div className="row text-menu">
+          <div className="col-2"></div>
+          <div className="text-center col-8">
+            <p
+              class="fs-2"
+              style={{
+                fontWeight: "bold",
+                textDecoration: "underline #2A606D wavy",
+              }}
+            >
+              MINERAL WATER
+            </p>
+            <div className="container-fluid row" style={{margin: "0", padding: "0"}}>
+              <div className="col-6 text-center">
+                <ul class="leaders">
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>"Pho" Cocktail</span>
+                    <span class="dots"></span>
+                    <span>250,000 VND</span>
+                  </li>
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>L'Essentiel</span>
+                    <span class="dots"></span>
+                    <span>250,000 VND </span>
+                  </li>
+                </ul>
+              </div>
+              <div className="col-6 text-center">
+                <ul class="leaders">
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>"Pho" Cocktail</span>
+                    <span class="dots"></span>
+                    <span>250,000 VND</span>
+                  </li>
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>L'Essentiel</span>
+                    <span class="dots"></span>
+                    <span>250,000 VND </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
           <div className="col-2"></div>
         </div>
