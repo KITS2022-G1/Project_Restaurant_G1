@@ -330,28 +330,38 @@ const DrinhMenu = () => {
               <div className="col-6 text-center">
                 <ul class="leaders">
                   <li className="fs-6 pt-2 mt-3">
-                    <span>"Pho" Cocktail</span>
+                    <span>Alba Natural Mineral Water (45cl)</span>
                     <span class="dots"></span>
-                    <span>250,000 VND</span>
+                    <span>65,000 VND</span>
                   </li>
                   <li className="fs-6 pt-2 mt-3">
-                    <span>L'Essentiel</span>
+                    <span>Alba Natural Mineral Water (75cl)</span>
                     <span class="dots"></span>
-                    <span>250,000 VND </span>
+                    <span>100,000 VND </span>
+                  </li>
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>Evian (75cl)</span>
+                    <span class="dots"></span>
+                    <span>165,000 VND</span>
                   </li>
                 </ul>
               </div>
               <div className="col-6 text-center">
                 <ul class="leaders">
                   <li className="fs-6 pt-2 mt-3">
-                    <span>"Pho" Cocktail</span>
+                    <span>Alba Natural Mineral Sparkling Water (45cl)</span>
                     <span class="dots"></span>
-                    <span>250,000 VND</span>
+                    <span>75,000 VND</span>
                   </li>
                   <li className="fs-6 pt-2 mt-3">
-                    <span>L'Essentiel</span>
+                    <span>San Pellegrino (50cl)</span>
                     <span class="dots"></span>
-                    <span>250,000 VND </span>
+                    <span>150,000 VND</span>
+                  </li>
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>Saint Geron, France (75cl)</span>
+                    <span class="dots"></span>
+                    <span>170,000 VND</span>
                   </li>
                 </ul>
               </div>
