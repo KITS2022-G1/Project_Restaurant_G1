@@ -67,4 +67,5 @@
 }
  .image-food:hover {
     background: none !important;
+    opacity: 1 !important;
  }
