@@ -94,16 +94,16 @@ export default function Header() {
                   style={{ backgroundColor: "#D19527" }}
                 >
                   <li>
-                    <Link className="dropdown-item" to="/MainCourseMenu" onClick={clickView}>
+                    <Link class="dropdown-item" to="/MainCourseMenu" onClick={clickView}>
                       Main course menu
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/SideDishMenu" onClick={clickView}>
+                    <Link class="dropdown-item" to="/SideDishMenu" onClick={clickView}>
                       Side dish menu
                     </Link>
                   </li>
-                  <li>
+                  <li style = {{ textTransform: "uppercase"}}>
                     <Link class="dropdown-item" to="/DessertMenu" onClick={clickView}>
                       Dessert menu
                     </Link>
@@ -111,7 +111,7 @@ export default function Header() {
                   <li>
                     <hr class="dropdown-divider"></hr>
                   </li>
-                  <li>
+                  <li style = {{ textTransform: "uppercase"}}>
                     <Link class="dropdown-item" to="/DrinkMenu" onClick={clickView}>
                       Drink menu
                     </Link>
@@ -131,13 +131,13 @@ export default function Header() {
 
               {stateLogin.showAdminBoard && (
                 <>
-                  <li className="nav-item">
+                  <li className="nav-item" style = {{ textTransform: "uppercase"}}>
                     <Link to="/admin" className="nav-link">
                       Admin Board
                     </Link>
                   </li>
 
-                  <li className="nav-item">
+                  <li className="nav-item" style = {{ textTransform: "uppercase"}}>
                     <Link to="/register" className="nav-link">
                       Sign Up
                     </Link>
@@ -148,7 +148,7 @@ export default function Header() {
               {stateLogin.showModeratorBoard && (
                 <>
                   <li className="nav-item">
-                    <Link to="/admin" className="nav-link">
+                    <Link to="/admin" className="nav-link" style = {{ textTransform: "uppercase"}}>
                       Moderator Board
                     </Link>
                   </li>
@@ -186,7 +186,7 @@ export default function Header() {
                       {stateLogin.currentUser.username}
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item" style = {{ textTransform: "uppercase"}}>
                     <Link
                       to="/login"
                       className="nav-link"
@@ -198,7 +198,7 @@ export default function Header() {
                 </div>
               ) : (
                 <div className="navbar-nav ml-auto ms-auto">
-                  <li className="nav-item">
+                  <li className="nav-item" style = {{ textTransform: "uppercase"}}>
                     <Link to="/login" className="nav-link">
                       Login
                     </Link>

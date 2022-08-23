@@ -74,9 +74,9 @@ function Table() {
                     <div class="card-body py-4 px-4  " style={{ backgroundColor: 'black', opacity: '50%', height: '250px', width: '300px' }}>
                         <Link to={'/detail/' + food.foodId} className='nav-link'>
                             <div class="d-flex align-items-center"><span class="fs-0">
-
+                              
                                 <h4 class="fw-medium ten " style={{ color: 'white' }}>{food.foodName}</h4>
-
+                                
 
                                 <span class="fs-0 fw-medium" style={{ color: 'white' }}>Hạn sử dụng: {food.foodDate}</span></span></div>
 

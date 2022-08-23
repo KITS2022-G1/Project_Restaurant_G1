@@ -13,7 +13,7 @@ const Services = () => {
             <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="10000}">
-                        <img src={nhahang} class="d-block w-100" alt="..." style={{ width: "100%", objectFit: "contain" }} />
+                        <img src={nhahang} class="d-block w-100" alt="..." style={{ maxHeight: "450px", objectFit: "cover" }} />
                     </div>
                 </div>
             </div>
