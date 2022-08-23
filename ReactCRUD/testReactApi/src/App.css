@@ -65,3 +65,6 @@
   color: white;
 
 }
+ .image-food:hover {
+    background: none !important;
+ }

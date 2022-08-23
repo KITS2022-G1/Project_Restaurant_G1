@@ -25,7 +25,7 @@ import SideDishMenu from "./pages/SideDishMenu";
 import DessertMenu from "./pages/DessertMenu";
 import DrinkMenu from "./pages/DrinkMenu";
 import Services from "./pages/Services";
-
+import TestPage from "./pages/TestPage"
 import Bill from "./pages/Bill"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
