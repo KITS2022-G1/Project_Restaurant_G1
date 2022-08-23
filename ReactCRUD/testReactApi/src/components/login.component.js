@@ -3,7 +3,7 @@ import React from "react";
 // import Input from "react-validation/build/input";
 // import CheckButton from "react-validation/build/button";
 import AuthService from "../services/auth.service";
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import {useState } from "react";
 
@@ -24,6 +24,8 @@ function Login() {
     loading: false,
     message: ""
   });
+
+  let navigate = useNavigate();
 
   // const onChangeUsername = (e) => {
   //   setStateLogin({
@@ -56,10 +58,10 @@ function Login() {
     AuthService.login(stateLogin.username, stateLogin.password).then(
       () => {
         console.log("success");
-        window.open("/home");
+        navigate(`/home`);
         window.location.reload();
       },
-      error => {
+      (error) => {
         const resMessage =
           (error.response &&
             error.response.data &&
