@@ -55,7 +55,7 @@ export default function Header() {
         class="navbar navbar-expand-lg navbar-light"
         style={{ backgroundColor: "#D19527" }}
       >
-        <div className="navbar-nav mr-auto">
+        <div className="navbar-nav mr-auto ">
           <li className="nav-item ms-3">
             <Link to="/" className="nav-link">
               <img class="img-fluid"
@@ -129,12 +129,29 @@ export default function Header() {
                 </li>
               )}
 
-              {stateLogin.currentUser && (
+              {stateLogin.showModeratorBoard && (
+
                 <li className="nav-item">
-                  <Link to="/user" className="nav-link">
-                    User
+                  <Link to="/admin" className="nav-link">
+                    Moderator Board
                   </Link>
                 </li>
+              )}
+
+              {stateLogin.currentUser && (
+                <>
+                  <li className="nav-item">
+                    <Link to="/table" className="nav-link">
+                      ORDER
+                    </Link>
+                  </li>
+
+                  <li className="nav-item">
+                    <Link to="/cashier" className="nav-link">
+                      TABLE
+                    </Link>
+                  </li>
+                </>
               )}
 
             </ul>

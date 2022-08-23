@@ -3,7 +3,7 @@ import axios from "axios";
 const Food_API_BASE_URL = "http://localhost:8080/api/foods";
 
 class FoodServices{
-    getAllFoodes(stringSearch){
+    getAllFoods(stringSearch){
         var text = "";
         if(stringSearch!==""){
             text="?foodName="+stringSearch;

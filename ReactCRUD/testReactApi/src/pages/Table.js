@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import FoodServices from '../services/FoodServices';
 import ReactPaginate from 'react-paginate';
+import "../App.css";
 
 function Table() {
     const [foods, setFoods] = useState([]);
@@ -26,7 +27,7 @@ function Table() {
       }
     var listFoods = [];
     if (foods.length != 0) {
-        listFoods = foods.map((food) => (
+        listFoods = foods.slice(pagesVisited, pagesVisited + foodPerPage).map((food) => (
             <div class="col-md-4 mb-4">
             <div class="card overflow-hidden shadow"> <div className='card-border bg-primary'><Link to={'/detail/' + food.foodId} > {/* <img class="card-img-top" src={item.anh} /> */}</Link></div>
 
@@ -35,8 +36,6 @@ function Table() {
                 <div class="d-flex align-items-center"><span class="fs-0"><Link to={'/detail/' + food.foodId} onClick={clickView}> <h4 class="fw-medium ten">{food.foodName}</h4></Link><span class="fs-0 fw-medium" style={{ color: 'black' }}>Hạn sử dụng: {food.foodDate}</span></span></div>
 
                 <div class="d-flex align-items-center"><span class="fs-0 fw-medium">Mức Giá: {food.foodPrice}</span></div>
-
-
 
                   <span className='tim' style={{ marginLeft: "7.5rem", }}>
                     <button
@@ -49,7 +48,7 @@ function Table() {
 </div>
               </div>
 
-           
+
         ));
     }
     else {
