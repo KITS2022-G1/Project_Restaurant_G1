@@ -8,13 +8,13 @@ import ReactPaginate from 'react-paginate';
 
 
 const Chef = () => {
-    const [foods, setFoodes] = useState([]);
+    const [foods, setFoods] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [pageNumber, setPageNumber] = useState(0);
 
     useEffect(() => {
-        FoodServices.getAllFoodes(searchTerm).then((response) => {
-            setFoodes(response.data);
+        FoodServices.getAllFoods(searchTerm).then((response) => {
+            setFoods(response.data);
         });
     }, [searchTerm]);
 
@@ -29,7 +29,7 @@ const Chef = () => {
     const deleteFood = (id) => {
         if (window.confirm('Are you sure?') == true) {
             FoodServices.deleteFood(id).then((response) => {
-                setFoodes(response.data);
+                setFoods(response.data);
             })
         }
         else {
@@ -88,7 +88,7 @@ const Chef = () => {
                         className="btn btn-secondary"
                         type="button"
                         onClick={()=>setSearchTerm(document.querySelectorAll('input[name=inputSearch]')[0].value)}
-                        
+
                     >
                         SEARCH
                     </button>
@@ -151,7 +151,7 @@ const Chef = () => {
                 </div>
         </div>
         </div>
-        
+
     );
 
 }
