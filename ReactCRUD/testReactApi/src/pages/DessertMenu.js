@@ -1,8 +1,16 @@
 import React from "react";
-
+import bannerDessertMenu from '../image/bannerDessertMenu.jpg'
 const DessertMenu = () => {
   return (
     <>
+      <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000}">
+            <img src={bannerDessertMenu} class="d-block w-100" alt="..." style={{ width: "100%" }} />
+          </div>
+        </div>
+      </div>
+
       <section style={{ padding: "3rem" }}>
         <div className="row text-menu">
           <div className="col-2"></div>

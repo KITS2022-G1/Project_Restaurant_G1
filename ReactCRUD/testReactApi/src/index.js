@@ -15,6 +15,11 @@ import About from "./pages/About";
 import Footer from './components/Footer';
 import HomeMain from './pages/Home';
 import Header from './components/Header';
+import HomePages from './pages/HomePages';
+import Chef from './pages/Chef';
+import Cashier from './pages/Cashier';
+import Table from './pages/Table';
+import Favorite from './pages/Favorite';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -29,6 +34,11 @@ root.render(
         <Route path="/user" element={<BoardUser />} />
         <Route path="/mod" element={<BoardModerator />} />
         <Route path="/admin" element={<BoardAdmin />} />
+        <Route path="/homepages" element={<HomePages />} />
+          <Route path="chef" element={<Chef />} />
+          <Route path="cashier" element={<Cashier />} />
+          <Route path="table" element={<Table />} />
+          <Route path="favorite" element={<Favorite />} />
       </Routes>
       <Footer/>
       </BrowserRouter>
