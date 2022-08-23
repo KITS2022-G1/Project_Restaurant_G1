@@ -44,7 +44,7 @@ const Chef = () => {
                 <th scope="row">{food.foodId}</th>
                 <td>{food.foodName}</td>
                 <td>{food.foodPrice}</td>
-                <td>{food.foodDate}</td>
+                <td>{food.foodEmail}</td>
                 <td>
                     <Link to={`/detail/` + food.foodId}><button className='btn btn-warning'>Detail</button></Link>
                 </td>

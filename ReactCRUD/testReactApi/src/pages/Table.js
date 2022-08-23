@@ -3,14 +3,11 @@ import { Link } from "react-router-dom";
 import FoodServices from '../services/FoodServices';
 import ReactPaginate from 'react-paginate';
 import "../App.css";
-import UserService from "../services/user.service";
-import EventBus from "../common/EventBus";
 
 function Table() {
     const [foods, setFoods] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [pageNumber, setPageNumber] = useState(0);
-    const [content, setContent] = useState('');
 
     useEffect(() => {
         FoodServices.getAllFoods(searchTerm).then((response) => {
@@ -18,16 +15,7 @@ function Table() {
         });
     }, [searchTerm]);
 
-    useEffect(() => {
-        UserService.getUserBoard().then((response) => {
-            setContent(response.data);
-        });
-            if (content) {
-                EventBus.dispatch("logout");
-            }
-    }, []);
-
-    const foodPerPage = 5;
+    const foodPerPage = 8;
     const pagesVisited = pageNumber * foodPerPage;
 
     const pageCount = Math.ceil(foods.length / foodPerPage)
@@ -40,24 +28,39 @@ function Table() {
     var listFoods = [];
     if (foods.length != 0) {
         listFoods = foods.slice(pagesVisited, pagesVisited + foodPerPage).map((food) => (
-            <div class="col-md-4 mb-4">
-                <div class="card overflow-hidden shadow"> <div className='card-border bg-primary'><Link to={'/detail/' + food.foodId} > {/* <img class="card-img-top" src={item.anh} /> */}</Link></div>
+            <div class="col-md-3 mb-3">
+                <Link to={'/detail/' + food.foodId} className='nav-link'>
+                    <div class="card overflow-hidden shadow"
+                        style={{
+                            backgroundImage: `url(${food.foodImageURL})`,
+                            backgroundSize: 'cover',
 
-                    <div class="card-body py-4 px-3">
 
-                        <div class="d-flex align-items-center"><span class="fs-0"><Link to={'/detail/' + food.foodId} onClick={clickView}> <h4 class="fw-medium ten">{food.foodName}</h4></Link><span class="fs-0 fw-medium" style={{ color: 'black' }}>Hạn sử dụng: {food.foodDate}</span></span></div>
+                        }}>
 
-                        <div class="d-flex align-items-center"><span class="fs-0 fw-medium">Mức Giá: {food.foodPrice}</span></div>
 
-                        <span className='tim' style={{ marginLeft: "7.5rem", }}>
-                            <button
-                                className="btn btn-outline-danger ms-2 rounded-circle"
-                            >
-                                <i class="fas fa-heart text-end"></i>
-                            </button>
-                        </span>
+
+                        <div class="card-body py-4 px-4  " style={{ backgroundColor: 'black', opacity: '50%', height: '250px', width: '300px' }}>
+
+                            <div class="d-flex align-items-center"><span class="fs-0">
+
+                                <h4 class="fw-medium ten " style={{ color: 'white' }}>{food.foodName}</h4>
+
+
+                                <span class="fs-0 fw-medium" style={{ color: 'white' }}>Hạn sử dụng: {food.foodDate}</span></span></div>
+
+                            <div class="d-flex align-items-center"><span class="fs-0 fw-medium" style={{ color: 'white' }}>Mức Giá: {food.foodPrice}</span></div>
+
+                            <span className='tim' style={{ marginLeft: "7.5rem", }}>
+                                <button
+                                    className="btn btn-outline-danger ms-2 rounded-circle"
+                                >
+                                    <i class="fas fa-heart text-end"> V</i>
+                                </button>
+                            </span>
+                        </div>
                     </div>
-                </div>
+                </Link>
             </div>
 
 
@@ -71,12 +74,13 @@ function Table() {
             <section style={{ paddingTop: "7rem", }}></section>
             <div class='container-fluid'>
                 <div class="row">
-                    <div class="col-8 col-sm-8 col-md-8 ">
-                        <h1 class="text-center">THỰC ĐƠN HÔM NAY</h1>
+                    <div class='col-1'></div>
+                    <div class="col-7 col-sm-7 col-md-7 ">
+<h1 class="text-center">THỰC ĐƠN HÔM NAY</h1>
                         <div className="row card-deck ">{listFoods}</div>
                     </div>
 
-                    <div class="col-4 col-sm-4 col-md-4 border">
+                    <div class="col-3 col-sm-3 col-md-3 border">
                         <div class='border'>
                             <h5>Những món đã chọn</h5>
                             <Link to={'/favorite'}></Link>
@@ -86,6 +90,7 @@ function Table() {
                             <button >Xác nhận</button>
                         </div>
                     </div>
+                    <div class='col-1'></div>
                 </div>
             </div>
             <div>
