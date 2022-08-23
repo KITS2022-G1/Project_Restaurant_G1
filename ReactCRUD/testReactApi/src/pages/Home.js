@@ -6,6 +6,7 @@ import chicken from '../image/chicken.png'
 import Banqueting from '../image/Banqueting.jpg'
 import Meeting from '../image/Meeting.jpg'
 import home from '../css/Home.css'
+import { Link } from "react-router-dom";
 
 const Home = () => {
     return (
@@ -89,6 +90,8 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
+                <Link to={'chef'}>Đầu bếp</Link><br/>
+                <Link to={'cashier'}>nhân viên</Link>
             </div>
         </>
     );
