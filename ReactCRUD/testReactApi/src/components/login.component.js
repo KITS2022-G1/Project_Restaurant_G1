@@ -55,8 +55,8 @@ function Login() {
     // if (this.checkBtn.context._errors.length === 0) {
     AuthService.login(stateLogin.username, stateLogin.password).then(
       () => {
-        <Navigate to="/profile" />
         console.log("success");
+        window.open("/home");
         window.location.reload();
       },
       error => {

@@ -33,6 +33,9 @@ public class Food {
 	@Column(name = "food_Image")
 	private String foodImageURL;
 	
+	@Column(name = "food_Type")
+	private String foodType;
+	
 	@Column(name = "food_date")
 	private Date foodDate;
 	
@@ -50,13 +53,14 @@ public class Food {
 		super();
 	}
 
-	public Food(String foodName, int foodPrice, String foodSource, String foodImageURL, Date foodDate) {
+	public Food(String foodName, int foodPrice, String foodSource, String foodImageURL, Date foodDate, String foodType) {
 		super();
 		this.foodName = foodName;
 		this.foodPrice = foodPrice;
 		this.foodSource = foodSource;
 		this.foodImageURL = foodImageURL;
 		this.foodDate = foodDate;
+		this.foodType = foodType;
 	}
 
 	public int getFoodId() {
@@ -106,6 +110,16 @@ public class Food {
 	public void setFoodDate(Date foodDate) {
 		this.foodDate = foodDate;
 	}
+
+	public String getFoodType() {
+		return foodType;
+	}
+
+	public void setFoodType(String foodType) {
+		this.foodType = foodType;
+	}
+	
+	
 	
 	
 }

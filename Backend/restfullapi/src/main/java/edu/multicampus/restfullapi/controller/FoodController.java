@@ -64,7 +64,7 @@ public class FoodController {
 	@PostMapping("/foods")
 	public ResponseEntity<Food> createFood(@RequestBody Food Food) {
 		try {
-			Food food = foodRepository.save(new Food(Food.getFoodName(), Food.getFoodPrice(), Food.getFoodSource(), Food.getFoodImageURL(), Food.getFoodDate()));
+			Food food = foodRepository.save(new Food(Food.getFoodName(), Food.getFoodPrice(), Food.getFoodSource(), Food.getFoodImageURL(), Food.getFoodDate(), Food.getFoodType()));
 			return new ResponseEntity<>(food, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
@@ -80,6 +80,8 @@ public class FoodController {
 			food.setFoodName(Food.getFoodName());
 			food.setFoodPrice(Food.getFoodPrice());
 			food.setFoodSource(Food.getFoodSource());
+			food.setFoodDate(Food.getFoodDate());
+			food.setFoodType(Food.getFoodType());
 			return new ResponseEntity<>(foodRepository.save(food), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
