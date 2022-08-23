@@ -25,6 +25,7 @@ import SideDishMenu from "./pages/SideDishMenu";
 import DessertMenu from "./pages/DessertMenu";
 import DrinkMenu from "./pages/DrinkMenu";
 import Services from "./pages/Services";
+import TestPage from './pages/TestPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -50,6 +51,7 @@ root.render(
           <Route path="/DessertMenu" element={<DessertMenu />} />
           <Route path="/DrinkMenu" element={<DrinkMenu />} />
           <Route path="/Services" element={<Services/>} />
+          <Route path="table/test/:totalPrice" element={<TestPage/>} />
 
       </Routes>
       <Footer/>

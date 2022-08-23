@@ -56,12 +56,12 @@ export default function Header() {
         style={{ backgroundColor: "#D19527" }}
       >
         <div className="container-fluid">
-            <Link to="/" className="nav-link">
-              <img className="img-fluid"
-                src={logo}
-                style={{ width: "100px", height: "95px", borderRadius: "55px" }}
-              ></img>
-            </Link>
+          <Link to="/" className="nav-link">
+            <img className="img-fluid"
+              src={logo}
+              style={{ width: "100px", height: "95px", borderRadius: "55px" }}
+            ></img>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -75,6 +75,15 @@ export default function Header() {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-2">
+
+              <li className="nav-item">
+                <Link className="nav-link" aria-current="page"
+                  to="/About"
+                  onClick={clickView}>
+                  About Us
+                </Link>
+              </li>
+
               <li className="nav-item dropdown">
                 <Link className="nav-link" to="/Menu" onClick={clickView}>
                   Menu{" "}
@@ -118,13 +127,7 @@ export default function Header() {
                 </Link>
               </li>
 
-              <li className="nav-item">
-                <Link className="nav-link" aria-current="page"
-                  to="/About"
-                  onClick={clickView}>
-                  About Us
-                </Link>
-              </li>
+
 
               {stateLogin.showAdminBoard && (
                 <>
