@@ -55,15 +55,13 @@ export default function Header() {
         class="navbar navbar-expand-lg navbar-light"
         style={{ backgroundColor: "#D19527" }}
       >
-        <div className="navbar-nav mr-auto ">
-          <li className="nav-item ms-3">
+        <div className="container-fluid">
             <Link to="/" className="nav-link">
               <img class="img-fluid"
                 src={logo}
                 style={{ width: "100px", height: "95px", borderRadius: "55px" }}
               ></img>
             </Link>
-          </li>
           <button
             class="navbar-toggler"
             type="button"
@@ -121,21 +119,30 @@ export default function Header() {
               </li>
 
               {stateLogin.showAdminBoard && (
+                <>
+                  <li className="nav-item">
+                    <Link to="/admin" className="nav-link">
+                      Admin Board
+                    </Link>
+                  </li>
 
-                <li className="nav-item">
-                  <Link to="/admin" className="nav-link">
-                    Admin Board
-                  </Link>
-                </li>
+                  <li className="nav-item">
+                    <Link to="/register" className="nav-link">
+                      Sign Up
+                    </Link>
+                  </li>
+                </>
               )}
 
               {stateLogin.showModeratorBoard && (
+                <>
+                  <li className="nav-item">
+                    <Link to="/admin" className="nav-link">
+                      Moderator Board
+                    </Link>
+                  </li>
 
-                <li className="nav-item">
-                  <Link to="/admin" className="nav-link">
-                    Moderator Board
-                  </Link>
-                </li>
+                </>
               )}
 
               {stateLogin.currentUser && (
@@ -151,42 +158,45 @@ export default function Header() {
                       TABLE
                     </Link>
                   </li>
+
+                  <li className="nav-item">
+                    <Link to="/cashier" className="nav-link">
+                      BILL
+                    </Link>
+                  </li>
                 </>
               )}
-
             </ul>
-
+            <form class="form-inline my-2 my-lg-0">
+              {stateLogin.currentUser ? (
+                <div className="navbar-nav ml-auto ms-auto">
+                  <li className="nav-item">
+                    <Link to="/profile" className="nav-link">
+                      {stateLogin.currentUser.username}
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      to="/login"
+                      className="nav-link"
+                      onClick={() => logOut()}
+                    >
+                      LogOut
+                    </Link>
+                  </li>
+                </div>
+              ) : (
+                <div className="navbar-nav ml-auto ms-auto">
+                  <li className="nav-item">
+                    <Link to="/login" className="nav-link">
+                      Login
+                    </Link>
+                  </li>
+                </div>
+              )}
+            </form>
           </div>
         </div>
-
-        {stateLogin.currentUser ? (
-          <div className="navbar-nav ml-auto ms-auto">
-            <li className="nav-item">
-              <Link to="/profile" className="nav-link">
-                {stateLogin.currentUser.username}
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/login" className="nav-link" onClick={() => logOut()}>
-                LogOut
-              </Link>
-            </li>
-          </div>
-        ) : (
-          <div className="navbar-nav ml-auto ms-auto">
-            <li className="nav-item">
-              <Link to="/login" className="nav-link">
-                Login
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link to="/register" className="nav-link">
-                Sign Up
-              </Link>
-            </li>
-          </div>
-        )}
       </nav>
 
     </React.Fragment >
