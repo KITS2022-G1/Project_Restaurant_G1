@@ -54,11 +54,13 @@ public class Bill {
 		super();
 	}
 
-	public Bill(String billTitle, Date billDate, int billTotalMoney) {
+	public Bill(String billTitle, Date billDate, int billTotalMoney, Employee employee, Customer customer) {
 		super();
 		this.billTitle = billTitle;
 		this.billDate = billDate;
 		this.billTotalMoney = billTotalMoney;
+		this.employee = employee;
+		this.customer = customer;
 	}
 
 	public int getBillId() {
@@ -85,4 +87,21 @@ public class Bill {
 		this.billDate = billDate;
 	}
 
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	
 }

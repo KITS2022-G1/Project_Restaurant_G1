@@ -11,15 +11,6 @@ import {
 
 function EmpAddNew() {
   const [branch, setBranch] = useState([]);
-  // var branchNew = {};
-  // branchNew.branchAddress='';
-  // branchNew.branchName= '';
-  // branchNew.branchCardNumber= '';
-  // branchNew.branchEmail= '';
-  // branchNew.branchImageURL= '';
-  // branchNew.branchManagerName= '';
-  // branchNew.branchPhone= '';
-
   const handleChange = (event) => {
     const target = event.target;
     const value = target.value;
