@@ -8,13 +8,13 @@ import ReactPaginate from 'react-paginate';
 
 
 const Chef = () => {
-    const [foods, setFoodes] = useState([]);
+    const [foods, setFoods] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [pageNumber, setPageNumber] = useState(0);
 
     useEffect(() => {
-        FoodServices.getAllFoodes(searchTerm).then((response) => {
-            setFoodes(response.data);
+        FoodServices.getAllFoods(searchTerm).then((response) => {
+            setFoods(response.data);
         });
     }, [searchTerm]);
 
@@ -29,7 +29,7 @@ const Chef = () => {
     const deleteFood = (id) => {
         if (window.confirm('Are you sure?') == true) {
             FoodServices.deleteFood(id).then((response) => {
-                setFoodes(response.data);
+                setFoods(response.data);
             })
         }
         else {
@@ -44,7 +44,7 @@ const Chef = () => {
                 <th scope="row">{food.foodId}</th>
                 <td>{food.foodName}</td>
                 <td>{food.foodPrice}</td>
-                <td>{food.foodDate}</td>
+                <td>{food.foodEmail}</td>
                 <td>
                     <Link to={`/detail/` + food.foodId}><button className='btn btn-warning'>Detail</button></Link>
                 </td>
