@@ -38,12 +38,13 @@ const Home = () => {
             aria-label="Slide 3"
           ></button>
         </div>
-        <div class="carousel-inner" style={{maxHeight: "550px"}}>
+        <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="10000}" >
             <img
               src={anh1}
               class="d-block w-100"
               alt="..."
+               style={{  maxHeight: "450px",objectPosition: "center", objectFit: "cover"}}
             />
           </div>
           <div class="carousel-item" data-bs-interval="2000" >
@@ -51,6 +52,7 @@ const Home = () => {
               src={anh2}
               class="d-block w-100"
               alt="..."
+               style={{  maxHeight: "450px",objectPosition: "center", objectFit: "cover"}}
             />
           </div>
           <div class="carousel-item" >
@@ -58,6 +60,7 @@ const Home = () => {
               src={daubep}
               class="d-block w-100"
               alt="..."
+               style={{  maxHeight: "450px",objectPosition: "center", objectFit: "cover"}}
             />
           </div>
         </div>
