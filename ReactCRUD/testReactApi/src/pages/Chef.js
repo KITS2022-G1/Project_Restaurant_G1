@@ -1,35 +1,35 @@
 import React from "react";
 import { useState } from 'react';
 import { useEffect } from 'react';
-import EmpServices from '../services/EmpServices';
+import FoodServices from '../services/FoodServices';
 import { Link } from "react-router-dom";
 import ReactPaginate from 'react-paginate';
 
 
 
 const Chef = () => {
-    const [branches, setBranches] = useState([]);
+    const [foods, setFoodes] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [pageNumber, setPageNumber] = useState(0);
 
     useEffect(() => {
-        EmpServices.getAllBranches(searchTerm).then((response) => {
-            setBranches(response.data);
+        FoodServices.getAllFoodes(searchTerm).then((response) => {
+            setFoodes(response.data);
         });
     }, [searchTerm]);
 
-    const branchPerPage = 5;
-    const pagesVisited = pageNumber * branchPerPage;
+    const foodPerPage = 5;
+    const pagesVisited = pageNumber * foodPerPage;
 
-    const pageCount = Math.ceil(branches.length / branchPerPage)
+    const pageCount = Math.ceil(foods.length / foodPerPage)
     const changePage = ({selected}) => {
         setPageNumber(selected);
     }
 
-    const deleteBranch = (id) => {
+    const deleteFood = (id) => {
         if (window.confirm('Are you sure?') == true) {
-            EmpServices.deleteBranch(id).then((response) => {
-                setBranches(response.data);
+            FoodServices.deleteFood(id).then((response) => {
+                setFoodes(response.data);
             })
         }
         else {
@@ -37,24 +37,24 @@ const Chef = () => {
         }
     }
 
-    var listBranches = [];
-    if (branches.length != 0) {
-        listBranches = branches.slice(pagesVisited, pagesVisited + branchPerPage).map((branch) => (
-            <tr key={branch.branchId}>
-                <th scope="row">{branch.branchId}</th>
-                <td>{branch.branchName}</td>
-                <td>{branch.branchAddress}</td>
-                <td>{branch.branchEmail}</td>
+    var listFoods = [];
+    if (foods.length != 0) {
+        listFoods = foods.slice(pagesVisited, pagesVisited + foodPerPage).map((food) => (
+            <tr key={food.foodId}>
+                <th scope="row">{food.foodId}</th>
+                <td>{food.foodName}</td>
+                <td>{food.foodPrice}</td>
+                <td>{food.foodDate}</td>
                 <td>
-                    <Link to={`/detail/` + branch.branchId}><button className='btn btn-warning'>Detail</button></Link>
+                    <Link to={`/detail/` + food.foodId}><button className='btn btn-warning'>Detail</button></Link>
                 </td>
 
                 <td>
-                    <Link to={`/edit/` + branch.branchId}><button className='btn btn-info'>Edit</button></Link>
+                    <Link to={`/edit/` + food.foodId}><button className='btn btn-info'>Edit</button></Link>
                 </td>
                 <td>
                     <button
-                        className="btn btn-danger" onClick={() => deleteBranch(branch.branchId)}
+                        className="btn btn-danger" onClick={() => deleteFood(food.foodId)}
                     >
                         Delete
                     </button>
@@ -63,7 +63,7 @@ const Chef = () => {
         ));
     }
     else {
-        listBranches = <tr><th>NO BRANCH</th><td></td></tr>;
+        listFoods = <tr><th>NO FOOD</th><td></td></tr>;
     }
 
     const onClickEnter=(event)=>{
@@ -114,7 +114,7 @@ const Chef = () => {
                     </tr>
                 </thead>
                 <tbody className="table-group-divider">
-                    {listBranches}
+                    {listFoods}
                 </tbody>
             </table>
 
