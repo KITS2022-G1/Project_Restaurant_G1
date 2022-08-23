@@ -1,8 +1,16 @@
 import React from "react";
-
+import bannerDrinkMenu from '../image/bannerDrinkMenu.jpg'
 const DrinhMenu = () => {
   return (
     <>
+      <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000}">
+            <img src={bannerDrinkMenu} class="d-block w-100" alt="..." style={{ width: "100%" }} />
+          </div>
+        </div>
+      </div>
+
       <section style={{ padding: "3rem" }}>
         <div className="row text-menu">
           <div className="col-2"></div>
@@ -311,7 +319,138 @@ const DrinhMenu = () => {
           </div>
           <div className="col-2"></div>
         </div>
-      </section>F
+      </section>
+
+      <section style={{ padding: "3rem" }}>
+        <div className="row text-menu">
+          
+          <div className="text-center col-12">
+            <p
+              class="fs-2"
+              style={{
+                fontWeight: "bold",
+                textDecoration: "underline #2A606D wavy",
+              }}
+            >
+              MINERAL WATER
+            </p>
+            <div className="container-fluid row" style={{ margin: "0", padding: "0" }}>
+              <div className="col-6 text-center col-ms-6">
+                <ul class="leaders">
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>Alba Natural Mineral Water (45cl)</span>
+                    <span class="dots"></span>
+                    <span>65,000 VND</span>
+                  </li>
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>Alba Natural Mineral Water (75cl)</span>
+                    <span class="dots"></span>
+                    <span>100,000 VND </span>
+                  </li>
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>Evian (75cl)</span>
+                    <span class="dots"></span>
+                    <span>165,000 VND</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="col-6 text-center col-ms-6">
+                <ul class="leaders">
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>Alba Natural Mineral Sparkling Water (45cl)</span>
+                    <span class="dots"></span>
+                    <span>75,000 VND</span>
+                  </li>
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>San Pellegrino (50cl)</span>
+                    <span class="dots"></span>
+                    <span>150,000 VND</span>
+                  </li>
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>Saint Geron, France (75cl)</span>
+                    <span class="dots"></span>
+                    <span>170,000 VND</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+
+      <section style={{ padding: "3rem" }}>
+        <div className="row text-menu">
+          
+          <div className="text-center col-12">
+            <p
+              class="fs-2"
+              style={{
+                fontWeight: "bold",
+                textDecoration: "underline #2A606D wavy",
+              }}
+            >
+              FRUIT JUICE
+            </p>
+            <div className="container-fluid row" style={{ margin: "0", padding: "0" }}>
+              <div className="col-6 text-center col-ms-6">
+                <ul class="leaders">
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>La Belle Verte</span>
+                    <span class="dots"></span>
+                    <span>130,000 VND</span>
+                  </li>
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>Moulin Rouges</span>
+                    <span class="dots"></span>
+                    <span>130,000 VND</span>
+                  </li>
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>Seasonal Healthy Mix</span>
+                    <span class="dots"></span>
+                    <span>130,000 VND</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="col-6 text-center col-ms-6">
+                <ul class="leaders">
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>Orange</span>
+                    <span class="dots"></span>
+                    <span>75,000 VND</span>
+                  </li>
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>Apple</span>
+                    <span class="dots"></span>
+                    <span>75,000 VND</span>
+                  </li>
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>Mango</span>
+                    <span class="dots"></span>
+                    <span>110,000 VND</span>
+                  </li>
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>Coconut</span>
+                    <span class="dots"></span>
+                    <span>110,000 VND</span>
+                  </li>
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>Watermelon</span>
+                    <span class="dots"></span>
+                    <span>90,000 VND</span>
+                  </li>
+                  <li className="fs-6 pt-2 mt-3">
+                    <span>Passion fruit</span>
+                    <span class="dots"></span>
+                    <span>90,000 VND</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </section>
 
       <section style={{ padding: "3rem" }}>
         <div className="row text-menu">
@@ -324,42 +463,40 @@ const DrinhMenu = () => {
                 textDecoration: "underline #2A606D wavy",
               }}
             >
-              MINERAL WATER
+              BEER
             </p>
-            <div className="container-fluid row" style={{margin: "0", padding: "0"}}>
-              <div className="col-6 text-center">
-                <ul class="leaders">
-                  <li className="fs-6 pt-2 mt-3">
-                    <span>"Pho" Cocktail</span>
-                    <span class="dots"></span>
-                    <span>250,000 VND</span>
-                  </li>
-                  <li className="fs-6 pt-2 mt-3">
-                    <span>L'Essentiel</span>
-                    <span class="dots"></span>
-                    <span>250,000 VND </span>
-                  </li>
-                </ul>
-              </div>
-              <div className="col-6 text-center">
-                <ul class="leaders">
-                  <li className="fs-6 pt-2 mt-3">
-                    <span>"Pho" Cocktail</span>
-                    <span class="dots"></span>
-                    <span>250,000 VND</span>
-                  </li>
-                  <li className="fs-6 pt-2 mt-3">
-                    <span>L'Essentiel</span>
-                    <span class="dots"></span>
-                    <span>250,000 VND </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <ul class="leaders">
+              <li className="fs-6 pt-2 mt-3">
+                <span>Hanoi</span>
+                <span class="dots"></span>
+                <span>70,000 VND</span>
+              </li>
+              <li className="fs-6 pt-2 mt-3">
+                <span>Pilsner Urquell</span>
+                <span class="dots"></span>
+                <span>140,000 VND</span>
+              </li>
+              <li className="fs-6 pt-2 mt-3">
+                <span>Leffe Blond</span>
+                <span class="dots"></span>
+                <span>170,000 VND</span>
+              </li>
+              <li className="fs-6 pt-2 mt-3">
+                <span>Leffe Brown</span>
+                <span class="dots"></span>
+                <span>170,000 VND</span>
+              </li>
+              <li className="fs-6 pt-2 mt-3">
+                <span>C-master Snow White / Bạch Tuyết</span>
+                <span class="dots"></span>
+                <span>120,000 VND</span>
+              </li>
+            </ul>
           </div>
           <div className="col-2"></div>
         </div>
       </section>
+
     </>
   );
 };
