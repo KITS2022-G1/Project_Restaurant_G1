@@ -8,7 +8,7 @@ const MainCourseMenu = () => {
             <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="10000}">
-                        <img src={anhdoan} class="d-block w-100" alt="..." style={{ width: "100%" }} />
+                        <img src={anhdoan} class="d-block w-100" alt="..." style={{  height: "350px", objectFit: "cover"}} />
                     </div>
                 </div>
             </div>

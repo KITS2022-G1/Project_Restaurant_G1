@@ -20,6 +20,12 @@ import Chef from './pages/Chef';
 import Cashier from './pages/Cashier';
 import Table from './pages/Table';
 import Favorite from './pages/Favorite';
+import Menu from "./pages/Menu";
+import MainCourseMenu from "./pages/MainCourseMenu";
+import SideDishMenu from "./pages/SideDishMenu";
+import DessertMenu from "./pages/DessertMenu";
+import DrinkMenu from "./pages/DrinkMenu";
+import Services from "./pages/Services";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -39,6 +45,14 @@ root.render(
           <Route path="cashier" element={<Cashier />} />
           <Route path="table" element={<Table />} />
           <Route path="favorite" element={<Favorite />} />
+          <Route path="about" element={<About />} />
+          <Route path="/Menu" element={<Menu />} />
+          <Route path="/MainCourseMenu" element={<MainCourseMenu />} />
+          <Route path="/SideDishMenu" element={<SideDishMenu />} />
+          <Route path="/DessertMenu" element={<DessertMenu />} />
+          <Route path="/DrinkMenu" element={<DrinkMenu />} />
+          <Route path="/Services" element={<Services/>} />
+
       </Routes>
       <Footer/>
       </BrowserRouter>

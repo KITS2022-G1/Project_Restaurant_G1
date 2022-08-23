@@ -39,12 +39,10 @@ const Layout = () => {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <Link
-                  class="nav-link active"
-                  aria-current="page"
+                <Link class="nav-link active" aria-current="page"
                   to="/About"
                   onClick={clickView}
-                >
+>
                   ABOUT US
                 </Link>
               </li>
