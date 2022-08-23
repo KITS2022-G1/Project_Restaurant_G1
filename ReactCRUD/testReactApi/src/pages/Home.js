@@ -92,7 +92,7 @@ const Home = () => {
             <img
               src={chicken}
               alt=".."
-              className="rounded mx-auto d-block mt-5 mb-5"
+className="rounded mx-auto d-block mt-5 mb-5"
               style={{ width: "100%" }}
             ></img>
           </div>
@@ -162,7 +162,7 @@ const Home = () => {
               Cho dù đó là trong phòng khiêu vũ của chúng tôi hay tại một địa
               điểm bạn chọn, La Table Hanoia cung cấp dịch vụ lưu trữ và chiêu
               đãi cực kỳ sang trọng, nổi bật bởi ẩm thực mẫu mực, sự hỗ trợ của
-              chuyên gia và dịch vụ cá nhân hóa. Để có một kế hoạch tỉ mỉ và đảm
+chuyên gia và dịch vụ cá nhân hóa. Để có một kế hoạch tỉ mỉ và đảm
               bảo kết thúc thành công, chúng tôi ở đây vì bạn.
             </p>
             <div class="d-grid gap-2 col-6 mx-auto">
@@ -219,9 +219,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <Link to={"chef"}>Đầu bếp</Link>
-        <br />
-        <Link to={"cashier"}>nhân viên</Link>
       </div>
     </>
   );
