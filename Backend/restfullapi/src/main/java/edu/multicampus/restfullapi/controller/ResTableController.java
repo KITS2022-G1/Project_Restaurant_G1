@@ -63,7 +63,7 @@ public class ResTableController {
 	@PostMapping("/resTables")
 	public ResponseEntity<ResTable> createResTable(@RequestBody ResTable resTable) {
 		try {
-			ResTable newResTable = resTableRepository.save(new ResTable(resTable.getTableName(),resTable.getBranch()));
+			ResTable newResTable = resTableRepository.save(new ResTable(resTable.getTableName(),resTable.getBranch(), resTable.getRestableStatus(), resTable.getRestableCapacity()));
 			return new ResponseEntity<>(newResTable, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
@@ -78,6 +78,8 @@ public class ResTableController {
 			ResTable resTable = ResTableData.get();
 			resTable.setTableName(ResTable.getTableName());
 			resTable.setBranch(ResTable.getBranch());
+			resTable.setRestableStatus(ResTable.getRestableStatus());
+			resTable.setRestableCapacity(ResTable.getRestableCapacity());
 			return new ResponseEntity<>(resTableRepository.save(resTable), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

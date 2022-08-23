@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from './logo.svg';
+import UserService from "../services/user.service";
+import EventBus from "../common/EventBus";
 
 const Cashier = () => {
 
+    const [content, setContent] = useState('');
+
+    useEffect(() => {
+        UserService.getUserBoard().then((response) => {
+            setContent(response.data);
+        });
+            if (content) {
+                EventBus.dispatch("logout");
+            }
+    }, []);
+
     return (
         <>
-            
+
             <div class='container-fluid'>
                 <div class="row" style={{backgroundImage: `url(${logo})`, backgroundRepeat:"no-repeat",}}>
                     <div class="col-6 ">
@@ -140,7 +153,7 @@ const Cashier = () => {
                             <h1 class="text-center">Hóa đơn, Thông tin khách hàng</h1>
 
                             <form>
-                                
+
                                 <div className='form-group'>
                                 <section style={{ paddingTop: "2rem", }}></section>
                                     <input placeholder='Name:' name='branchName' className='form-control' >
@@ -168,14 +181,14 @@ const Cashier = () => {
                                     </input>
                                 </div>
 
-                                
+
                                 <section style={{ paddingTop: "2rem", }}></section>
                                 <button className='btn btn-info' > Save </button>
                                 <button className='btn btn-secondary'> Clear </button>
 
                             </form>
                         </div>
-                        
+
 
                     </div>
                 </div>

@@ -27,9 +27,16 @@ public class ResTable {
     @JoinColumn(name = "branchId", nullable = false)
     private Branch branch;
     
+
 	@ManyToMany(mappedBy = "foodt")
     Set<Food> restable;
-    
+	
+	@Column(name = "restable_status")
+	private Boolean restableStatus;
+	
+	@Column(name = "restable_capacity")
+	private int restableCapacity;
+	
 	public ResTable() {
 		super();
 	}
@@ -39,14 +46,29 @@ public class ResTable {
 		this.restableName = restableName;
 	}
 	
-
-	public ResTable(String restableName, Branch branch) {
+	public ResTable(String restableName, Branch branch, Boolean restableStatus, int restableCapacity) {
 		super();
 		this.restableName = restableName;
 		this.branch = branch;
+		this.restableStatus = restableStatus;
+		this.restableCapacity = restableCapacity;
 	}
 	
-	
+	public Boolean getRestableStatus() {
+		return restableStatus;
+	}
+
+	public void setRestableStatus(Boolean restableStatus) {
+		this.restableStatus = restableStatus;
+	}
+
+	public int getRestableCapacity() {
+		return restableCapacity;
+	}
+
+	public void setRestableCapacity(int restableCapacity) {
+		this.restableCapacity = restableCapacity;
+	}
 
 	public Branch getBranch() {
 		return branch;

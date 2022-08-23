@@ -90,8 +90,6 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <Link to={'chef'}>Đầu bếp</Link><br/>
-                <Link to={'cashier'}>nhân viên</Link>
             </div>
         </>
     );

@@ -52,18 +52,18 @@ export default function Header() {
   return (
     <React.Fragment>
       <nav
-        class="navbar navbar-expand-lg navbar-light"
+        className="navbar navbar-expand-lg navbar-light"
         style={{ backgroundColor: "#D19527" }}
       >
         <div className="container-fluid">
             <Link to="/" className="nav-link">
-              <img class="img-fluid"
+              <img className="img-fluid"
                 src={logo}
                 style={{ width: "100px", height: "95px", borderRadius: "55px" }}
               ></img>
             </Link>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -71,34 +71,26 @@ export default function Header() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-2">
-              <li class="nav-item">
-                <Link class="nav-link active" aria-current="page"
-                  to="/About"
-                  onClick={clickView}>
-                  ABOUT US
-                </Link>
-              </li>
-
-              <li class="nav-item dropdown">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-2">
+              <li className="nav-item dropdown">
                 <Link className="nav-link" to="/Menu" onClick={clickView}>
-                  MENU{" "}
+                  Menu{" "}
                 </Link>
                 <ul
-                  class="dropdown-menu"
+                  className="dropdown-menu"
                   aria-labelledby="navbarDropdown"
                   style={{ backgroundColor: "#D19527" }}
                 >
                   <li>
-                    <Link class="dropdown-item" to="/MainCourseMenu" onClick={clickView}>
+                    <Link className="dropdown-item" to="/MainCourseMenu" onClick={clickView}>
                       Main course menu
                     </Link>
                   </li>
                   <li>
-                    <Link class="dropdown-item" to="/SideDishMenu" onClick={clickView}>
+                    <Link className="dropdown-item" to="/SideDishMenu" onClick={clickView}>
                       Side dish menu
                     </Link>
                   </li>
@@ -116,6 +108,22 @@ export default function Header() {
                     </Link>
                   </li>
                 </ul>
+              </li>
+
+              <li class="nav-item">
+                <Link class="nav-link" aria-current="page"
+                  to="/Services"
+                  onClick={clickView}>
+                  Services
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link className="nav-link" aria-current="page"
+                  to="/About"
+                  onClick={clickView}>
+                  About Us
+                </Link>
               </li>
 
               {stateLogin.showAdminBoard && (
@@ -149,19 +157,19 @@ export default function Header() {
                 <>
                   <li className="nav-item">
                     <Link to="/table" className="nav-link">
-                      ORDER
+                      Order
                     </Link>
                   </li>
 
                   <li className="nav-item">
                     <Link to="/cashier" className="nav-link">
-                      TABLE
+                      Table
                     </Link>
                   </li>
 
                   <li className="nav-item">
                     <Link to="/cashier" className="nav-link">
-                      BILL
+                      Bill
                     </Link>
                   </li>
                 </>
