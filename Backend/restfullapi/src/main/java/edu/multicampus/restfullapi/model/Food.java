@@ -3,8 +3,10 @@ package edu.multicampus.restfullapi.model;
 import java.sql.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +15,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -41,11 +46,13 @@ public class Food {
 	@Column(name = "food_date")
 	private Date foodDate;
 	
-	@OneToMany(mappedBy = "food")
+	@OneToMany(mappedBy = "food", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	Set<ExportBill> amount;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	 @OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinTable(
 	name = "customer_orders", 
 	joinColumns = @JoinColumn(name = "foodId"), 

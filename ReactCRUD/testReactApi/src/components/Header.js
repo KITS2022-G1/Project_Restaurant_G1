@@ -176,11 +176,11 @@ export default function Header() {
                   </li>
 
                   <li className="nav-item">
-                    <Link to="/cashier" className="nav-link">
+                    <Link to="/ManageBill" className="nav-link">
                       Bill
                     </Link>
                   </li>
-                  
+
                 </>
               )}
             </ul>

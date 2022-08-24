@@ -15,6 +15,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -44,13 +47,16 @@ public class Bill {
 
 	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, optional = false)
 	@JoinColumn(name = "employeeId", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Employee employee;
 	
 	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, optional = false)
 	@JoinColumn(name = "customerId", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Customer customer;
 	
-	@OneToMany(mappedBy = "bill")
+	@OneToMany(mappedBy = "bill", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	Set<ExportBill> amount;
 

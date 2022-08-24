@@ -14,6 +14,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -27,11 +30,13 @@ public class ResTable {
 	private String restableName;
 	
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "branchId", nullable = false)
     private Branch branch;
     
 
 	@ManyToMany(mappedBy = "foodt")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
     Set<Food> restable;
 	

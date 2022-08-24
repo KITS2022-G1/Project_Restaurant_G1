@@ -58,6 +58,15 @@ export default function Order() {
     setBill(data);
   };
 
+  const handleChangeTotalPrice = (event) => {
+    //console.log(event);
+    let data = { ...bill };
+    data.billTotalMoney = params.totalPrice;
+    setBill(data);
+  };
+
+
+
   const saveBill = (event) => {
     BillService.addNewBill(bill).then(res => {
       console.log('save success!');
@@ -116,8 +125,7 @@ export default function Order() {
           <MDBValidationItem feedback='Please provide a valid card email.' invalid>
             <MDBInput
               name="billTotalMoney"
-              className='form-control' value={params.totalPrice}
-              onChange={(e) => handleChange(e)}
+              className='form-control' value={params.totalPrice.toLocaleString("en-US")} onChange={(e) => handleChangeTotalPrice(e)}
               required/>
           </MDBValidationItem>
 

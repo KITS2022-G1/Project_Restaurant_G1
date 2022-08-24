@@ -1,28 +1,36 @@
 package edu.multicampus.restfullapi.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class ExportBill {
 	@EmbeddedId
     ExportBillKey id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, optional = false)
     @MapsId("billId")
     @JoinColumn(name = "bill_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     Bill bill;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, optional = false)
     @MapsId("foodId")
     @JoinColumn(name = "food_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     Food food;
 
     @Column(name ="amount")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     int amount;
    
 
