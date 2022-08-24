@@ -70,7 +70,7 @@ function Table() {
     listFoods = foods
       .slice(pagesVisited, pagesVisited + foodPerPage)
       .map((food) => (
-        <div class="col-md-3 mb-3 mt-3" >
+        <div class="col-md-3 mb-3 mt-3">
           <div
             class="card overflow-hidden shadow"
             style={{
@@ -79,29 +79,35 @@ function Table() {
               width: "100%",
               height: "undefined",
               aspectRatio: "1 / 1",
-              
             }}
           >
             <div
               class="card-body py-4 px-4 image-food"
-              style={{ background: "black", opacity: "0.7" }}
+              style={{ background: "black", opacity: "0.6" }}
             >
               <Link to={"/detail/" + food.foodId} className="nav-link">
                 <div class="d-flex align-items-center">
                   <span>
-                    <h4 class="fw-medium ten " style={{ color: "white" }}>
+                    <h4
+                      class="fw-medium ten "
+                      style={{ color: "#FFFFFF", fontWeight: "bold" }}
+                    >
                       {food.foodName}
                     </h4>
 
-                    <span class="fw-medium" style={{ color: "white" }}>
+                    <span
+                      class="fw-medium"
+                      style={{ color: "#FFFFFF", fontWeight: "bold" }}
+                    >
                       Hạn sử dụng: {food.foodDate}
                     </span>
-                  </span>
-                </div>
-
-                <div class="d-flex align-items-center">
-                  <span class="fw-medium" style={{ color: "white" }}>
-                    Mức Giá: {food.foodPrice}
+<br/>
+                    <span
+                      class="fw-medium"
+                      style={{ color: "#FFFFFF", fontWeight: "bold" }}
+                    >
+                      Mức Giá: {food.foodPrice}
+                    </span>
                   </span>
                 </div>
               </Link>
