@@ -134,16 +134,15 @@ function Table() {
   return (
     <>
       <section style={{ paddingTop: "3rem" }}></section>
-      <div class="container-fluid">
+      <div class="container-fluid text-start">
         <div class="row">
-          <div class="col-1"></div>
-          <div class="col-7 col-sm-7 col-md-7 ">
+          <div class="col-8 col-sm-8 col-md-8 ">
             <h1 class="text-center">THỰC ĐƠN HÔM NAY</h1>
             <div className="row card-deck ">{listFoods}</div>
           </div>
 
           <div
-            class="col-3 col-sm-3 col-md-3 mt-5 border  rounded-3 text-center border-dark"
+            class="col-4 col-sm-4 col-md-4 mt-5 border  rounded-3 text-center border-dark"
             style={{ padding: "0", height: "80%"}}
           >
             <div
@@ -178,7 +177,7 @@ function Table() {
                   }}
                 >
                   <div
-                    className="col-6 mt-2 mb-2 text-start"
+                    className="col-5 col-md-5 mt-2 mb-2 text-start"
                     style={{
                       fontFamily: "Kanit, sans-serif",
                     }}
@@ -186,11 +185,11 @@ function Table() {
                     {" "}
                     {item.foodName}{" "}
                   </div>
-                  <div className="col-2 mt-2 mb-2 text-end" >
+                  <div className="col-3 col-md-3 mt-2 mb-2 text-start" >
                   <button
                       onClick={() => onAdd(item)}
                       className="add button-math"
-                      style={{ backgroundColor: "white"}}
+                      style={{ backgroundColor: "white",}}
                     >
                       {" "}
                       +{" "}
@@ -204,7 +203,7 @@ function Table() {
                       -{" "}
                     </button>{" "}
                   </div>
-                  <div className="col-4 mt-2 mb-2 text-start" >
+                  <div className="col-4 col-md-4 mt-2 mb-2 text-start" >
                     
                     <span className=""
                       style={{
@@ -251,7 +250,7 @@ function Table() {
               </Link>
             </div>
           </div>
-          <div class="col-1"></div>
+          
         </div>
       </div>
       <div>
