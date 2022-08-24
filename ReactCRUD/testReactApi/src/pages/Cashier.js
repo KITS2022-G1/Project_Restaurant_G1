@@ -31,7 +31,7 @@ const Cashier = () => {
         listResTables = ResTables.slice(pagesVisited, pagesVisited + ResTablesPerPage).map((ResTables) => (
             <tr key={ResTables.tableId}>
             <th scope="row">{ResTables.tableId}</th>
-            <Link to={'/bill'}><td>{ResTables.tableName}</td></Link>
+            <Link to={'/bill'} class='nav-link'><td class='border'>{ResTables.tableName}</td></Link>
             <td>{ResTables.restableCapacity}</td>
             <td>
                 <Link to={`/detail/` + ResTables.tableId}><button className='btn btn-warning'>Detail</button></Link>
@@ -79,11 +79,9 @@ const Cashier = () => {
                             </div>
                         </div>
                         <div>
-                            <Link to={`/add`}><button className='btn btn-success'> Add </button></Link>
+                            <Link to={`/addTable`}><button className='btn btn-success'> Add </button></Link>
                         </div>
-                        <div>
-                            <Link to={`/delete`}><button className='btn btn-success'> Id Bigger </button></Link>
-                        </div>
+                        
 
                         <table className="table">
                             <thead>
@@ -102,7 +100,7 @@ const Cashier = () => {
                         </table>
                     </div>
 
-                    <Link to={'/bill'}> <button className='btn btn-info' > next </button></Link>
+                    
                     <div>
                         <ReactPaginate
                             previousLabel={"Previous"}
