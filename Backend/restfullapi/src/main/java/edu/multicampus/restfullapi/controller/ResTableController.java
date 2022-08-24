@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.multicampus.restfullapi.model.Branch;
 import edu.multicampus.restfullapi.model.ResTable;
 import edu.multicampus.restfullapi.repository.ResTableRepository;
+import edu.multicampus.restfullapi.repository.RestaurantRepository;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -27,6 +29,9 @@ import edu.multicampus.restfullapi.repository.ResTableRepository;
 public class ResTableController {
 	@Autowired
 	ResTableRepository resTableRepository;
+
+	@Autowired
+	RestaurantRepository branchRepository;
 	
 	@RequestMapping("/resTables")
 	public ResponseEntity<List<ResTable>> getAllResTable(@Param("restableName") String restableName) {
@@ -63,12 +68,30 @@ public class ResTableController {
 	@PostMapping("/resTables")
 	public ResponseEntity<ResTable> createResTable(@RequestBody ResTable resTable) {
 		try {
-			ResTable newResTable = resTableRepository.save(new ResTable(resTable.getTableName(),resTable.getBranch(), resTable.getRestableStatus(), resTable.getRestableCapacity()));
-			return new ResponseEntity<>(newResTable, HttpStatus.CREATED);
+//			Branch branch = new Branch(resTable.getBranch().getBranchName(), resTable.getBranch().getBranchAddress(), resTable.getBranch().getBranchEmail(), 
+//					resTable.getBranch().getBranchPhone(), resTable.getBranch().getBranchManagerName(), resTable.getBranch().getBranchCardNumber(), resTable.getBranch().getBranchImageURL());
+//			
+//			ResTable newResTable = resTableRepository.save(new ResTable(branch,resTable.getTableName(), resTable.getRestableStatus(), resTable.getRestableCapacity()));
+//			return new ResponseEntity<ResTable>(newResTable, HttpStatus.CREATED);
+			
+			Optional<Branch> branch = branchRepository.findById(resTable.getBranch().getBranchId());
+			if(branch.isPresent()) {
+			    Branch existingBranch = branch.get();
+				ResTable newResTable = resTableRepository.save(new ResTable(existingBranch,resTable.getTableName(), resTable.getRestableStatus(), resTable.getRestableCapacity()));
+				return new ResponseEntity<ResTable>(newResTable, HttpStatus.CREATED);
+			}else {
+//				Branch branch1 = new Branch(resTable.getBranch().getBranchName(), resTable.getBranch().getBranchAddress(), resTable.getBranch().getBranchEmail(), 
+//						resTable.getBranch().getBranchPhone(), resTable.getBranch().getBranchManagerName(), resTable.getBranch().getBranchCardNumber(), resTable.getBranch().getBranchImageURL());
+//				
+//				ResTable newResTable1 = resTableRepository.save(new ResTable(branch1,resTable.getTableName(), resTable.getRestableStatus(), resTable.getRestableCapacity()));
+				return new ResponseEntity<>(null, HttpStatus.CREATED);
+			}
+			
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
 		}
 	}
+	
 
 	@PutMapping("/resTables/{id}")
 	public ResponseEntity<ResTable> updateResTable(@PathVariable("id") Integer id, @RequestBody ResTable ResTable) {

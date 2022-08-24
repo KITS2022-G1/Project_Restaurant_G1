@@ -28,7 +28,6 @@ public class Employee {
 	
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "branchId", nullable = false)
-    @JsonIgnore
     private Branch branch;
     
     @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade = CascadeType.ALL)

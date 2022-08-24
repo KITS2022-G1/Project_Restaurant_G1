@@ -42,12 +42,13 @@ public class Customer {
 	}
 
 	public Customer(String customerName, String customerPhone,
-			String customerAddress, String customerCardNumber) {
+			String customerAddress, String customerCardNumber, Set<Bill> bill) {
 		super();
 		this.customerName = customerName;
 		this.customerPhone = customerPhone;
 		this.customerAddress = customerAddress;
 		this.customerCardNumber = customerCardNumber;
+		this.bill = bill;
 	}
 
 	public int getCustomerId() {

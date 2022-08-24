@@ -44,11 +44,11 @@ public class Branch {
 	@Column(name = "branch_image")
 	private String branchImageURL;
 
-	@OneToMany(mappedBy = "branch", fetch = FetchType.EAGER, cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval=true)
+	@OneToMany(mappedBy = "branch", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Set<Employee> employee;
 
-	@OneToMany(mappedBy = "branch", fetch = FetchType.EAGER, cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval=true)
+	@OneToMany(mappedBy = "branch", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Set<ResTable> restable;
 

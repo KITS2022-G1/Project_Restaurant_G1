@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.multicampus.restfullapi.model.Branch;
 import edu.multicampus.restfullapi.model.Employee;
 import edu.multicampus.restfullapi.repository.EmployeesRepository;
+import edu.multicampus.restfullapi.repository.RestaurantRepository;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -27,6 +29,8 @@ import edu.multicampus.restfullapi.repository.EmployeesRepository;
 public class EmployeesController {
 	@Autowired
 	EmployeesRepository employeesRepository;
+	@Autowired
+	RestaurantRepository branchRepository;
 	
 	@RequestMapping("/employees")
 	public ResponseEntity<List<Employee>> getAllEmployees(@Param("employeeName") String employeeName) {
@@ -61,12 +65,20 @@ public class EmployeesController {
 	}
 	
 	@PostMapping("/employees")
-	public ResponseEntity<Employee> createEmployee(@RequestBody Employee Employee) {
+	public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
 		try {
-			Employee employee = employeesRepository.save(new Employee(Employee.getBranch(), Employee.getEmployeeName(),
-					Employee.getEmployeeEmail(), Employee.getEmployeeAddress(), Employee.getEmployeeGender(),
-					Employee.getEmployeeImageURL(), Employee.getEmployeePhone(), Employee.getEmployeeRole(), Employee.getUsername(), Employee.getPassword()));
-			return new ResponseEntity<>(employee, HttpStatus.CREATED);
+//			Branch branch = new Branch(employee.getBranch().getBranchName(), employee.getBranch().getBranchAddress(), employee.getBranch().getBranchEmail(), 
+//					employee.getBranch().getBranchPhone(), employee.getBranch().getBranchManagerName(), employee.getBranch().getBranchCardNumber(), employee.getBranch().getBranchImageURL());
+			
+			Optional<Branch> branch = branchRepository.findById(employee.getBranch().getBranchId());
+			if(branch.isPresent()) {
+			    Branch existingBranch = branch.get();
+			    Employee emp = employeesRepository.save(new Employee(existingBranch, employee.getEmployeeName(), employee.getEmployeePhone(), employee.getEmployeeEmail(),employee.getEmployeeGender(), employee.getEmployeeAddress(), employee.getEmployeeRole(), employee.getEmployeeImageURL(), employee.getUsername(), employee.getPassword()));
+				return new ResponseEntity<Employee>(emp, HttpStatus.CREATED);
+			}else {
+				return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
+			}
+			
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
 		}
@@ -78,10 +90,11 @@ public class EmployeesController {
 
 		if (EmployeeData.isPresent()) {
 			Employee employee = EmployeeData.get();
+			employee.setBranch(Employee.getBranch());
 			employee.setEmployeeName(Employee.getEmployeeName());
 			employee.setEmployeeAddress(Employee.getEmployeeAddress());
 			employee.setEmployeeEmail(Employee.getEmployeeEmail());
-			return new ResponseEntity<>(employeesRepository.save(employee), HttpStatus.OK);
+			return new ResponseEntity<Employee>(employeesRepository.save(employee), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}

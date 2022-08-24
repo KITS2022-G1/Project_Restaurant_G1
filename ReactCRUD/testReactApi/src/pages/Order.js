@@ -9,29 +9,18 @@ import {
   MDBBtn,
   MDBCheckbox
 } from 'mdb-react-ui-kit';
-import EmployeeService from "../services/EmployeeService";
-import CustomerService from "../services/CustomerService";
 
-export default function TestPage() {
+export default function Order() {
   const params = useParams();
 
   const [bill, setBill] = useState([]);
-  const [employee, setEmployee] = useState([]);
-  const [customer, setCustomer] = useState([]);
 
   useEffect(() => {
-    EmployeeService.getAllEmployees().then((response) => {
-      setEmployee(response.data);
-    });
+    let initData = {};
+    initData.employee = {};
+    initData.customer = {};
+    setBill(initData);
   }, []);
-
-  useEffect(() => {
-    CustomerService.getCustomerById('1').then((response) => {
-      setCustomer(response.data);
-    });
-  }, []);
-
-  console.log(customer);
 
   const handleChange = (event) => {
     const target = event.target;
@@ -44,6 +33,30 @@ export default function TestPage() {
 
     setBill(data);
   }
+
+  const handleChangeEmployee = (event) => {
+    //console.log(event);
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    let data = { ...bill };
+    data.employee[name] = value;
+
+    console.log(data);
+    setBill(data);
+  };
+
+  const handleChangeCustomer = (event) => {
+    //console.log(event);
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    let data = { ...bill };
+    data.customer[name] = value;
+
+    console.log(data);
+    setBill(data);
+  };
 
   const saveBill = (event) => {
     BillService.addNewBill(bill).then(res => {
@@ -84,8 +97,7 @@ export default function TestPage() {
           <label> Customer Id: </label>
           <MDBValidationItem feedback='Please provide a valid customerId.' invalid>
             <MDBInput
-              placeholder='Customer Id' name='customerId' className='form-control' value={customer.customerId}
-              required
+              placeholder='Customer Id' name='customerId' className='form-control' value={bill.customerId} onChange={(e) => handleChangeCustomer(e)}
             />
           </MDBValidationItem>
 
@@ -94,9 +106,8 @@ export default function TestPage() {
           <label> Employee Id: </label>
           <MDBValidationItem feedback='Please provide a valid employeeId.' invalid>
             <MDBInput
-              placeholder='Employee Id' name='employeeId' className='form-control'
-              required
-            />
+              placeholder='Employee Id' name='employeeId' className='form-control' value={bill.employeeId} onChange={(e) => handleChangeEmployee(e)}
+              required/>
           </MDBValidationItem>
 
           {/* --------------------------------------------------------- */}
@@ -104,10 +115,10 @@ export default function TestPage() {
           <label> Bill Total: </label>
           <MDBValidationItem feedback='Please provide a valid card email.' invalid>
             <MDBInput
+              name="billTotalMoney"
               className='form-control' value={params.totalPrice}
               onChange={(e) => handleChange(e)}
-              required
-            />
+              required/>
           </MDBValidationItem>
 
           {/* --------------------------------------------------------- */}

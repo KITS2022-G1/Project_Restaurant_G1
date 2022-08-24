@@ -62,7 +62,7 @@ root.render(
 
       </Routes>
       <div className='mt-5 footer'><Footer/></div>
-      
+
       </BrowserRouter>
   </React.StrictMode>
 );
