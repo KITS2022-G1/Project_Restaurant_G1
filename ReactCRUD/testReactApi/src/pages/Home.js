@@ -36,7 +36,7 @@ const Home = () => {
             data-bs-target="#carouselExampleDark"
             data-bs-slide-to="2"
             aria-label="Slide 3"
-          ></button>
+          ></button>  
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="10000}">
