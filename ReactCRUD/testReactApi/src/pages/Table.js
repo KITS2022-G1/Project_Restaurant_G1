@@ -50,7 +50,6 @@ function Table() {
 
   // add to cart ---------------------------------------------
 
-
   //  sort------------------------------------------------------------------------------
   const sortPriceDown = () => {
     const sortData = [...foods];
@@ -64,11 +63,10 @@ function Table() {
     setFoods(sortData);
   };
 
-//  -------------------------------------------------------------------------------------------
-
+  //  -------------------------------------------------------------------------------------------
 
   // paginate -----------------------------------------
-  const foodPerPage = 12;
+  const foodPerPage = 8;
   const pagesVisited = pageNumber * foodPerPage;
 
   const pageCount = Math.ceil(foods.length / foodPerPage);
@@ -82,7 +80,7 @@ function Table() {
     window.scrollTo(0, 0);
   };
 
-   var listFoods = [];
+  var listFoods = [];
   if (foods.length != 0) {
     listFoods = foods
       .slice(pagesVisited, pagesVisited + foodPerPage)
@@ -93,7 +91,7 @@ function Table() {
             style={{
               backgroundImage: `url(${food.foodImageURL})`,
               backgroundSize: "cover",
-              width: "100%",
+              width: "90%",
               height: "undefined",
               aspectRatio: "1 / 1",
             }}
@@ -130,7 +128,7 @@ function Table() {
               </Link>
               <span>
                 <button
-                  className="btn btn-outline-danger ms-2 rounded-circle"
+                  className="btn btn-outline-danger ms-2 rounded"
                   onClick={() => onAdd(food)}
                 >
                   Add to cart
@@ -151,17 +149,16 @@ function Table() {
   return (
     <>
       <section style={{ paddingTop: "3rem" }}></section>
-      <div class="container-fluid text-start">
+      <div class="container-fluid">
         <div class="row">
-          <div class="col-1"></div>
-          <div class="col-7 col-sm-7 col-md-7 ">
+          <div class="col-8 col-sm-8 col-md-8 ">
             <h1 class="text-center">THỰC ĐƠN HÔM NAY</h1>
             <div className="row card-deck ">{listFoods}</div>
           </div>
 
           <div
-            class="col-4 col-sm-4 col-md-4 mt-5 border  rounded-3 text-center border-dark"
-            style={{ padding: "0", height: "80%"}}
+            class="col-4 col-sm-4 col-md-4 mt-5 border rounded-3 text-center border-dark"
+            style={{ padding: "0", height: "80%" }}
           >
             <div
               className="border rounded-3"
@@ -178,7 +175,7 @@ function Table() {
               </h5>
               <Link to={"/favorite"}></Link>
             </div>
-            <div className="border rounded-3">
+            <div className="border rounded-3 scrollbar">
               <div>
                 {" "}
                 {cartItems.length === 0 && (
@@ -188,7 +185,8 @@ function Table() {
               {cartItems.map((item) => (
                 <div
                   key={item.foodId}
-                  className="row container-fluid"
+                  className="row container-fluid "
+                  id="style-1"
                   style={{
                     padding: "0",
                     margin: "0",
@@ -203,11 +201,11 @@ function Table() {
                     {" "}
                     {item.foodName}{" "}
                   </div>
-                  <div className="col-3 col-md-3 mt-2 mb-2 text-start" >
-                  <button
+                  <div className="col-3 col-md-3 mt-2 mb-2 text-end">
+                    <button
                       onClick={() => onAdd(item)}
                       className="add button-math"
-                      style={{ backgroundColor: "white",}}
+                      style={{ backgroundColor: "white" }}
                     >
                       {" "}
                       +{" "}
@@ -215,18 +213,21 @@ function Table() {
                     <button
                       onClick={() => onRemove(item)}
                       className="remove button-math"
-                      style={{ marginLeft: "4px", backgroundColor: "white"}}
+                      style={{
+                        marginLeft: "4px",
+                        backgroundColor: "white",
+                        padding: "1px 8px",
+                      }}
                     >
                       {" "}
                       -{" "}
                     </button>{" "}
                   </div>
-                  <div className="col-4 col-md-4 mt-2 mb-2 text-start" >
-                    
-                    <span className=""
+                  <div className="col-4 col-md-4 mt-2 mb-2 text-start">
+                    <span
+                      className=""
                       style={{
                         fontFamily: "Kanit, sans-serif",
-                        
                       }}
                     >
                       {item.qty} x {item.foodPrice} vnđ{" "}
@@ -237,26 +238,26 @@ function Table() {
             </div>
 
             {cartItems.length !== 0 && (
-              <div>
-                <div className="row">
-                  <div className="col-6 text-center mt-3"> Item Price </div>
-                  <div className="col-6 text-center mt-3">
-                    {" "}
-                    {itemsPrice} vnđ{" "}
-                  </div>
+              <div className="border rounded-3 mt-1" style={{ fontFamily: "Kanit, sans-serif"}}>
+                <div className="row container-fluid mt-2" style={{padding: "0", margin: "0",}}>
+                  <div className="col-5 col-md-5 text-start"> Item Price </div>
+                  <div className="col-3 col-md-3"></div>
+                  <div className="col-4 col-md-4 text-start"> {itemsPrice} vnđ </div>
                 </div>
 
-                <div className="row">
-                  <div className="col-2"> Tax Price </div>
-                  <div className="col-1 text-right">
+                <div className="row container-fluid mt-2" style={{padding: "0", margin: "0",}}>
+                  <div className="col-5 col-md-5 text-start"> Tax Price </div>
+                  <div className="col-3 col-md-3"></div>
+                  <div className="col-4 col-md-4 text-start" >
                     {" "}
                     {taxPrice.toFixed(0)} vnđ{" "}
                   </div>
                 </div>
 
-                <div className="row">
-                  <div className="col-2"> Total Price </div>
-                  <div className="col-1 text-right"> {totalPrice} vnđ </div>
+                <div className="row container-fluid mt-2" style={{padding: "0", margin: "0",}}>
+                  <div className="col-5 col-md-5 text-start"> Total Price </div>
+                  <div className="col-3 col-md-3"></div>
+                  <div className="col-4 col-md-4 text-start"> {totalPrice} vnđ </div>
                 </div>
               </div>
             )}
@@ -264,11 +265,10 @@ function Table() {
             <section style={{ paddingTop: "5rem" }}></section>
             <div>
               <Link to={"order/" + totalPrice}>
-                <button className="mb-3">Xác nhận</button>
+                <button className="mb-3 button-math"  style={{ backgroundColor: "white" }}>Xác nhận</button>
               </Link>
             </div>
           </div>
-          
         </div>
       </div>
       <div>
