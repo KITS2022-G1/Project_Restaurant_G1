@@ -26,7 +26,7 @@ import DessertMenu from "./pages/DessertMenu";
 import DrinkMenu from "./pages/DrinkMenu";
 import Services from "./pages/Services";
 import Order from "./pages/Order";
-
+import ManageBill from "./pages/ManageBill";
 import Bill from "./pages/Bill"
 import TableAddNew from './pages/AddNewTable';
 import FoodAddNew from './pages/AddNewFood';
@@ -53,6 +53,7 @@ root.render(
           <Route path="addFood" element={<FoodAddNew />} />
           <Route path="about" element={<About />} />
           <Route path="/Menu" element={<Menu />} />
+          <Route path="/ManageBill" element={<ManageBill />} />
           <Route path="/MainCourseMenu" element={<MainCourseMenu />} />
           <Route path="/SideDishMenu" element={<SideDishMenu />} />
           <Route path="/DessertMenu" element={<DessertMenu />} />
@@ -62,7 +63,7 @@ root.render(
 
       </Routes>
       <div className='mt-5 footer'><Footer/></div>
-      
+
       </BrowserRouter>
   </React.StrictMode>
 );

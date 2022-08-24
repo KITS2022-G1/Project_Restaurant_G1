@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -22,6 +25,7 @@ public class Customer {
 	private int customerId;
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Set<Bill> bill;
     
@@ -42,12 +46,13 @@ public class Customer {
 	}
 
 	public Customer(String customerName, String customerPhone,
-			String customerAddress, String customerCardNumber) {
+			String customerAddress, String customerCardNumber, Set<Bill> bill) {
 		super();
 		this.customerName = customerName;
 		this.customerPhone = customerPhone;
 		this.customerAddress = customerAddress;
 		this.customerCardNumber = customerCardNumber;
+		this.bill = bill;
 	}
 
 	public int getCustomerId() {

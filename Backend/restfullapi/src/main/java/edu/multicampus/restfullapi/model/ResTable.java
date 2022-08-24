@@ -2,6 +2,7 @@ package edu.multicampus.restfullapi.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,12 +29,14 @@ public class ResTable {
 	@Column(name = "restable_name")
 	private String restableName;
 	
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "branchId", nullable = false)
     private Branch branch;
     
 
 	@ManyToMany(mappedBy = "foodt")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
     Set<Food> restable;
 	
@@ -44,19 +50,22 @@ public class ResTable {
 		super();
 	}
 
-	public ResTable(String restableName) {
+	public ResTable(Branch branch, String restableName, Boolean restableStatus, int restableCapacity) {
 		super();
-		this.restableName = restableName;
-	}
-	
-	public ResTable(String restableName, Branch branch, Boolean restableStatus, int restableCapacity) {
-		super();
-		this.restableName = restableName;
 		this.branch = branch;
+		this.restableName = restableName;
 		this.restableStatus = restableStatus;
 		this.restableCapacity = restableCapacity;
 	}
 	
+	public Branch getBranch() {
+		return branch;
+	}
+
+	public void setBranch(Branch branch) {
+		this.branch = branch;
+	}
+
 	public Boolean getRestableStatus() {
 		return restableStatus;
 	}
@@ -73,13 +82,6 @@ public class ResTable {
 		this.restableCapacity = restableCapacity;
 	}
 
-	public Branch getBranch() {
-		return branch;
-	}
-
-	public void setBranch(Branch branch) {
-		this.branch = branch;
-	}
 
 	public int getTableId() {
 		return restableId;
@@ -96,6 +98,8 @@ public class ResTable {
 	public void setTableName(String restableName) {
 		this.restableName = restableName;
 	}
+	
+	
     
     
 }

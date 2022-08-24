@@ -19,7 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.multicampus.restfullapi.model.Bill;
+import edu.multicampus.restfullapi.model.Customer;
+import edu.multicampus.restfullapi.model.Employee;
 import edu.multicampus.restfullapi.repository.BillRepository;
+import edu.multicampus.restfullapi.repository.CustomerRepository;
+import edu.multicampus.restfullapi.repository.EmployeesRepository;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -27,6 +31,12 @@ import edu.multicampus.restfullapi.repository.BillRepository;
 public class BillController {
 	@Autowired
 	BillRepository billRepository;
+	
+	@Autowired
+	EmployeesRepository employeesRepository;
+	
+	@Autowired
+	CustomerRepository customerRepository;
 
 	@RequestMapping("/bills")
 	public ResponseEntity<List<Bill>> getAllBills(@Param("billName") String billName) {
@@ -64,12 +74,29 @@ public class BillController {
 	@PostMapping("/bills")
 	public ResponseEntity<Bill> createBill(@RequestBody Bill Bill) {
 		try {
-			Bill bill = billRepository.save(new Bill(Bill.getBillTitle(), Bill.getBillDate(), Bill.getBillTotalMoney(), Bill.getEmployee(), Bill.getCustomer()));
-			return new ResponseEntity<>(bill, HttpStatus.CREATED);
+//			Bill bill = billRepository.save(new Bill(Bill.getBillTitle(), Bill.getBillDate(), Bill.getBillTotalMoney(), Bill.getEmployee(), Bill.getCustomer()));
+//			return new ResponseEntity<>(bill, HttpStatus.CREATED);
+			
+			Optional<Employee> employee = employeesRepository.findById(Bill.getEmployee().getEmployeeId());
+			Optional<Customer> customer = customerRepository.findById(Bill.getCustomer().getCustomerId());
+			
+			if(employee.isPresent() && customer.isPresent()) {
+				Employee exstingEmployee = employee.get();
+			    Customer exstingCustomer = customer.get();
+			    
+			    Bill bl = billRepository.save(new Bill(Bill.getBillTitle(), Bill.getBillDate(), Bill.getBillTotalMoney(), exstingEmployee, exstingCustomer));
+			  
+				return new ResponseEntity<Bill>(bl, HttpStatus.CREATED);
+			}else {
+				return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
+			}
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
 		}
+		
+		
 	}
+	
 
 	@PutMapping("/bills/{id}")
 	public ResponseEntity<Bill> updateBill(@PathVariable("id") Integer id, @RequestBody Bill Bill) {

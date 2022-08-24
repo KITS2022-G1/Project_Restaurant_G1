@@ -6,7 +6,7 @@ class BillService{
     getAllBills(stringSearch){
         var text = "";
         if(stringSearch!==""){
-            text="?BillName="+stringSearch;
+            text="?billTitle="+stringSearch;
         }
 
         return axios.get(BILL_API_BASE_URL+text);
