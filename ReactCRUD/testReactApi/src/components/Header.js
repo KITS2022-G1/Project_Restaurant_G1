@@ -76,7 +76,7 @@ export default function Header() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-2">
 
-              <li className="nav-item">
+              <li className="nav-item" style = {{ textTransform: "uppercase"}}>
                 <Link className="nav-link" aria-current="page"
                   to="/About"
                   onClick={clickView}>
@@ -84,7 +84,7 @@ export default function Header() {
                 </Link>
               </li>
 
-              <li className="nav-item dropdown">
+              <li className="nav-item dropdown" style = {{ textTransform: "uppercase"}}>
                 <Link className="nav-link" to="/Menu" onClick={clickView}>
                   Menu{" "}
                 </Link>
@@ -93,12 +93,12 @@ export default function Header() {
                   aria-labelledby="navbarDropdown"
                   style={{ backgroundColor: "#D19527" }}
                 >
-                  <li>
+                  <li style = {{ textTransform: "uppercase"}}>
                     <Link class="dropdown-item" to="/MainCourseMenu" onClick={clickView}>
                       Main course menu
                     </Link>
                   </li>
-                  <li>
+                  <li style = {{ textTransform: "uppercase"}}>
                     <Link class="dropdown-item" to="/SideDishMenu" onClick={clickView}>
                       Side dish menu
                     </Link>
@@ -119,7 +119,7 @@ export default function Header() {
                 </ul>
               </li>
 
-              <li class="nav-item">
+              <li class="nav-item" style = {{ textTransform: "uppercase"}}>
                 <Link class="nav-link" aria-current="page"
                   to="/Services"
                   onClick={clickView}>

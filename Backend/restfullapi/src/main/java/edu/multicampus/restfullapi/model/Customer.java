@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="Customers")
 public class Customer {
@@ -19,8 +21,8 @@ public class Customer {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int customerId;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Bill> bill;
     
 	@Column(name="customer_name")

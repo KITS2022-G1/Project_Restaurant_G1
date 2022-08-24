@@ -96,7 +96,6 @@ function Table() {
               width: "100%",
               height: "undefined",
               aspectRatio: "1 / 1",
-              
             }}
           >
             <div
@@ -119,7 +118,7 @@ function Table() {
                     >
                       Hạn sử dụng: {food.foodDate}
                     </span>
-<br/>
+                    <br />
                     <span
                       class="fw-medium"
                       style={{ color: "#FFFFFF", fontWeight: "bold" }}
@@ -190,41 +189,90 @@ function Table() {
             <div className="row card-deck ">{listFoods}</div>
           </div>
 
-          <div class="col-3 col-sm-3 col-md-3 border">
-            <div class="border">
-              <h5>Những món đã chọn</h5>
+          <div
+            class="col-3 col-sm-3 col-md-3 border rounded-3 text-center border-dark"
+            style={{ padding: "0" }}
+          >
+            <div
+              className="border rounded-3"
+              style={{ backgroundColor: "#fd7e14" }}
+            >
+              <h5
+                className=" fs-1 mt-2"
+                style={{
+                  textTransform: "uppercase",
+                  fontFamily: "Alumni Sans Collegiate One, sans-serif",
+                }}
+              >
+                Những món đã chọn
+              </h5>
               <Link to={"/favorite"}></Link>
             </div>
-
-            <div> {cartItems.length === 0 && <div> Cart is Empty </div>} </div>
-            {cartItems.map((item) => (
-              <div key={item.foodId} className="row">
-                <div className="col-2"> {item.foodName} </div>
-                <div className="col-2">
-                  <button onClick={() => onAdd(item)} className="add">
-                    {" "}
-                    +{" "}
-                  </button>
-                  <button onClick={() => onRemove(item)} className="remove">
-                    {" "}
-                    -{" "}
-                  </button>
-                </div>
-                <div className="col-2">
-                  {" "}
-                  {item.qty} x {item.foodPrice.toFixed(2)} vnđ{" "}
-                </div>
+            <div className="border rounded-3">
+              <div>
+                {" "}
+                {cartItems.length === 0 && (
+                  <div className="mt-3"> Cart is Empty </div>
+                )}{" "}
               </div>
-            ))}
+              {cartItems.map((item) => (
+                <div
+                  key={item.foodId}
+                  className="row container-fluid"
+                  style={{
+                    padding: "0",
+                    margin: "0",
+                  }}
+                >
+                  <div
+                    className="col-4 mt-2 mb-2 text-start fs-5"
+                    style={{
+                      fontFamily: "Kanit, sans-serif",
+                    }}
+                  >
+                    {" "}
+                    {item.foodName}{" "}
+                  </div>
+                  <div className="col-4 mt-2 mb-2 text-end" >
+                  <button
+                      onClick={() => onAdd(item)}
+                      className="add button-math"
+                      style={{ backgroundColor: "white"}}
+                    >
+                      {" "}
+                      +{" "}
+                    </button>
+                    <button
+                      onClick={() => onRemove(item)}
+                      className="remove button-math"
+                      style={{ marginLeft: "4px", backgroundColor: "white"}}
+                    >
+                      {" "}
+                      -{" "}
+                    </button>{" "}
+                  </div>
+                  <div className="col-4 mt-2 mb-2 text-start" >
+                    
+                    <span className=""
+                      style={{
+                        fontFamily: "Kanit, sans-serif",
+                        
+                      }}
+                    >
+                      {item.qty} x {item.foodPrice} vnđ{" "}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
 
             {cartItems.length !== 0 && (
-              <>
-                <hr></hr>
+              <div>
                 <div className="row">
-                  <div className="col-2"> Item Price </div>
-                  <div className="col-1 text-right">
+                  <div className="col-6 text-center mt-3"> Item Price </div>
+                  <div className="col-6 text-center mt-3">
                     {" "}
-                    {itemsPrice.toFixed(2)} vnđ{" "}
+                    {itemsPrice} vnđ{" "}
                   </div>
                 </div>
 
@@ -232,18 +280,15 @@ function Table() {
                   <div className="col-2"> Tax Price </div>
                   <div className="col-1 text-right">
                     {" "}
-                    {taxPrice.toFixed(2)} vnđ{" "}
+                    {taxPrice.toFixed(0)} vnđ{" "}
                   </div>
                 </div>
 
                 <div className="row">
                   <div className="col-2"> Total Price </div>
-                  <div className="col-1 text-right">
-                    {" "}
-                    {totalPrice.toFixed(2)} vnđ{" "}
-                  </div>
+                  <div className="col-1 text-right"> {totalPrice} vnđ </div>
                 </div>
-              </>
+              </div>
             )}
 
             <section style={{ paddingTop: "5rem" }}></section>

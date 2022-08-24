@@ -61,7 +61,8 @@ root.render(
           <Route path="table/order/:totalPrice" element={<Order/>} />
 
       </Routes>
-      <Footer/>
+      <div className='mt-5 footer'><Footer/></div>
+      
       </BrowserRouter>
   </React.StrictMode>
 );

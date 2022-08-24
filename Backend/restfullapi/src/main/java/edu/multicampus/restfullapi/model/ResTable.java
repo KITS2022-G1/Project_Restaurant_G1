@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Restables")
 public class ResTable {
@@ -29,6 +31,7 @@ public class ResTable {
     
 
 	@ManyToMany(mappedBy = "foodt")
+	@JsonIgnore
     Set<Food> restable;
 	
 	@Column(name = "restable_status")

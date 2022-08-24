@@ -36,31 +36,43 @@ const Home = () => {
             data-bs-target="#carouselExampleDark"
             data-bs-slide-to="2"
             aria-label="Slide 3"
-          ></button>
+          ></button>  
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="10000}" >
+          <div class="carousel-item active" data-bs-interval="10000}">
             <img
               src={anh1}
               class="d-block w-100"
               alt="..."
-               style={{  maxHeight: "450px",objectPosition: "center", objectFit: "cover"}}
+              style={{
+                maxHeight: "450px",
+                objectPosition: "center",
+                objectFit: "cover",
+              }}
             />
           </div>
-          <div class="carousel-item" data-bs-interval="2000" >
+          <div class="carousel-item" data-bs-interval="2000">
             <img
               src={anh2}
               class="d-block w-100"
               alt="..."
-               style={{  maxHeight: "450px",objectPosition: "center", objectFit: "cover"}}
+              style={{
+                maxHeight: "450px",
+                objectPosition: "center",
+                objectFit: "cover",
+              }}
             />
           </div>
-          <div class="carousel-item" >
+          <div class="carousel-item">
             <img
               src={daubep}
               class="d-block w-100"
               alt="..."
-               style={{  maxHeight: "450px",objectPosition: "center", objectFit: "cover"}}
+              style={{
+                maxHeight: "450px",
+                objectPosition: "center",
+                objectFit: "cover",
+              }}
             />
           </div>
         </div>
@@ -92,7 +104,7 @@ const Home = () => {
             <img
               src={chicken}
               alt=".."
-className="rounded mx-auto d-block mt-5 mb-5"
+              className="rounded mx-auto d-block mt-5 mb-5"
               style={{ width: "100%" }}
             ></img>
           </div>
@@ -162,17 +174,19 @@ className="rounded mx-auto d-block mt-5 mb-5"
               Cho dù đó là trong phòng khiêu vũ của chúng tôi hay tại một địa
               điểm bạn chọn, La Table Hanoia cung cấp dịch vụ lưu trữ và chiêu
               đãi cực kỳ sang trọng, nổi bật bởi ẩm thực mẫu mực, sự hỗ trợ của
-chuyên gia và dịch vụ cá nhân hóa. Để có một kế hoạch tỉ mỉ và đảm
+              chuyên gia và dịch vụ cá nhân hóa. Để có một kế hoạch tỉ mỉ và đảm
               bảo kết thúc thành công, chúng tôi ở đây vì bạn.
             </p>
             <div class="d-grid gap-2 col-6 mx-auto">
+            <Link to = "/Services" className="nav-link text-center">
               <button
                 type="button"
                 class="btn btn-outline-warning"
                 style={{ fontSize: "24px" }}
               >
-                Xem tiếp
+              Xem tiếp
               </button>
+              </Link>
             </div>
           </div>
           <div className="col-md-6">
@@ -209,13 +223,15 @@ chuyên gia và dịch vụ cá nhân hóa. Để có một kế hoạch tỉ m�
               bạn.
             </p>
             <div class="d-grid gap-2 col-6 mx-auto">
+            <Link to = "/Services" className="nav-link text-center">
               <button
                 type="button"
                 class="btn btn-outline-warning"
                 style={{ fontSize: "24px" }}
               >
-                Xem tiếp
+               Xem tiếp
               </button>
+              </Link>
             </div>
           </div>
         </div>
