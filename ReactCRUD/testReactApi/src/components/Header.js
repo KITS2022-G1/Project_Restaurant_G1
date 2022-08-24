@@ -152,6 +152,11 @@ export default function Header() {
                       Moderator Board
                     </Link>
                   </li>
+                  <li className="nav-item">
+                    <Link to="/chef" className="nav-link" style = {{ textTransform: "uppercase"}}>
+                      Master Chef
+                    </Link>
+                  </li>
 
                 </>
               )}
@@ -175,6 +180,7 @@ export default function Header() {
                       Bill
                     </Link>
                   </li>
+                  
                 </>
               )}
             </ul>

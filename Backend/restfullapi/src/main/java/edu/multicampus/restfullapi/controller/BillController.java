@@ -64,7 +64,7 @@ public class BillController {
 	@PostMapping("/bills")
 	public ResponseEntity<Bill> createBill(@RequestBody Bill Bill) {
 		try {
-			Bill bill = billRepository.save(new Bill(Bill.getBillTitle(), Bill.getBillDate(), Bill.getBillTotalMoney()));
+			Bill bill = billRepository.save(new Bill(Bill.getBillTitle(), Bill.getBillDate(), Bill.getBillTotalMoney(), Bill.getEmployee(), Bill.getCustomer()));
 			return new ResponseEntity<>(bill, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
@@ -79,6 +79,8 @@ public class BillController {
 			Bill bill = BillData.get();
 			Bill.setBillTitle(Bill.getBillTitle());
 			Bill.setBillDate(Bill.getBillDate());
+			Bill.setCustomer(Bill.getCustomer());
+			Bill.setEmployee(Bill.getEmployee());
 			return new ResponseEntity<>(billRepository.save(bill), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

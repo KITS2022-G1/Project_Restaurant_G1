@@ -95,7 +95,7 @@ const Chef = () => {
                 </div>
             </div>
             <div>
-                <Link to={`/add`}><button className='btn btn-success'>Thêm món mới </button></Link>
+                <Link to={`/addFood`}><button className='btn btn-success'>Thêm món mới </button></Link>
             </div>
             {/* <div>
                 <Link to={`/delete`}><button className='btn btn-success'> Id Bigger </button></Link>

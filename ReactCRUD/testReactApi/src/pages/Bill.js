@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ResTableServices from '../services/ResTableService';
 
 
 const Bill = () => {
@@ -45,9 +46,10 @@ const Bill = () => {
 
 
                                 <section style={{ paddingTop: "2rem", }}></section>
-                                <Link to={'/table'}> <button className='btn btn-info' > Save </button></Link>
-                                <Link to={'/cashier'}><button className='btn btn-secondary'> Back </button></Link>
-
+                                <div className='text-center'>
+                                <button className='btn btn-info' style={{padding:  "0 2px"}}>  <Link to={'/table'} className='nav-link'>Save</Link> </button>
+                                <button className='btn btn-secondary' style={{padding:  "0 2px"}}><Link to={'/cashier'} className='nav-link'> Back</Link> </button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -66,16 +68,16 @@ const Bill = () => {
 
                             <div className='form-group'>
                                 <section style={{ paddingTop: "2rem", }}></section>
-                                <input placeholder='Phone Number:' name='branchCardNumber' className='form-control' >
+                                <input placeholder='NameTable:' name='NameTable' className='form-control' >
                                 </input>
                             </div>
                             <section style={{ paddingTop: "2rem", }}></section>
-                            <input placeholder=' Email:' name='branchEmail' className='form-control'>
+                            <input placeholder=' TableCapacity:' name='TableCapacity' className='form-control'>
                             </input>
 
                             <div className='form-group'>
                                 <section style={{ paddingTop: "2rem", }}></section>
-                                <input placeholder='Address:' name='branchAddress' className='form-control'>
+                                <input placeholder='BranchName:' name='BranchName' className='form-control'>
                                 </input>
                             </div>
 

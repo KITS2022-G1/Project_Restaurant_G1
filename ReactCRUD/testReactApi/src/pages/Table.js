@@ -79,6 +79,7 @@ function Table() {
               width: "100%",
               height: "undefined",
               aspectRatio: "1 / 1",
+              
             }}
           >
             <div
@@ -200,7 +201,7 @@ function Table() {
 
             <section style={{ paddingTop: "5rem" }}></section>
             <div>
-              <Link to={"test/" + totalPrice}>
+              <Link to={"order/" + totalPrice}>
                 <button>Xác nhận</button>
               </Link>
             </div>
