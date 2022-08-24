@@ -9,13 +9,30 @@ import {
   MDBBtn,
   MDBCheckbox
 } from 'mdb-react-ui-kit';
+import EmployeeService from "../services/EmployeeService";
+import CustomerService from "../services/CustomerService";
 
-export default function TestPage(props){
-const [data, setData] = useState([]);
+export default function TestPage() {
+  const params = useParams();
 
-const params = useParams();
+  const [bill, setBill] = useState([]);
+  const [employee, setEmployee] = useState([]);
+  const [customer, setCustomer] = useState([]);
 
-const [bill, setBill] = useState([]);
+  useEffect(() => {
+    EmployeeService.getAllEmployees().then((response) => {
+      setEmployee(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    CustomerService.getCustomerById('1').then((response) => {
+      setCustomer(response.data);
+    });
+  }, []);
+
+  console.log(customer);
+
   const handleChange = (event) => {
     const target = event.target;
     const value = target.value;
@@ -34,13 +51,7 @@ const [bill, setBill] = useState([]);
     });
   }
 
-useEffect(()=> {
-    setData(props.data);
-})
-
-console.log(params.totalPrice);
-
-return(
+  return (
     <div className='container col-md-8'>
       <h1> Add New Bill </h1>
       <div>
@@ -73,7 +84,7 @@ return(
           <label> Customer Id: </label>
           <MDBValidationItem feedback='Please provide a valid customerId.' invalid>
             <MDBInput
-              placeholder='Customer Id' name='customerId' className='form-control' value={bill.customerId} onChange={(e) => handleChange(e)}
+              placeholder='Customer Id' name='customerId' className='form-control' value={customer.customerId}
               required
             />
           </MDBValidationItem>
@@ -83,7 +94,7 @@ return(
           <label> Employee Id: </label>
           <MDBValidationItem feedback='Please provide a valid employeeId.' invalid>
             <MDBInput
-              placeholder='Employee Id' name='employeeId' className='form-control' value={bill.getEmployee().getEmployeeName()} onChange={(e) => handleChange(e)}
+              placeholder='Employee Id' name='employeeId' className='form-control'
               required
             />
           </MDBValidationItem>
@@ -110,7 +121,7 @@ return(
       </div>
 
     </div>
-)
+  )
 
 }
 

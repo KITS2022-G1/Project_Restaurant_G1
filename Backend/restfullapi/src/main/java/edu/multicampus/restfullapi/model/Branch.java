@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Branches")
 @JavaBean
@@ -42,10 +44,12 @@ public class Branch {
 	@Column(name = "branch_image")
 	private String branchImageURL;
 
-	@OneToMany(mappedBy = "branch", fetch = FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval=true)
+	@OneToMany(mappedBy = "branch", fetch = FetchType.EAGER, cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval=true)
+	@JsonIgnore
 	private Set<Employee> employee;
 
-	@OneToMany(mappedBy = "branch", fetch = FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval=true)
+	@OneToMany(mappedBy = "branch", fetch = FetchType.EAGER, cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval=true)
+	@JsonIgnore
 	private Set<ResTable> restable;
 
 	public Branch() {

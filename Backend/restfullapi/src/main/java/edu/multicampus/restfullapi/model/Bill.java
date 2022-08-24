@@ -3,6 +3,7 @@ package edu.multicampus.restfullapi.model;
 import java.sql.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Bills")
@@ -39,15 +42,16 @@ public class Bill {
 		this.billTotalMoney = billTotalMoney;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, optional = false)
 	@JoinColumn(name = "employeeId", nullable = false)
 	private Employee employee;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, optional = false)
 	@JoinColumn(name = "customerId", nullable = false)
 	private Customer customer;
 	
 	@OneToMany(mappedBy = "bill")
+	@JsonIgnore
 	Set<ExportBill> amount;
 
 	public Bill() {
