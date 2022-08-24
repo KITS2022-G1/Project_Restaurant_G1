@@ -50,6 +50,23 @@ function Table() {
 
   // add to cart ---------------------------------------------
 
+
+  //  sort------------------------------------------------------------------------------
+  const sortPriceDown = () => {
+    const sortData = [...foods];
+    sortData.sort((a, b) => a.foodPrice - b.foodPrice);
+    setFoods(sortData);
+  };
+
+  const sortPriceUp = () => {
+    const sortData = [...foods];
+    sortData.sort((a, b) => b.foodPrice - a.foodPrice);
+    setFoods(sortData);
+  };
+
+//  -------------------------------------------------------------------------------------------
+
+
   // paginate -----------------------------------------
   const foodPerPage = 8;
   const pagesVisited = pageNumber * foodPerPage;
@@ -133,6 +150,36 @@ function Table() {
           <div class="col-1"></div>
           <div class="col-7 col-sm-7 col-md-7 ">
             <h1 class="text-center">THỰC ĐƠN HÔM NAY</h1>
+
+            {/*------------------------------------------------------------------------------------------------------------------------- */}
+            <span className='h5'>
+                            Bộ lọc:
+                        </span>
+
+                        <button
+                            className="btn btn-outline-info dropdown-toggle ms-2"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            data-bs-auto-close="true"
+                            aria-expanded="false"
+                        >
+                            Giá tiền
+                        </button>
+
+                        <ul className="dropdown-menu" aria-labelledby="defaultDropdown">
+                            <li>
+                                <button className="dropdown-item" onClick={() => sortPriceDown()}>
+                                    Giảm dần
+                                </button>
+                            </li>
+                            <li>
+                                <button className="dropdown-item" onClick={() => sortPriceUp()}>
+                                    Tăng Dần
+                                </button>
+                            </li>
+                        </ul>
+{/*------------------------------------------------------------------------------------------------------------------------- */}
+
             <div className="row card-deck ">{listFoods}</div>
           </div>
 
