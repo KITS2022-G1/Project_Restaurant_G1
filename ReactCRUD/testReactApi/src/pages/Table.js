@@ -51,7 +51,7 @@ function Table() {
   // add to cart ---------------------------------------------
 
   // paginate -----------------------------------------
-  const foodPerPage = 8;
+  const foodPerPage = 12;
   const pagesVisited = pageNumber * foodPerPage;
 
   const pageCount = Math.ceil(foods.length / foodPerPage);
@@ -133,7 +133,7 @@ function Table() {
   }
   return (
     <>
-      <section style={{ paddingTop: "7rem" }}></section>
+      <section style={{ paddingTop: "3rem" }}></section>
       <div class="container-fluid">
         <div class="row">
           <div class="col-1"></div>
@@ -143,8 +143,8 @@ function Table() {
           </div>
 
           <div
-            class="col-3 col-sm-3 col-md-3 border rounded-3 text-center border-dark"
-            style={{ padding: "0" }}
+            class="col-3 col-sm-3 col-md-3 mt-5 border  rounded-3 text-center border-dark"
+            style={{ padding: "0", height: "80%"}}
           >
             <div
               className="border rounded-3"
@@ -178,7 +178,7 @@ function Table() {
                   }}
                 >
                   <div
-                    className="col-4 mt-2 mb-2 text-start fs-5"
+                    className="col-6 mt-2 mb-2 text-start"
                     style={{
                       fontFamily: "Kanit, sans-serif",
                     }}
@@ -186,7 +186,7 @@ function Table() {
                     {" "}
                     {item.foodName}{" "}
                   </div>
-                  <div className="col-4 mt-2 mb-2 text-end" >
+                  <div className="col-2 mt-2 mb-2 text-end" >
                   <button
                       onClick={() => onAdd(item)}
                       className="add button-math"
@@ -247,7 +247,7 @@ function Table() {
             <section style={{ paddingTop: "5rem" }}></section>
             <div>
               <Link to={"order/" + totalPrice}>
-                <button>Xác nhận</button>
+                <button className="mb-3">Xác nhận</button>
               </Link>
             </div>
           </div>
