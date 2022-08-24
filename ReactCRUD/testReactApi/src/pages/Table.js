@@ -82,7 +82,7 @@ function Table() {
     window.scrollTo(0, 0);
   };
 
-  var listFoods = [];
+   var listFoods = [];
   if (foods.length != 0) {
     listFoods = foods
       .slice(pagesVisited, pagesVisited + foodPerPage)
@@ -155,7 +155,7 @@ function Table() {
         <div class="row">
           <div class="col-1"></div>
           <div class="col-7 col-sm-7 col-md-7 ">
-            <h1 class="text-center">THỰC ĐƠN HÔM NAY</h1>
+          <h1 class="text-center">THỰC ĐƠN HÔM NAY</h1>
 
             {/*------------------------------------------------------------------------------------------------------------------------- */}
             <span className='h5'>
