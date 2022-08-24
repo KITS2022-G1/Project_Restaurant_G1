@@ -94,17 +94,18 @@ function Table() {
               width: "90%",
               height: "undefined",
               aspectRatio: "1 / 1",
+              cursor: "pointer"
             }}
+            onClick={() => onAdd(food)}
           >
             <div
-              class="card-body py-4 px-4 image-food"
+              class="card-body image-food"
               style={{ background: "black", opacity: "0.6" }}
             >
-              <Link to={"/detail/" + food.foodId} className="nav-link">
-                <div class="d-flex align-items-center">
+                <div class="mt-5 text-center" style={{fontSize: "14px"}}>
                   <span>
                     <h4
-                      class="fw-medium ten "
+                      class="fs-4"
                       style={{ color: "#FFFFFF", fontWeight: "bold" }}
                     >
                       {food.foodName}
@@ -121,19 +122,11 @@ function Table() {
                       class="fw-medium"
                       style={{ color: "#FFFFFF", fontWeight: "bold" }}
                     >
-                      Mức Giá: {food.foodPrice}
+                      Mức Giá: {food.foodPrice.toLocaleString("en-US")}
+            
                     </span>
                   </span>
                 </div>
-              </Link>
-              <span>
-                <button
-                  className="btn btn-outline-danger ms-2 rounded"
-                  onClick={() => onAdd(food)}
-                >
-                  Add to cart
-                </button>
-              </span>
             </div>
           </div>
         </div>
@@ -204,7 +197,7 @@ function Table() {
                   <div className="col-3 col-md-3 mt-2 mb-2 text-end">
                     <button
                       onClick={() => onAdd(item)}
-                      className="add button-math"
+                      className="add button-plus"
                       style={{ backgroundColor: "white" }}
                     >
                       {" "}
@@ -212,7 +205,7 @@ function Table() {
                     </button>
                     <button
                       onClick={() => onRemove(item)}
-                      className="remove button-math"
+                      className="remove button-minus"
                       style={{
                         marginLeft: "4px",
                         backgroundColor: "white",
@@ -230,7 +223,7 @@ function Table() {
                         fontFamily: "Kanit, sans-serif",
                       }}
                     >
-                      {item.qty} x {item.foodPrice} vnđ{" "}
+                      {item.qty} x {item.foodPrice.toLocaleString("en-US")} vnđ{" "}
                     </span>
                   </div>
                 </div>
@@ -242,7 +235,7 @@ function Table() {
                 <div className="row container-fluid mt-2" style={{padding: "0", margin: "0",}}>
                   <div className="col-5 col-md-5 text-start"> Item Price </div>
                   <div className="col-3 col-md-3"></div>
-                  <div className="col-4 col-md-4 text-start"> {itemsPrice} vnđ </div>
+                  <div className="col-4 col-md-4 text-start"> {itemsPrice.toLocaleString("en-US")} vnđ </div>
                 </div>
 
                 <div className="row container-fluid mt-2" style={{padding: "0", margin: "0",}}>
@@ -250,14 +243,14 @@ function Table() {
                   <div className="col-3 col-md-3"></div>
                   <div className="col-4 col-md-4 text-start" >
                     {" "}
-                    {taxPrice.toFixed(0)} vnđ{" "}
+                    {taxPrice.toLocaleString("en-US")} vnđ{" "}
                   </div>
                 </div>
 
                 <div className="row container-fluid mt-2" style={{padding: "0", margin: "0",}}>
                   <div className="col-5 col-md-5 text-start"> Total Price </div>
                   <div className="col-3 col-md-3"></div>
-                  <div className="col-4 col-md-4 text-start"> {totalPrice} vnđ </div>
+                  <div className="col-4 col-md-4 text-start"> {totalPrice.toLocaleString("en-US")} vnđ </div>
                 </div>
               </div>
             )}

@@ -66,8 +66,11 @@
   color: blue;
 
 }
-.button-math:hover {
+.button-plus:hover {
   background-color: #fd7e14 !important;
+}
+.button-minus:hover {
+  background-color: #990000 !important;
 }
 .scrollbar {
      overflow-y: scroll;
