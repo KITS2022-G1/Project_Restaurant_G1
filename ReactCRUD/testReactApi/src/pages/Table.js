@@ -50,6 +50,23 @@ function Table() {
 
   // add to cart ---------------------------------------------
 
+
+  //  sort------------------------------------------------------------------------------
+  const sortPriceDown = () => {
+    const sortData = [...foods];
+    sortData.sort((a, b) => a.foodPrice - b.foodPrice);
+    setFoods(sortData);
+  };
+
+  const sortPriceUp = () => {
+    const sortData = [...foods];
+    sortData.sort((a, b) => b.foodPrice - a.foodPrice);
+    setFoods(sortData);
+  };
+
+//  -------------------------------------------------------------------------------------------
+
+
   // paginate -----------------------------------------
   const foodPerPage = 12;
   const pagesVisited = pageNumber * foodPerPage;
@@ -65,7 +82,7 @@ function Table() {
     window.scrollTo(0, 0);
   };
 
-  var listFoods = [];
+   var listFoods = [];
   if (foods.length != 0) {
     listFoods = foods
       .slice(pagesVisited, pagesVisited + foodPerPage)
@@ -136,7 +153,8 @@ function Table() {
       <section style={{ paddingTop: "3rem" }}></section>
       <div class="container-fluid text-start">
         <div class="row">
-          <div class="col-8 col-sm-8 col-md-8 ">
+          <div class="col-1"></div>
+          <div class="col-7 col-sm-7 col-md-7 ">
             <h1 class="text-center">THỰC ĐƠN HÔM NAY</h1>
             <div className="row card-deck ">{listFoods}</div>
           </div>
