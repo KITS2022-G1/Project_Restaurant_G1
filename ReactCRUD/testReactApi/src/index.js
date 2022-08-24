@@ -25,9 +25,11 @@ import SideDishMenu from "./pages/SideDishMenu";
 import DessertMenu from "./pages/DessertMenu";
 import DrinkMenu from "./pages/DrinkMenu";
 import Services from "./pages/Services";
+import Order from "./pages/Order";
 
 import Bill from "./pages/Bill"
-import TestPage from './pages/Order';
+import TableAddNew from './pages/AddNewTable';
+import FoodAddNew from './pages/AddNewFood';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -47,6 +49,8 @@ root.render(
           <Route path="table" element={<Table />} />
           <Route path="favorite" element={<Favorite />} />
           <Route path="bill" element={<Bill />} />
+          <Route path="addTable" element={<TableAddNew />} />
+          <Route path="addFood" element={<FoodAddNew />} />
           <Route path="about" element={<About />} />
           <Route path="/Menu" element={<Menu />} />
           <Route path="/MainCourseMenu" element={<MainCourseMenu />} />
@@ -54,7 +58,7 @@ root.render(
           <Route path="/DessertMenu" element={<DessertMenu />} />
           <Route path="/DrinkMenu" element={<DrinkMenu />} />
           <Route path="/Services" element={<Services/>} />
-          <Route path="table/test/:totalPrice" element={<TestPage/>} />
+          <Route path="table/order/:totalPrice" element={<Order/>} />
 
       </Routes>
       <Footer/>
