@@ -78,6 +78,7 @@ public class BillController {
 		if (BillData.isPresent()) {
 			Bill bill = BillData.get();
 			Bill.setBillTitle(Bill.getBillTitle());
+			Bill.setBillTotalMoney(Bill.getBillTotalMoney());
 			Bill.setBillDate(Bill.getBillDate());
 			Bill.setCustomer(Bill.getCustomer());
 			Bill.setEmployee(Bill.getEmployee());

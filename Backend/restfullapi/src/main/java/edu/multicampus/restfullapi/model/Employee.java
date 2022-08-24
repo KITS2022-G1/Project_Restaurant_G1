@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 //import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -24,12 +26,13 @@ public class Employee {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int employeeId;
 	
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "branchId", nullable = false)
+    @JsonIgnore
     private Branch branch;
     
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Bill> bill;
     
     @Column(name="employee_name")
