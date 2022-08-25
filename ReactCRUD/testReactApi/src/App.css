@@ -74,7 +74,7 @@
 }
 .scrollbar {
      overflow-y: scroll;
-     height: 180px;
+     height: 140px;
 }
 .scrollbar::-webkit-scrollbar {
   width: 6px;

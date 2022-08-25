@@ -10,7 +10,7 @@ import edu.multicampus.restfullapi.model.Food;
 
 @Repository
 public interface FoodRepository extends JpaRepository<Food, Integer> {
-	@Query(value ="SELECT * FROM foods f WHERE f.food_name LIKE %?1%"
+	@Query(value ="SELECT * FROM foods f WHERE f.food_type LIKE %?1%"
 			+ " OR f.food_source LIKE %?1%",nativeQuery = true)
     public List<Food> search(String search);
 }

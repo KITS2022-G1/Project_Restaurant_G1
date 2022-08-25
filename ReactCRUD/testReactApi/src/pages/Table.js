@@ -25,9 +25,9 @@ function Table() {
 
   const SaveData = () => {
     var rv = {};
-    for (var i = 0; i < cartItems.length; ++i){
-    rv[i] = cartItems[i];
-    TodoService.addNewTodo(rv[i]);
+    for (var i = 0; i < cartItems.length; ++i) {
+      rv[i] = cartItems[i];
+      TodoService.addNewTodo(rv[i]);
     }
     // TodoService.addNewTodo(rv);
   }
@@ -151,17 +151,31 @@ function Table() {
   }
   return (
     <>
-      <section style={{ paddingTop: "3rem" }}></section>
+      <section style={{ paddingTop: "1rem" }}></section>
       <div class="container-fluid">
         <div class="row">
           <div class="col-8 col-sm-8 col-md-8 ">
             <h1 class="text-center">THỰC ĐƠN HÔM NAY</h1>
+
+            <div className="row mt-2 ms-auto">
+
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-secondary" onClick={() => setSearchTerm('an')} >Món bò</button>
+              <button type="button" class="btn btn-secondary" onClick={() => setSearchTerm('haisan')}>Hải sản</button>
+              <button type="button" class="btn btn-secondary" onClick={() => setSearchTerm('haisan')}>Lẩu</button>
+              <button type="button" class="btn btn-secondary" onClick={() => setSearchTerm('tom')}>Tráng miệng</button>
+              <button type="button" class="btn btn-secondary" onClick={() => setSearchTerm('uong')}>Đồ uống</button>
+            </div>
+            </div>
+
+
+
             <div className="row card-deck ">{listFoods}</div>
           </div>
 
           <div
-            class="col-4 col-sm-4 col-md-4 mt-5 border rounded-3 text-center border-dark"
-            style={{ padding: "0", height: "80%" }}
+            class="col-4 col-sm-4 col-md-4 border rounded-3 text-center border-dark"
+            style={{ padding: "0", height: "445px", marginTop: '6.2rem' }}
           >
             <div
               className="border rounded-3"

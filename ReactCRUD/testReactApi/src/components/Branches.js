@@ -95,9 +95,7 @@ function Branches() {
                     <button
                         className="btn btn-secondary"
                         type="button"
-                        onClick={()=>setSearchTerm(document.querySelectorAll('input[name=inputSearch]')[0].value)}
-
-                    >
+                        onClick={()=>setSearchTerm(document.querySelectorAll('input[name=inputSearch]')[0].value)}>
                         SEARCH
                     </button>
                 </div>
