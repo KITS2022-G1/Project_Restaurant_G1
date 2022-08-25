@@ -26,7 +26,7 @@
 
 .App-link {
   color: #61dafb;
-  
+
 }
 
 @keyframes App-logo-spin {
@@ -54,16 +54,16 @@
   border-radius: 15px;
   border: 1px solid rgb(34, 99, 221);
   color: rgb(34, 99, 221)
-  
+
 }
 
 .paginationBttns a:hover{
   background-color: blue;
-  
+
 }
 
 .paginationActive{
-  color: blue;
+  color: red;
 
 }
 .button-plus:hover {
@@ -74,24 +74,24 @@
 }
 .scrollbar {
      overflow-y: scroll;
-     height: 300px;
+     height: 180px;
 }
 .scrollbar::-webkit-scrollbar {
   width: 6px;
-  
+
 }
 
 /* Track */
 .scrollbar::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
- 
+
 /* Handle */
 .scrollbar::-webkit-scrollbar-thumb {
-  background: #fd7e14; 
+  background: #fd7e14;
 }
 
 /* Handle on hover */
 .scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #fd7e14; 
+  background: #fd7e14;
 }

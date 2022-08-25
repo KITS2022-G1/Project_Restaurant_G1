@@ -148,8 +148,8 @@ export default function Header() {
               {stateLogin.showModeratorBoard && (
                 <>
                   <li className="nav-item">
-                    <Link to="/admin" className="nav-link" style = {{ textTransform: "uppercase"}}>
-                      Moderator Board
+                    <Link to="/chefFoodManager" className="nav-link" style = {{ textTransform: "uppercase"}}>
+                      Chef Food Manager
                     </Link>
                   </li>
                   <li className="nav-item">

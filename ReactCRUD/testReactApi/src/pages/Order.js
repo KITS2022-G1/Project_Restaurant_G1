@@ -121,11 +121,11 @@ export default function Order() {
 
           {/* --------------------------------------------------------- */}
 
-          <label> Bill Total: </label>
+          <label> Bill Total (vnđ): </label>
           <MDBValidationItem feedback='Please provide a valid card email.' invalid>
             <MDBInput
               name="billTotalMoney"
-              className='form-control' value={params.totalPrice.toLocaleString("en-US")} onChange={(e) => handleChangeTotalPrice(e)}
+              className='form-control' value={params.totalPrice} onChange={(e) => handleChangeTotalPrice(e)}
               required/>
           </MDBValidationItem>
 

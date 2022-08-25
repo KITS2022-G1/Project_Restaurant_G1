@@ -59,6 +59,15 @@ public class Bill {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	Set<ExportBill> amount;
+	
+	
+	public Set<ExportBill> getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Set<ExportBill> amount) {
+		this.amount = amount;
+	}
 
 	public Bill() {
 		super();

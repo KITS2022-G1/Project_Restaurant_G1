@@ -67,7 +67,7 @@ const Services = () => {
                 <div className="col-ms-6 col-md-6 " style={{ padding: "0", backgroundColor: "#2E8B57" }}>
                     <p style={{ fontWeight: "bold", color: "white" }} className="text-center mt-4 mb-3 fs-1 "> BƯU KIỆN </p>
                     <p style={{ justifyContent: "left", color: "white", padding: "0 4px" }} className="text-left fs-2 mt-4 mb-3 ">
-                        La Table Hanoia cung cấp cho bạn cơ hội để đơn giản hóa kế hoạch của bạn,
+                        NLTDH RESTAURANT cung cấp cho bạn cơ hội để đơn giản hóa kế hoạch của bạn,
                         bằng cách sử dụng một trong những gói được sắp xếp chuyên nghiệp của chúng tôi cho các cuộc họp trong khu vực Hà Nội.
                         Chúng tôi cũng sẵn lòng điều chỉnh các dịch vụ của mình cho phù hợp với bất kỳ chi tiết cụ thể nào mà cuộc họp của bạn có thể yêu cầu.
                     </p>

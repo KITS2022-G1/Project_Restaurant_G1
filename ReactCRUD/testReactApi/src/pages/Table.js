@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import FoodServices from "../services/FoodServices";
 import ReactPaginate from "react-paginate";
 import "../App.css";
+import TodoService from "../services/TodoService";
 
 function Table() {
   const [foods, setFoods] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
   const [cartItems, setCardItems] = useState([]);
+  const [todo, setTodo] = useState([]);
 
   useEffect(() => {
     FoodServices.getAllFoods(searchTerm).then((response) => {
@@ -19,8 +21,21 @@ function Table() {
   // add to cart ---------------------------------------------
 
   const itemsPrice = cartItems.reduce((a, c) => a + c.foodPrice * c.qty, 0);
-  const taxPrice = itemsPrice * 0.14;
+  const taxPrice = itemsPrice * 0.04;
   const totalPrice = itemsPrice + taxPrice;
+
+  const SaveTodo = () => {
+    let data = [...cartItems];
+    let data2 = [...todo];
+    let name = 'foodTodo';
+    let amount = 'foodAmount';
+    data2[name] = data.foodName;
+    data2[amount] = data.qty;
+    setTodo(data2);
+    TodoService.addNewTodo(todo).then(res => {
+      console.log('save success!');
+    });
+  }
 
   const onAdd = (food) => {
     const exist = cartItems.find((x) => x.foodId === food.foodId);
@@ -66,7 +81,7 @@ function Table() {
   //  -------------------------------------------------------------------------------------------
 
   // paginate -----------------------------------------
-  const foodPerPage = 8;
+  const foodPerPage = 6;
   const pagesVisited = pageNumber * foodPerPage;
 
   const pageCount = Math.ceil(foods.length / foodPerPage);
@@ -85,13 +100,13 @@ function Table() {
     listFoods = foods
       .slice(pagesVisited, pagesVisited + foodPerPage)
       .map((food) => (
-        <div class="col-md-3 mb-3 mt-3">
+        <div class="col-xl-3 col-md-4 mb-3 mt-3">
           <div
             class="card overflow-hidden shadow"
             style={{
               backgroundImage: `url(${food.foodImageURL})`,
               backgroundSize: "cover",
-              width: "90%",
+              width: "100%",
               height: "undefined",
               aspectRatio: "1 / 1",
               cursor: "pointer"
@@ -102,31 +117,31 @@ function Table() {
               class="card-body image-food"
               style={{ background: "black", opacity: "0.6" }}
             >
-                <div class="mt-5 text-center" style={{fontSize: "14px"}}>
-                  <span>
-                    <h4
-                      class="fs-4"
-                      style={{ color: "#FFFFFF", fontWeight: "bold" }}
-                    >
-                      {food.foodName}
-                    </h4>
+              <div class="mt-5 text-center" style={{ fontSize: "14px" }}>
+                <span>
+                  <h4
+                    class="fs-4"
+                    style={{ color: "#FFFFFF", fontWeight: "bold" }}
+                  >
+                    {food.foodName}
+                  </h4>
 
-                    <span
-                      class="fw-medium"
-                      style={{ color: "#FFFFFF", fontWeight: "bold" }}
-                    >
-                      Hạn sử dụng: {food.foodDate}
-                    </span>
-                    <br />
-                    <span
-                      class="fw-medium"
-                      style={{ color: "#FFFFFF", fontWeight: "bold" }}
-                    >
-                      Mức Giá: {food.foodPrice.toLocaleString("en-US")}
-            
-                    </span>
+                  <span
+                    class="fw-medium"
+                    style={{ color: "#FFFFFF", fontWeight: "bold" }}
+                  >
+                    Hạn sử dụng: {food.foodDate}
                   </span>
-                </div>
+                  <br />
+                  <span
+                    class="fw-medium"
+                    style={{ color: "#FFFFFF", fontWeight: "bold" }}
+                  >
+                    Mức Giá: {food.foodPrice.toLocaleString("en-US")}
+
+                  </span>
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -188,7 +203,8 @@ function Table() {
                   <div
                     className="col-5 col-md-5 mt-2 mb-2 text-start"
                     style={{
-                      fontFamily: "Kanit, sans-serif",
+                      fontFamily: "Roboto Condensed, sans-serif",
+                      // fontWeight: "bold"
                     }}
                   >
                     {" "}
@@ -197,18 +213,19 @@ function Table() {
                   <div className="col-3 col-md-3 mt-2 mb-2 text-end">
                     <button
                       onClick={() => onAdd(item)}
-                      className="add button-plus"
-                      style={{ backgroundColor: "white" }}
+                      className="btn btn-primary add button-plus"
+                      style={{
+                        padding: "1px 8px",
+                      }}
                     >
                       {" "}
                       +{" "}
                     </button>
                     <button
                       onClick={() => onRemove(item)}
-                      className="remove button-minus"
+                      className="btn btn-danger remove button-minus"
                       style={{
                         marginLeft: "4px",
-                        backgroundColor: "white",
                         padding: "1px 8px",
                       }}
                     >
@@ -223,7 +240,7 @@ function Table() {
                         fontFamily: "Kanit, sans-serif",
                       }}
                     >
-                      {item.qty} x {item.foodPrice.toLocaleString("en-US")} vnđ{" "}
+                      <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}>{item.foodPrice.toLocaleString("en-US")} vnđ{" "}</span> x <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}>{item.qty}</span>
                     </span>
                   </div>
                 </div>
@@ -231,15 +248,15 @@ function Table() {
             </div>
 
             {cartItems.length !== 0 && (
-              <div className="border rounded-3 mt-1" style={{ fontFamily: "Kanit, sans-serif"}}>
-                <div className="row container-fluid mt-2" style={{padding: "0", margin: "0",}}>
-                  <div className="col-5 col-md-5 text-start"> Item Price </div>
-                  <div className="col-3 col-md-3"></div>
-                  <div className="col-4 col-md-4 text-start"> {itemsPrice.toLocaleString("en-US")} vnđ </div>
+              <div className="border rounded-3 mt-1" style={{ fontFamily: "Kanit, sans-serif" }}>
+                <div className="row container-fluid mt-2" style={{ padding: "0", margin: "0", }}>
+                  <div className="col-2 col-md-5 text-start"> Giá món</div>
+                  <div className="col-1 col-md-3"></div>
+                  <div className="col-8 col-md-4 text-start"> {itemsPrice.toLocaleString("en-US")} vnđ </div>
                 </div>
 
-                <div className="row container-fluid mt-2" style={{padding: "0", margin: "0",}}>
-                  <div className="col-5 col-md-5 text-start"> Tax Price </div>
+                <div className="row container-fluid mt-2" style={{ padding: "0", margin: "0", }}>
+                  <div className="col-5 col-md-5 text-start"> Giá thuế </div>
                   <div className="col-3 col-md-3"></div>
                   <div className="col-4 col-md-4 text-start" >
                     {" "}
@@ -247,18 +264,19 @@ function Table() {
                   </div>
                 </div>
 
-                <div className="row container-fluid mt-2" style={{padding: "0", margin: "0",}}>
-                  <div className="col-5 col-md-5 text-start"> Total Price </div>
+                <div className="row container-fluid mt-2" style={{ padding: "0", margin: "0", }}>
+                  <hr style={{ fontWeight: 'bold', color: 'red' }}></hr>
+                  <div className="col-5 col-md-5 text-start" style={{ fontWeight: 'bold' }}> Tổng </div>
                   <div className="col-3 col-md-3"></div>
-                  <div className="col-4 col-md-4 text-start"> {totalPrice.toLocaleString("en-US")} vnđ </div>
+                  <div className="col-4 col-md-4 text-start" style={{ fontWeight: 'bold', fontStyle: 'italic', color: 'red' }}> {totalPrice.toLocaleString("en-US")} vnđ </div>
                 </div>
               </div>
             )}
 
-            <section style={{ paddingTop: "5rem" }}></section>
+            <section style={{ paddingTop: "1rem" }}></section>
             <div>
               <Link to={"order/" + totalPrice}>
-                <button className="mb-3 button-math"  style={{ backgroundColor: "white" }}>Xác nhận</button>
+                <button className="btn btn-danger mb-3 button-math">Xác nhận</button>
               </Link>
             </div>
           </div>

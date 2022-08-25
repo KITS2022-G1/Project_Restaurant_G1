@@ -25,7 +25,7 @@ function FoodAddNew() {
   }
 
   const savefoods = (event) => {
-    FoodServices.addNewfoods(foods).then(res => {
+    FoodServices.addNewFood(foods).then(res => {
       console.log('save success!');
     });
   }
@@ -37,7 +37,7 @@ function FoodAddNew() {
       <div>
         <MDBValidation className='row g-3'>
 
-          
+
           {/* --------------------------------------------------------- */}
 
           <label> foods Name: </label>

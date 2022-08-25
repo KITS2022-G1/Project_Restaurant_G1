@@ -30,6 +30,7 @@ import ManageBill from "./pages/ManageBill";
 import Bill from "./pages/Bill"
 import TableAddNew from './pages/AddNewTable';
 import FoodAddNew from './pages/AddNewFood';
+import ChefFoodManager from './pages/ChefFoodManager';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -41,6 +42,7 @@ root.render(
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/profile" element={<Profile />} />
+        <Route path="/chefFoodManager" element={<ChefFoodManager/>} />
         <Route path="/user" element={<BoardUser />} />
         <Route path="/mod" element={<BoardModerator />} />
         <Route path="/admin" element={<BoardAdmin />} />
@@ -60,7 +62,6 @@ root.render(
           <Route path="/DrinkMenu" element={<DrinkMenu />} />
           <Route path="/Services" element={<Services/>} />
           <Route path="table/order/:totalPrice" element={<Order/>} />
-
       </Routes>
       <div className='mt-5 footer'><Footer/></div>
 
