@@ -36,6 +36,9 @@ import EmpDetail from './components/EmpDetail';
 import EmpUpdate from './components/EmpUpdate';
 import Employee from './components/addition/Employee';
 import EmployeeDetail from './components/addition/Employee';
+import TableStatusManage from './pages/TableStatusManage';
+import ChangeTable from './pages/ChangeTable';
+import Success from './pages/Success';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -72,6 +75,9 @@ root.render(
           <Route path="edit/:branchId" element={<EmpUpdate/>} />
           <Route path="employee" element={<Employee/>} />
           <Route path="employeedetail/:employeeId" element={<EmployeeDetail/>} />
+          <Route path="change" element={<TableStatusManage/>} />
+          <Route path="changetable/:id" element={<ChangeTable/>} />
+          <Route path="success" element={<Success/>} />
       </Routes>
       <div className='mt-5 footer'><Footer/></div>
 

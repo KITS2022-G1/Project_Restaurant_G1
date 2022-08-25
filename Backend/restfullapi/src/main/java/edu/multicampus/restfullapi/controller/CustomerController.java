@@ -79,6 +79,8 @@ public class CustomerController {
 			Customer customer = CustomerData.get();
 			customer.setCustomerName(Customer.getCustomerName());
 			customer.setCustomerAddress(Customer.getCustomerAddress());
+			customer.setCustomerCardNumber(Customer.getCustomerCardNumber());
+			customer.setCustomerPhone(Customer.getCustomerPhone());
 			return new ResponseEntity<>(customerRepository.save(customer), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

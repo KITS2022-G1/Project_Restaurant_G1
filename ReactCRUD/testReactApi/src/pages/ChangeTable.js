@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import ResTableServices from '../services/ResTableService';
 import { useParams } from "react-router-dom";
-import CustomerService from "../services/CustomerService";
+import { useNavigate } from "react-router-dom";
 
-const Bill = () => {
+const ChangeTable = () => {
 
     const params = useParams();
     const [table, setTable] = useState([]);
-    const [customer, setCustomer] = useState([]);
+    let navigate = useNavigate();
 
     useEffect(() => {
         ResTableServices.getResTablesById(params.id).then((response) => {
@@ -25,69 +25,22 @@ const Bill = () => {
         setTable(data);
       };
 
-      const handleChangeCustomer = (event) => {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-        let data = { ...customer };
-        data[name] = value;
-        setCustomer(data);
-      };
-
       const updateTable = () => {
         // EmpServices.updateBranch(params.branchId,branch);
         ResTableServices.updateResTables(params.id, table).then(res => {
           console.log("update success!");
+          navigate(-1);
         });
-
-        CustomerService.addNewCustomer(customer).then((res) =>{
-            console.log("add customer success!");
-        })
       }
 
 
     return (
         <>
-            <div class='container-fluid'>
-                <div class='row'>
-                    <div class="col-6 col-sm-6 col-md-6 ">
+            <div class='container'>
+                    <div>
                         <section style={{ paddingTop: "7rem", }}></section>
                         <div class='border'>
-                            <h1 class="text-center">Thông tin khách hàng</h1>
-
-                            <form>
-
-                                <div className='form-group'>
-                                    <section style={{ paddingTop: "2rem", }}></section>
-                                    <input placeholder='Name:' name='customerName' className='form-control' value={customer.customerName} onChange={(e) => handleChangeCustomer(e)}>
-                                    </input>
-                                </div>
-
-                                <div className='form-group'>
-                                    <section style={{ paddingTop: "2rem", }}></section>
-                                    <input placeholder='Address:' name='customerAddress' className='form-control' value={customer.customerAddress} onChange={(e) => handleChangeCustomer(e)}>
-                                    </input>
-                                </div>
-                                <section style={{ paddingTop: "2rem", }}></section>
-                                <input placeholder='Phone' name='customerPhone' className='form-control'  value={customer.customerPhone} onChange={(e) => handleChangeCustomer(e)}>
-                                </input>
-
-                                <section style={{ paddingTop: "2rem", }}></section>
-                                <input placeholder='Card Number' name='customerCardNumber' className='form-control'  value={customer.customerCardNumber} onChange={(e) => handleChangeCustomer(e)}>
-                                </input>
-
-                                <section style={{ paddingTop: "2rem", }}></section>
-                                <div className='text-center'>
-                                    <button className='btn btn-info' onClick={()=> updateTable()}>  <Link to={'/table'} className='nav-link'>Save</Link> </button> <span> </span>
-                                    <button className='btn btn-secondary'><Link to={'/cashier'} className='nav-link'> Back</Link> </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class='col-6 col-sm-6 col-md-6 '>
-                        <section style={{ paddingTop: "7rem", }}></section>
-                        <div class='border'>
-                            <h1 class="text-center">Thông tin bàn đã chọn</h1>
+                            <h1 class="text-center">Thông tin bàn</h1>
 
                             <form>
 
@@ -124,13 +77,18 @@ const Bill = () => {
                                         </select>
                                     </td>
                                 </div>
+
+                                <div className='text-center'>
+                                    <button className='btn btn-info' onClick={()=> updateTable()}> Save </button> <span> </span>
+                                    <button className='btn btn-secondary'><Link to={'/cashier'} className='nav-link'> Back</Link> </button>
+                                </div>
+
                                 <section style={{ paddingTop: "2rem", }}></section>
                             </form>
                         </div>
                     </div>
                 </div>
-            </div>
         </>
     );
 };
-export default Bill;
+export default ChangeTable;

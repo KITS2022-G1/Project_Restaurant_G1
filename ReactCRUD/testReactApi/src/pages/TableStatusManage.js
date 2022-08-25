@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ReactPaginate from 'react-paginate';
 import ResTableServices from '../services/ResTableService';
 
-const Cashier = () => {
+const TableStatusManage = () => {
 
 
     const [ResTables, setResTables] = useState([]);
@@ -58,16 +58,16 @@ const sortCapacityUp = () => {
     var listResTables = [];
     if (ResTables.length != 0) {
         listResTables = ResTables.slice(pagesVisited, pagesVisited + ResTablesPerPage).map((ResTables) => {
-            if(ResTables.restableStatus)
+            if(ResTables.restableStatus!==true)
             return(
             <tr key={ResTables.tableId}>
                 <th scope="row">{ResTables.tableId}</th>
                 <td class='border'>{ResTables.tableName}</td>
                 <td>{ResTables.restableCapacity}</td>
                 <td>
-                    <Link to={'/bill/'+ResTables.tableId} class='nav-link'><button
+                    <Link to={'/changetable/'+ResTables.tableId} class='nav-link'><button
                         className="btn btn-danger">
-                        Đặt
+                        Chuyển
                     </button></Link>
                 </td>
             </tr>
@@ -107,9 +107,9 @@ const sortCapacityUp = () => {
                             </div>
                         </div>
 
-                        <div>
-                            <Link to={'/change'}><button className="btn btn-success mt-2"> Chuyển trạng thái bàn</button></Link>
-                        </div>
+                        <h1> Chuyển trạng thái bàn </h1>
+
+                        <div> <Link to={'/cashier'}><button className="btn btn-secondary"> Trở về quản lí bàn </button> </Link>  </div>
 {/*------------------------------------------------------------------------------------------------------------------------- */}
                         <span className='h5 mt-2'>
                             Bộ lọc:
@@ -147,7 +147,7 @@ const sortCapacityUp = () => {
                                     <th scope="col">#ID</th>
                                     <th scope="col">Tên bàn</th>
                                     <th scope="col">Số chỗ</th>
-                                    <th scope="col">Đặt</th>
+                                    <th scope="col">Chuyển</th>
                                 </tr>
                             </thead>
                             <tbody className="table-group-divider">
@@ -178,4 +178,4 @@ const sortCapacityUp = () => {
         </>
     );
 };
-export default Cashier;
+export default TableStatusManage;

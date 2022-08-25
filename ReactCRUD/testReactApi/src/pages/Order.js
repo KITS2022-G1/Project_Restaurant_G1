@@ -131,7 +131,7 @@ export default function Order() {
           {/* --------------------------------------------------------- */}
 
           <div className='col-12'>
-            <MDBBtn type='submit' className='btn btn-info me-2' onClick={(e) => saveBill(e)}>Save</MDBBtn>
+            <Link to={'/success'}><MDBBtn type='submit' className='btn btn-info me-2' onClick={(e) => saveBill(e)}>Save</MDBBtn></Link>
             <MDBBtn type='reset' className='btn btn-danger me-2'>Reset form</MDBBtn>
             <Link to={"/"}><button className='btn btn-secondary me-2'> Cancel </button></Link>
           </div>
