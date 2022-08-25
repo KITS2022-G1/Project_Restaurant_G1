@@ -39,7 +39,6 @@ export default function Header() {
     return () => {
       eventBus.remove("logout")
     }
-
   }, []);
 
   const clickView = () => {
@@ -55,11 +54,11 @@ export default function Header() {
         className="navbar navbar-expand-lg navbar-light"
         style={{ backgroundColor: "#D19527" }}
       >
-        <div className="container-fluid">
+        <div className="container-fluid" style={{fontSize: '1.3rem'}}>
           <Link to="/" className="nav-link">
             <img className="img-fluid"
               src={logo}
-              style={{ width: "100px", height: "95px", borderRadius: "55px" }}
+              style={{ width: "70px", height: "70px", borderRadius: "55px" }}
             ></img>
           </Link>
           <button
@@ -74,56 +73,56 @@ export default function Header() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-2">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-4">
 
-              <li className="nav-item" style = {{ textTransform: "uppercase"}}>
+              <li className="nav-item" style={{ textTransform: "uppercase" }}>
                 <Link className="nav-link" aria-current="page"
                   to="/About"
                   onClick={clickView}>
-                  About Us
+                  TTNH
                 </Link>
               </li>
 
-              <li className="nav-item dropdown" style = {{ textTransform: "uppercase"}}>
+              <li className="nav-item dropdown" style={{ textTransform: "uppercase" }}>
                 <Link className="nav-link" to="/Menu" onClick={clickView}>
-                  Menu{" "}
+                  THỰC ĐƠN{" "}
                 </Link>
                 <ul
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdown"
                   style={{ backgroundColor: "#D19527" }}
                 >
-                  <li style = {{ textTransform: "uppercase"}}>
+                  <li style={{ textTransform: "uppercase" }}>
                     <Link class="dropdown-item" to="/MainCourseMenu" onClick={clickView}>
-                      Main course menu
+                      tổng quan
                     </Link>
                   </li>
-                  <li style = {{ textTransform: "uppercase"}}>
+                  <li style={{ textTransform: "uppercase" }}>
                     <Link class="dropdown-item" to="/SideDishMenu" onClick={clickView}>
-                      Side dish menu
+                      món ăn phụ
                     </Link>
                   </li>
-                  <li style = {{ textTransform: "uppercase"}}>
+                  <li style={{ textTransform: "uppercase" }}>
                     <Link class="dropdown-item" to="/DessertMenu" onClick={clickView}>
-                      Dessert menu
+                      món tráng miệng
                     </Link>
                   </li>
                   <li>
                     <hr class="dropdown-divider"></hr>
                   </li>
-                  <li style = {{ textTransform: "uppercase"}}>
+                  <li style={{ textTransform: "uppercase" }}>
                     <Link class="dropdown-item" to="/DrinkMenu" onClick={clickView}>
-                      Drink menu
+                      đồ uống
                     </Link>
                   </li>
                 </ul>
               </li>
 
-              <li class="nav-item" style = {{ textTransform: "uppercase"}}>
+              <li class="nav-item" style={{ textTransform: "uppercase" }}>
                 <Link class="nav-link" aria-current="page"
                   to="/Services"
                   onClick={clickView}>
-                  Services
+                  DỊCH VỤ
                 </Link>
               </li>
 
@@ -131,56 +130,96 @@ export default function Header() {
 
               {stateLogin.showAdminBoard && (
                 <>
-                  <li className="nav-item" style = {{ textTransform: "uppercase"}}>
-                    <Link to="/admin" className="nav-link">
-                      Admin Board
+                  <li className="nav-item" style={{ textTransform: "uppercase" }}>
+                    <Link to="/register" className="nav-link">
+                      TK
                     </Link>
                   </li>
 
-                  <li className="nav-item" style = {{ textTransform: "uppercase"}}>
-                    <Link to="/register" className="nav-link">
-                      Sign Up
-                    </Link>
+                  <li className="nav-item dropdown" style={{ textTransform: "uppercase" }}>
+                <span className="nav-link">
+                Quản lí{" "}
+                </span>
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="navbarDropdown"
+                  style={{ backgroundColor: "#D19527" }}
+                >
+                  <li style={{ textTransform: "uppercase" }}>
+                  <Link to="/employee" class="dropdown-item" style={{ textTransform: "uppercase" }}>
+                        Quản lí nhân viên
+                      </Link>
                   </li>
+                  <li style={{ textTransform: "uppercase" }}>
+                  <Link to="/branches"  class="dropdown-item" style={{ textTransform: "uppercase" }}>
+                       Quản lí chi nhánh
+                      </Link>
+                  </li>
+
+                  <li style={{ textTransform: "uppercase" }}>
+                  <Link to="/cashier"  class="dropdown-item" style={{ textTransform: "uppercase" }}>
+                       Quản lí bàn
+                      </Link>
+                  </li>
+
+                </ul>
+              </li>
                 </>
               )}
 
               {stateLogin.showModeratorBoard && (
                 <>
-                  <li className="nav-item">
-                    <Link to="/chefFoodManager" className="nav-link" style = {{ textTransform: "uppercase"}}>
-                      Chef Food Manager
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/chef" className="nav-link" style = {{ textTransform: "uppercase"}}>
-                      Master Chef
-                    </Link>
-                  </li>
 
+              <li className="nav-item dropdown" style={{ textTransform: "uppercase" }}>
+                <span className="nav-link">
+                ĐẦU BẾP{" "}
+                </span>
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="navbarDropdown"
+                  style={{ backgroundColor: "#D19527" }}
+                >
+                  <li style={{ textTransform: "uppercase" }}>
+                  <Link to="/chefFoodManager" class="dropdown-item" style={{ textTransform: "uppercase" }}>
+                        Quản lí tình trạng món ăn
+                      </Link>
+                  </li>
+                  <li style={{ textTransform: "uppercase" }}>
+                  <Link to="/chef"  class="dropdown-item" style={{ textTransform: "uppercase" }}>
+                       Quản lí thực đơn ngày
+                      </Link>
+                  </li>
+                </ul>
+              </li>
                 </>
               )}
 
               {stateLogin.currentUser && (
                 <>
-                  <li className="nav-item">
-                    <Link to="/table" className="nav-link">
+              <li className="nav-item dropdown" style={{ textTransform: "uppercase" }}>
+                <span className="nav-link">
+                Nhân viên{" "}
+                </span>
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="navbarDropdown"
+                  style={{ backgroundColor: "#D19527" }}
+                >
+                  <li style={{ textTransform: "uppercase" }}>
+                  <Link to="/table" class="dropdown-item" style={{ textTransform: "uppercase" }}>
                       Order
                     </Link>
                   </li>
-
-                  <li className="nav-item">
-                    <Link to="/cashier" className="nav-link">
-                      Table
-                    </Link>
+                  <li style={{ textTransform: "uppercase" }}>
+                  <Link to="/cashier"  class="dropdown-item" style={{ textTransform: "uppercase" }}>
+                  Table
+                      </Link>
                   </li>
-
-                  <li className="nav-item">
-                    <Link to="/ManageBill" className="nav-link">
-                      Bill
+                  <Link to="/ManageBill" class="dropdown-item" style={{ textTransform: "uppercase" }}>
+                  Bill
                     </Link>
-                  </li>
-
+                </ul>
+              </li>
                 </>
               )}
             </ul>
@@ -192,7 +231,7 @@ export default function Header() {
                       {stateLogin.currentUser.username}
                     </Link>
                   </li>
-                  <li className="nav-item" style = {{ textTransform: "uppercase"}}>
+                  <li className="nav-item" style={{ textTransform: "uppercase" }}>
                     <Link
                       to="/login"
                       className="nav-link"
@@ -204,7 +243,7 @@ export default function Header() {
                 </div>
               ) : (
                 <div className="navbar-nav ml-auto ms-auto">
-                  <li className="nav-item" style = {{ textTransform: "uppercase"}}>
+                  <li className="nav-item" style={{ textTransform: "uppercase" }}>
                     <Link to="/login" className="nav-link">
                       Login
                     </Link>

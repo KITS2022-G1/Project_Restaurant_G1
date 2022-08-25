@@ -60,21 +60,13 @@ const sortCapacityUp = () => {
         listResTables = ResTables.slice(pagesVisited, pagesVisited + ResTablesPerPage).map((ResTables) => (
             <tr key={ResTables.tableId}>
                 <th scope="row">{ResTables.tableId}</th>
-                <Link to={'/bill'} class='nav-link'><td class='border'>{ResTables.tableName}</td></Link>
+                <td class='border'>{ResTables.tableName}</td>
                 <td>{ResTables.restableCapacity}</td>
                 <td>
-                    <Link to={`/detail/` + ResTables.tableId}><button className='btn btn-warning'>Detail</button></Link>
-                </td>
-
-                <td>
-                    <Link to={`/edit/` + ResTables.tableId}><button className='btn btn-info'>Edit</button></Link>
-                </td>
-                <td>
-                    <button
-                        className="btn btn-danger" onClick={() => deleteResTables(ResTables.tableId)}
-                    >
-                        Delete
-                    </button>
+                    <Link to={'/bill/'+ResTables.tableId} class='nav-link'><button
+                        className="btn btn-danger">
+                        Đặt
+                    </button></Link>
                 </td>
             </tr>
         ));
@@ -92,13 +84,13 @@ const sortCapacityUp = () => {
                 <div class="row" style={{ backgroundRepeat: "no-repeat", }}>
 
                     <div class='row '>
-                        <section style={{ paddingTop: "10rem" }}></section>
-                        {/*   <div className="input-group">
+                        <section style={{ paddingTop: "2rem" }}></section>
+                          <div className="input-group">
                             <input
                                 type="text"
                                 className="form-control"
                                 name="inputSearch"
-                               
+
                             ></input>
                             <div className="input-group-append">
                                 <button
@@ -110,15 +102,12 @@ const sortCapacityUp = () => {
                                     SEARCH
                                 </button>
                             </div>
-                        </div> */}
-                        <div>
-                            <Link to={`/addTable`}><button className='btn btn-success'> Add </button></Link>
                         </div>
 {/*------------------------------------------------------------------------------------------------------------------------- */}
                         <span className='h5'>
                             Bộ lọc:
                         </span>
-
+                        <div>
                         <button
                             className="btn btn-outline-info dropdown-toggle ms-2"
                             type="button"
@@ -128,6 +117,7 @@ const sortCapacityUp = () => {
                         >
                             Số chỗ
                         </button>
+
 
                         <ul className="dropdown-menu" aria-labelledby="defaultDropdown">
                             <li>
@@ -141,17 +131,16 @@ const sortCapacityUp = () => {
                                 </button>
                             </li>
                         </ul>
+                        </div>
 {/*------------------------------------------------------------------------------------------------------------------------- */}
 
                         <table className="table">
                             <thead>
                                 <tr>
                                     <th scope="col">#ID</th>
-                                    <th scope="col">Table Name</th>
-                                    <th scope="col">Table Capacity</th>
-                                    <th scope="col">Detail</th>
-                                    <th scope="col">Edit</th>
-                                    <th scope="col">Delete</th>
+                                    <th scope="col">Tên bàn</th>
+                                    <th scope="col">Số chỗ</th>
+                                    <th scope="col">Đặt</th>
                                 </tr>
                             </thead>
                             <tbody className="table-group-divider">

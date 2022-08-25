@@ -34,8 +34,7 @@ public class Employee {
     @JoinColumn(name = "branchId", nullable = false)
     private Branch branch;
     
-    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval=true)
     @JsonIgnore
     private Set<Bill> bill;
     

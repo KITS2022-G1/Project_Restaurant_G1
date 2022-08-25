@@ -88,7 +88,7 @@ function EmpUpdate() {
   }
 
     return (
-      <div>
+      <div className='container mt-4'>
         <h1> Update Branch </h1>
         {layout}
       </div>

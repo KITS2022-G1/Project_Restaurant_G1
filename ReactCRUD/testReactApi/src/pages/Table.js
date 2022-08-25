@@ -10,7 +10,6 @@ function Table() {
   const [searchTerm, setSearchTerm] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
   const [cartItems, setCardItems] = useState([]);
-  const [todo, setTodo] = useState([]);
 
   useEffect(() => {
     FoodServices.getAllFoods(searchTerm).then((response) => {
@@ -24,17 +23,13 @@ function Table() {
   const taxPrice = itemsPrice * 0.04;
   const totalPrice = itemsPrice + taxPrice;
 
-  const SaveTodo = () => {
-    let data = [...cartItems];
-    let data2 = [...todo];
-    let name = 'foodTodo';
-    let amount = 'foodAmount';
-    data2[name] = data.foodName;
-    data2[amount] = data.qty;
-    setTodo(data2);
-    TodoService.addNewTodo(todo).then(res => {
-      console.log('save success!');
-    });
+  const SaveData = () => {
+    var rv = {};
+    for (var i = 0; i < cartItems.length; ++i){
+    rv[i] = cartItems[i];
+    TodoService.addNewTodo(rv[i]);
+    }
+    // TodoService.addNewTodo(rv);
   }
 
   const onAdd = (food) => {
@@ -276,7 +271,7 @@ function Table() {
             <section style={{ paddingTop: "1rem" }}></section>
             <div>
               <Link to={"order/" + totalPrice}>
-                <button className="btn btn-danger mb-3 button-math">Xác nhận</button>
+                <button className="btn btn-danger mb-3 button-math" onClick={() => SaveData()}>Xác nhận</button>
               </Link>
             </div>
           </div>

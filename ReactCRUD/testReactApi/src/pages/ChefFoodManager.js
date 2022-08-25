@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import ReactPaginate from 'react-paginate';
-import ExportBillService from '../services/ExportBillService';
+import TodoService from '../services/TodoService';
 
 function ChefFoodManager() {
 
@@ -10,9 +10,10 @@ function ChefFoodManager() {
     const [pageNumber, setPageNumber] = useState(0);
 
     useEffect(() => {
-        ExportBillService.getAllExportBills(searchTerm).then((response) => {
+        TodoService.getAllTodos(searchTerm).then((response) => {
             setFoodList(response.data);
         });
+        console.log(foodList);
     }, [searchTerm]);
 
     const branchPerPage = 5;
@@ -25,7 +26,7 @@ function ChefFoodManager() {
 
     const deleteFoodList = (id) => {
         if (window.confirm('Are you sure?') === true) {
-            ExportBillService.deleteExportBill(id).then((response) => {
+            TodoService.deleteTodo(id).then((response) => {
                 setFoodList(response.data);
             })
         }
@@ -37,15 +38,15 @@ function ChefFoodManager() {
     var listOrder = [];
     if (foodList.length !== 0) {
         listOrder = foodList.slice(pagesVisited, pagesVisited + branchPerPage).map((food) => (
-            <tr key={food.billId}>
-                <td>{food.bill.billId}</td>
-                <td>{food.foodId}</td>
-                <td>{food.amount}</td>
+            <tr>
+                <td>{food.foodName}</td>
+                <td>{food.qty}</td>
+                <td>{food.foodDate}</td>
                 <td>
                     <button
-                        className="btn btn-danger" onClick={() => deleteFoodList(food.billId)}
+                        className="btn btn-danger" onClick={() => deleteFoodList(food.todoId)}
                     >
-                        Delete
+                        Done
                     </button>
                 </td>
             </tr>
@@ -88,9 +89,9 @@ function ChefFoodManager() {
             <table className="table">
                 <thead>
                     <tr>
-                        <th scope="col">BillId</th>
-                        <th scope="col">FoodId</th>
-                        <th scope="col">Amount</th>
+                        <th scope="col">Tên món</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Thời gian</th>
                         <th scope="col">Done</th>
                     </tr>
                 </thead>

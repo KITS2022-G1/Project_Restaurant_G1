@@ -31,6 +31,11 @@ import Bill from "./pages/Bill"
 import TableAddNew from './pages/AddNewTable';
 import FoodAddNew from './pages/AddNewFood';
 import ChefFoodManager from './pages/ChefFoodManager';
+import Branches from './components/Branches';
+import EmpDetail from './components/EmpDetail';
+import EmpUpdate from './components/EmpUpdate';
+import Employee from './components/addition/Employee';
+import EmployeeDetail from './components/addition/Employee';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -50,7 +55,7 @@ root.render(
           <Route path="cashier" element={<Cashier />} />
           <Route path="table" element={<Table />} />
           <Route path="favorite" element={<Favorite />} />
-          <Route path="bill" element={<Bill />} />
+          <Route path="bill/:id" element={<Bill />} />
           <Route path="addTable" element={<TableAddNew />} />
           <Route path="addFood" element={<FoodAddNew />} />
           <Route path="about" element={<About />} />
@@ -62,6 +67,11 @@ root.render(
           <Route path="/DrinkMenu" element={<DrinkMenu />} />
           <Route path="/Services" element={<Services/>} />
           <Route path="table/order/:totalPrice" element={<Order/>} />
+          <Route path="branches" element={<Branches/>} />
+          <Route path="detail/:branchId" element={<EmpDetail/>} />
+          <Route path="edit/:branchId" element={<EmpUpdate/>} />
+          <Route path="employee" element={<Employee/>} />
+          <Route path="employeedetail/:employeeId" element={<EmployeeDetail/>} />
       </Routes>
       <div className='mt-5 footer'><Footer/></div>
 

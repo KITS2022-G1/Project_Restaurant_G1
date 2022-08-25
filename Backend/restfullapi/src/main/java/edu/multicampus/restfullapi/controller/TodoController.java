@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -64,24 +63,10 @@ public class TodoController {
 	@PostMapping("/todos")
 	public ResponseEntity<ToDo> createTodo(@RequestBody ToDo todo) {
 		try {
-			ToDo todonew = todoRepository.save(new ToDo(todo.getFoodTodo(), todo.getFoodAmount(), todo.getFoodTime()));
+			ToDo todonew = todoRepository.save(new ToDo(todo.getFoodId(), todo.getFoodName(), todo.getFoodPrice(), todo.getFoodSource(), todo.getFoodImageURL() ,todo.getFoodType(), todo.getFoodDate(), todo.getQty()));
 			return new ResponseEntity<>(todonew, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
-		}
-	}
-
-	@PutMapping("/todos/{id}")
-	public ResponseEntity<ToDo> updateTodo(@PathVariable("id") Integer id, @RequestBody ToDo Todo) {
-		Optional<ToDo> TodoData = todoRepository.findById(id);
-
-		if (TodoData.isPresent()) {
-			ToDo todo = TodoData.get();
-			Todo.setFoodAmount(Todo.getFoodAmount());
-			Todo.setFoodTodo(Todo.getFoodTodo());
-			return new ResponseEntity<>(todoRepository.save(todo), HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 

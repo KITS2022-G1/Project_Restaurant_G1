@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import EmpServices from '../services/EmpServices';
 import { Link } from "react-router-dom";
 import ReactPaginate from 'react-paginate';
+import EmployeeService from '../../services/EmployeeService';
 
 
-function Branches() {
+function Employee() {
 
     const [branches, setBranches] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [pageNumber, setPageNumber] = useState(0);
-    const [direction, setDirection] = useState(1);
 
     useEffect(() => {
-        EmpServices.getAllBranches(searchTerm).then((response) => {
+        EmployeeService.getAllEmployees(searchTerm).then((response) => {
             setBranches(response.data);
         });
     }, [searchTerm]);
@@ -27,7 +26,7 @@ function Branches() {
 
     const deleteBranch = (id) => {
         if (window.confirm('Are you sure?') === true) {
-            EmpServices.deleteBranch(id).then((response) => {
+            EmployeeService.deleteEmployee(id).then((response) => {
                 setBranches(response.data);
             })
         }
@@ -36,35 +35,30 @@ function Branches() {
         }
     }
 
-    const sortColumn = (field, type) => {
-        const sortData = [...branches];
-        if (type == 'string') {
-          sortData.sort((a, b) => direction * a[field].localeCompare(b[field]));
-        } else if (type == 'number') {
-          sortData.sort((a, b) => direction * (a[field] - b[field]));
-        }
-        setDirection(direction * -1);
-        setBranches(sortData);
-      };
-
     var listBranches = [];
     if (branches.length !== 0) {
         listBranches = branches.slice(pagesVisited, pagesVisited + branchPerPage).map((branch) => (
-            <tr key={branch.branchId}>
-                <th scope="row">{branch.branchId}</th>
-                <td>{branch.branchName}</td>
-                <td>{branch.branchAddress}</td>
-                <td>{branch.branchEmail}</td>
+            <tr key={branch.employeeId}>
+                <th scope="row">{branch.employeeId}</th>
+                <td>{branch.employeeName}</td>
+                <td>{branch.employeeAddress}</td>
+                <td>{branch.employeeEmail}</td>
+                <td>{branch.employeeGender? (
+                      <span>Nam</span>
+                    ) : (
+                      <span>Nữ</span>
+                    )}</td>
+                <td>{branch.employeePhone}</td>
                 <td>
-                    <Link to={`/detail/` + branch.branchId}><button className='btn btn-warning'>Detail</button></Link>
+                    <Link to={`/employeedetail/` + branch.employeeId}><button className='btn btn-warning'>Detail</button></Link>
                 </td>
 
                 <td>
-                    <Link to={`/edit/` + branch.branchId}><button className='btn btn-info'>Edit</button></Link>
+                    <Link to={`/edit/` + branch.employeeId}><button className='btn btn-info'>Edit</button></Link>
                 </td>
                 <td>
                     <button
-                        className="btn btn-danger" onClick={() => deleteBranch(branch.branchId)}
+                        className="btn btn-danger" onClick={() => deleteBranch(branch.employeeId)}
                     >
                         Delete
                     </button>
@@ -109,10 +103,12 @@ function Branches() {
             <table className="table">
                 <thead>
                     <tr>
-                        <th scope="col" onClick={() => sortColumn('branchId', 'number')}>#ID</th>
-                        <th scope="col" onClick={() => sortColumn('branchName', 'string')}>Branch Name</th>
-                        <th scope="col" onClick={() => sortColumn('branchAddress', 'string')}>Branch Address</th>
-                        <th scope="col" onClick={() => sortColumn('branchEmail', 'string')}>Branch Email</th>
+                        <th scope="col">#ID</th>
+                        <th scope="col">Employee Name</th>
+                        <th scope="col">Employee Address</th>
+                        <th scope="col">Employee Email</th>
+                        <th scope="col">Employee Gender</th>
+                        <th scope="col">Employee Phone</th>
                         <th scope="col">Detail</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Delete</th>
@@ -141,4 +137,4 @@ function Branches() {
 
 }
 
-export default Branches;
+export default Employee;

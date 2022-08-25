@@ -53,7 +53,6 @@ export default function Order() {
     const name = target.name;
     let data = { ...bill };
     data.customer[name] = value;
-
     console.log(data);
     setBill(data);
   };

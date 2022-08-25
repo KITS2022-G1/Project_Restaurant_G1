@@ -4,7 +4,6 @@ import ResTableServices from '../services/ResTableService';
 
 
 const Bill = () => {
-    
 
     return (
         <>
@@ -47,8 +46,8 @@ const Bill = () => {
 
                                 <section style={{ paddingTop: "2rem", }}></section>
                                 <div className='text-center'>
-                                <button className='btn btn-info' style={{padding:  "0 2px"}}>  <Link to={'/table'} className='nav-link'>Save</Link> </button>
-                                <button className='btn btn-secondary' style={{padding:  "0 2px"}}><Link to={'/cashier'} className='nav-link'> Back</Link> </button>
+                                <button className='btn btn-info'>  <Link to={'/table'} className='nav-link'>Save</Link> </button> <span> </span>
+                                <button className='btn btn-secondary'><Link to={'/cashier'} className='nav-link'> Back</Link> </button>
                                 </div>
                             </form>
                         </div>
@@ -57,9 +56,9 @@ const Bill = () => {
                     <section style={{ paddingTop: "7rem", }}></section>
                     <div class='border'>
                     <h1 class="text-center">Thông tin bàn đã chọn</h1>
-                    
+
                         <form>
-                        
+
                             <div className='form-group'>
                                 <section style={{ paddingTop: "2rem", }}></section>
                                 <input placeholder='ID Table' name='idTable' className='form-control' >
@@ -81,14 +80,14 @@ const Bill = () => {
                                 </input>
                             </div>
 
-                            
+
 
 
                             <section style={{ paddingTop: "2rem", }}></section>
                         </form>
                         </div>
                     </div>
-                    
+
 
 
                 </div>
