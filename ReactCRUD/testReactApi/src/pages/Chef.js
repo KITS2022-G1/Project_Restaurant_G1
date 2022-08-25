@@ -44,11 +44,8 @@ const Chef = () => {
                 <th scope="row">{food.foodId}</th>
                 <td>{food.foodName}</td>
                 <td>{food.foodPrice}</td>
-                <td>{food.foodEmail}</td>
-                <td>
-                    <Link to={`/detail/` + food.foodId}><button className='btn btn-warning'>Detail</button></Link>
-                </td>
-
+                <td>{food.foodDate}</td>
+                
                 <td>
                     <Link to={`/edit/` + food.foodId}><button className='btn btn-info'>Edit</button></Link>
                 </td>
@@ -108,7 +105,6 @@ const Chef = () => {
                         <th scope="col">Tên món</th>
                         <th scope="col">Giá tiền</th>
                         <th scope="col">Hạn sử dụng</th>
-                        <th scope="col">Detail</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Delete</th>
                     </tr>

@@ -42,6 +42,19 @@ const sortCapacityUp = () => {
 
 
 
+  const deleteResTables = (id) => {
+    if (window.confirm('Are you sure?') == true) {
+        ResTableServices.deleteResTables(id).then((response) => {
+            setResTables(response.data);
+        })
+    }
+    else {
+
+    }
+}
+
+
+
     var listResTables = [];
     if (ResTables.length != 0) {
         listResTables = ResTables.slice(pagesVisited, pagesVisited + ResTablesPerPage).map((ResTables) => (
@@ -57,7 +70,11 @@ const sortCapacityUp = () => {
                     <Link to={`/edit/` + ResTables.tableId}><button className='btn btn-info'>Edit</button></Link>
                 </td>
                 <td>
-
+                    <button
+                        className="btn btn-danger" onClick={() => deleteResTables(ResTables.tableId)}
+                    >
+                        Delete
+                    </button>
                 </td>
             </tr>
         ));
